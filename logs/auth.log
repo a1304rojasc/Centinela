@@ -1,0 +1,500 @@
+Nov  2 00:11:28 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 00:17:41 srv-web01 CRON[55397]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 00:32:27 srv-web01 CRON[8204]: pam_unix(cron:session): session closed for user root
+Nov  2 01:11:18 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 01:20:52 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 01:27:53 srv-web01 CRON[51119]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 01:34:43 srv-web01 sshd[34019]: pam_unix(sshd:session): session closed for user maria
+Nov  2 01:39:25 srv-web01 CRON[47400]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 01:40:28 srv-web01 sshd[11902]: pam_unix(sshd:session): session closed for user maria
+Nov  2 01:52:23 srv-web01 sshd[58252]: Received disconnect from 10.0.0.50 port 57717:11: disconnected by user
+Nov  2 01:56:20 srv-web01 sshd[61979]: Received disconnect from 10.0.0.50 port 31747:11: disconnected by user
+Nov  2 01:58:24 srv-web01 sudo:    maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 02:04:16 srv-web01 sshd[31260]: Received disconnect from 192.168.1.15 port 59616:11: disconnected by user
+Nov  2 02:27:35 srv-web01 sshd[17623]: Received disconnect from 10.0.0.50 port 31064:11: disconnected by user
+Nov  2 02:51:48 srv-web01 CRON[29552]: pam_unix(cron:session): session closed for user root
+Nov  2 02:55:27 srv-web01 sshd[41845]: Received disconnect from 10.0.0.8 port 56049:11: disconnected by user
+Nov  2 02:55:43 srv-web01 sshd[33798]: Received disconnect from 10.0.0.50 port 62361:11: disconnected by user
+Nov  2 02:58:16 srv-web01 systemd-logind[812]: New session 495 of user deploy.
+Nov  2 03:04:13 srv-web01 sshd[7783]: pam_unix(sshd:session): session closed for user maria
+Nov  2 03:12:01 srv-web01 sshd[51189]: Failed password for root from 185.220.101.47 port 38241 ssh2
+Nov  2 03:12:02 srv-web01 sshd[32148]: Failed password for test from 185.220.101.47 port 40821 ssh2
+Nov  2 03:12:04 srv-web01 sshd[58175]: Failed password for root from 185.220.101.47 port 57730 ssh2
+Nov  2 03:12:05 srv-web01 sshd[50497]: Failed password for root from 185.220.101.47 port 43182 ssh2
+Nov  2 03:12:08 srv-web01 sshd[27148]: Failed password for root from 185.220.101.47 port 54472 ssh2
+Nov  2 03:12:10 srv-web01 sshd[30588]: Failed password for root from 185.220.101.47 port 37930 ssh2
+Nov  2 03:12:11 srv-web01 sshd[5196]: Failed password for admin from 185.220.101.47 port 52156 ssh2
+Nov  2 03:12:12 srv-web01 sshd[37301]: Failed password for root from 185.220.101.47 port 45080 ssh2
+Nov  2 03:12:15 srv-web01 sshd[1471]: Failed password for admin from 185.220.101.47 port 34652 ssh2
+Nov  2 03:12:18 srv-web01 sshd[4858]: Failed password for test from 185.220.101.47 port 45003 ssh2
+Nov  2 03:12:19 srv-web01 sshd[57337]: Failed password for root from 185.220.101.47 port 51654 ssh2
+Nov  2 03:12:20 srv-web01 sshd[16597]: Failed password for root from 185.220.101.47 port 48250 ssh2
+Nov  2 03:12:23 srv-web01 sshd[15040]: Failed password for ubuntu from 185.220.101.47 port 38671 ssh2
+Nov  2 03:12:26 srv-web01 sshd[38762]: Failed password for root from 185.220.101.47 port 60976 ssh2
+Nov  2 03:12:27 srv-web01 sshd[53920]: Failed password for ubuntu from 185.220.101.47 port 56677 ssh2
+Nov  2 03:12:28 srv-web01 sshd[7352]: Failed password for root from 185.220.101.47 port 58249 ssh2
+Nov  2 03:12:30 srv-web01 sshd[27941]: Failed password for ubuntu from 185.220.101.47 port 60606 ssh2
+Nov  2 03:12:33 srv-web01 sshd[45129]: Failed password for root from 185.220.101.47 port 36449 ssh2
+Nov  2 03:12:34 srv-web01 sshd[48724]: Failed password for ubuntu from 185.220.101.47 port 52236 ssh2
+Nov  2 03:12:35 srv-web01 sshd[13556]: Failed password for admin from 185.220.101.47 port 42465 ssh2
+Nov  2 03:12:38 srv-web01 sshd[10186]: Failed password for ubuntu from 185.220.101.47 port 57648 ssh2
+Nov  2 03:12:39 srv-web01 sshd[31318]: Failed password for root from 185.220.101.47 port 46371 ssh2
+Nov  2 03:12:40 srv-web01 sshd[53954]: Failed password for ubuntu from 185.220.101.47 port 36416 ssh2
+Nov  2 03:12:41 srv-web01 sshd[36427]: Failed password for test from 185.220.101.47 port 30967 ssh2
+Nov  2 03:12:42 srv-web01 sshd[11899]: Failed password for admin from 185.220.101.47 port 56634 ssh2
+Nov  2 03:12:44 srv-web01 sshd[15008]: Failed password for ubuntu from 185.220.101.47 port 56282 ssh2
+Nov  2 03:12:45 srv-web01 sshd[25836]: Failed password for admin from 185.220.101.47 port 30141 ssh2
+Nov  2 03:12:47 srv-web01 sshd[61720]: Failed password for root from 185.220.101.47 port 59819 ssh2
+Nov  2 03:12:49 srv-web01 sshd[46651]: Failed password for ubuntu from 185.220.101.47 port 61894 ssh2
+Nov  2 03:12:50 srv-web01 sshd[20445]: Failed password for admin from 185.220.101.47 port 44267 ssh2
+Nov  2 03:12:51 srv-web01 sshd[49217]: Failed password for root from 185.220.101.47 port 33994 ssh2
+Nov  2 03:12:54 srv-web01 sshd[4746]: Failed password for root from 185.220.101.47 port 33286 ssh2
+Nov  2 03:12:57 srv-web01 sshd[33954]: Failed password for ubuntu from 185.220.101.47 port 64807 ssh2
+Nov  2 03:12:58 srv-web01 sshd[63965]: Failed password for root from 185.220.101.47 port 63281 ssh2
+Nov  2 03:12:59 srv-web01 sshd[5490]: Failed password for admin from 185.220.101.47 port 34453 ssh2
+Nov  2 03:13:02 srv-web01 sshd[27461]: Failed password for admin from 185.220.101.47 port 37856 ssh2
+Nov  2 03:13:05 srv-web01 sshd[38940]: Failed password for admin from 185.220.101.47 port 32604 ssh2
+Nov  2 03:13:08 srv-web01 sshd[28474]: Failed password for root from 185.220.101.47 port 64261 ssh2
+Nov  2 03:13:10 srv-web01 sshd[14386]: Failed password for root from 185.220.101.47 port 50590 ssh2
+Nov  2 03:13:11 srv-web01 sshd[26938]: Failed password for root from 185.220.101.47 port 38577 ssh2
+Nov  2 03:13:14 srv-web01 sshd[20660]: Failed password for test from 185.220.101.47 port 59964 ssh2
+Nov  2 03:13:16 srv-web01 sshd[1610]: Failed password for root from 185.220.101.47 port 60034 ssh2
+Nov  2 03:13:19 srv-web01 sshd[7552]: Failed password for root from 185.220.101.47 port 34801 ssh2
+Nov  2 03:13:22 srv-web01 sshd[34153]: Failed password for admin from 185.220.101.47 port 47380 ssh2
+Nov  2 03:13:23 srv-web01 sshd[58728]: Failed password for root from 185.220.101.47 port 34508 ssh2
+Nov  2 03:13:24 srv-web01 sshd[19676]: Failed password for root from 185.220.101.47 port 40338 ssh2
+Nov  2 03:13:26 srv-web01 sshd[47107]: Failed password for root from 185.220.101.47 port 49825 ssh2
+Nov  2 03:13:29 srv-web01 sshd[35664]: Failed password for test from 185.220.101.47 port 30512 ssh2
+Nov  2 03:13:32 srv-web01 sshd[20620]: Failed password for root from 185.220.101.47 port 36788 ssh2
+Nov  2 03:13:33 srv-web01 sshd[8564]: Failed password for root from 185.220.101.47 port 37014 ssh2
+Nov  2 03:13:36 srv-web01 sshd[11187]: Failed password for root from 185.220.101.47 port 47848 ssh2
+Nov  2 03:13:38 srv-web01 sshd[14803]: Failed password for root from 185.220.101.47 port 52471 ssh2
+Nov  2 03:13:39 srv-web01 sshd[42565]: Failed password for test from 185.220.101.47 port 47300 ssh2
+Nov  2 03:13:42 srv-web01 sshd[17457]: Failed password for ubuntu from 185.220.101.47 port 33329 ssh2
+Nov  2 03:13:43 srv-web01 sshd[28759]: Failed password for test from 185.220.101.47 port 48132 ssh2
+Nov  2 03:13:44 srv-web01 sshd[22859]: Failed password for root from 185.220.101.47 port 38573 ssh2
+Nov  2 03:13:47 srv-web01 sshd[11589]: Failed password for root from 185.220.101.47 port 58956 ssh2
+Nov  2 03:13:50 srv-web01 sshd[29028]: Failed password for test from 185.220.101.47 port 30633 ssh2
+Nov  2 03:13:51 srv-web01 sshd[62934]: Failed password for root from 185.220.101.47 port 39768 ssh2
+Nov  2 03:13:54 srv-web01 sshd[55696]: Failed password for root from 185.220.101.47 port 54196 ssh2
+Nov  2 03:13:57 srv-web01 sshd[10705]: Failed password for root from 185.220.101.47 port 58166 ssh2
+Nov  2 03:13:58 srv-web01 sshd[21202]: Failed password for root from 185.220.101.47 port 53897 ssh2
+Nov  2 03:13:59 srv-web01 sshd[14767]: Failed password for root from 185.220.101.47 port 46353 ssh2
+Nov  2 03:14:02 srv-web01 sshd[24178]: Failed password for root from 185.220.101.47 port 56632 ssh2
+Nov  2 03:14:05 srv-web01 sshd[11128]: Failed password for test from 185.220.101.47 port 45514 ssh2
+Nov  2 03:14:06 srv-web01 sshd[58764]: Failed password for admin from 185.220.101.47 port 57020 ssh2
+Nov  2 03:14:07 srv-web01 sshd[49271]: Failed password for admin from 185.220.101.47 port 51770 ssh2
+Nov  2 03:14:09 srv-web01 sshd[57627]: Failed password for test from 185.220.101.47 port 46263 ssh2
+Nov  2 03:14:11 srv-web01 sshd[52601]: Failed password for admin from 185.220.101.47 port 37084 ssh2
+Nov  2 03:14:13 srv-web01 sshd[57268]: Failed password for root from 185.220.101.47 port 60847 ssh2
+Nov  2 03:14:14 srv-web01 sshd[54515]: Failed password for admin from 185.220.101.47 port 60166 ssh2
+Nov  2 03:14:16 srv-web01 sshd[54774]: Failed password for root from 185.220.101.47 port 44915 ssh2
+Nov  2 03:14:17 srv-web01 sshd[44255]: Failed password for root from 185.220.101.47 port 42656 ssh2
+Nov  2 03:14:19 srv-web01 sshd[19258]: Failed password for root from 185.220.101.47 port 34549 ssh2
+Nov  2 03:14:21 srv-web01 sshd[43040]: Failed password for root from 185.220.101.47 port 63384 ssh2
+Nov  2 03:14:23 srv-web01 sshd[56290]: Failed password for test from 185.220.101.47 port 51702 ssh2
+Nov  2 03:14:24 srv-web01 sshd[58477]: Failed password for root from 185.220.101.47 port 47118 ssh2
+Nov  2 03:14:25 srv-web01 sshd[64080]: Failed password for root from 185.220.101.47 port 47397 ssh2
+Nov  2 03:14:26 srv-web01 sshd[40096]: Failed password for root from 185.220.101.47 port 58479 ssh2
+Nov  2 03:14:28 srv-web01 sshd[52539]: Failed password for test from 185.220.101.47 port 50557 ssh2
+Nov  2 03:14:30 srv-web01 sshd[34516]: Failed password for root from 185.220.101.47 port 37578 ssh2
+Nov  2 03:14:32 srv-web01 sshd[13457]: Failed password for root from 185.220.101.47 port 46693 ssh2
+Nov  2 03:14:33 srv-web01 sshd[29577]: Failed password for test from 185.220.101.47 port 30110 ssh2
+Nov  2 03:14:36 srv-web01 sshd[46013]: Failed password for root from 185.220.101.47 port 42912 ssh2
+Nov  2 03:14:38 srv-web01 sshd[5585]: Failed password for ubuntu from 185.220.101.47 port 51639 ssh2
+Nov  2 03:14:41 srv-web01 sshd[44475]: Failed password for root from 185.220.101.47 port 38167 ssh2
+Nov  2 03:14:44 srv-web01 sshd[34234]: Failed password for root from 185.220.101.47 port 50269 ssh2
+Nov  2 03:14:47 srv-web01 sshd[22376]: Failed password for ubuntu from 185.220.101.47 port 56371 ssh2
+Nov  2 03:14:50 srv-web01 sshd[37333]: Failed password for root from 185.220.101.47 port 38341 ssh2
+Nov  2 03:14:51 srv-web01 sshd[44576]: Failed password for ubuntu from 185.220.101.47 port 54847 ssh2
+Nov  2 03:14:54 srv-web01 sshd[60166]: Failed password for test from 185.220.101.47 port 41405 ssh2
+Nov  2 03:14:57 srv-web01 sshd[20723]: Failed password for root from 185.220.101.47 port 56612 ssh2
+Nov  2 03:15:00 srv-web01 sshd[20914]: Failed password for root from 185.220.101.47 port 48803 ssh2
+Nov  2 03:15:01 srv-web01 sshd[52495]: Failed password for ubuntu from 185.220.101.47 port 51118 ssh2
+Nov  2 03:15:03 srv-web01 sshd[29977]: Failed password for ubuntu from 185.220.101.47 port 44005 ssh2
+Nov  2 03:15:06 srv-web01 sshd[53018]: Failed password for ubuntu from 185.220.101.47 port 41120 ssh2
+Nov  2 03:15:09 srv-web01 sshd[19598]: Failed password for root from 185.220.101.47 port 63780 ssh2
+Nov  2 03:15:12 srv-web01 sshd[41583]: Failed password for test from 185.220.101.47 port 51966 ssh2
+Nov  2 03:15:13 srv-web01 sshd[45092]: Failed password for admin from 185.220.101.47 port 50343 ssh2
+Nov  2 03:15:14 srv-web01 sshd[10656]: Failed password for admin from 185.220.101.47 port 31600 ssh2
+Nov  2 03:15:15 srv-web01 sshd[32138]: Failed password for admin from 185.220.101.47 port 34772 ssh2
+Nov  2 03:15:17 srv-web01 sshd[59073]: Failed password for ubuntu from 185.220.101.47 port 42742 ssh2
+Nov  2 03:15:20 srv-web01 sshd[26164]: Failed password for test from 185.220.101.47 port 62399 ssh2
+Nov  2 03:15:22 srv-web01 sshd[10671]: Failed password for admin from 185.220.101.47 port 30363 ssh2
+Nov  2 03:15:23 srv-web01 sshd[15341]: Failed password for ubuntu from 185.220.101.47 port 41526 ssh2
+Nov  2 03:15:26 srv-web01 sshd[31444]: Failed password for root from 185.220.101.47 port 33291 ssh2
+Nov  2 03:15:29 srv-web01 sshd[61127]: Failed password for admin from 185.220.101.47 port 37953 ssh2
+Nov  2 03:15:31 srv-web01 sshd[53521]: Failed password for admin from 185.220.101.47 port 60450 ssh2
+Nov  2 03:15:34 srv-web01 sshd[37629]: Failed password for root from 185.220.101.47 port 50794 ssh2
+Nov  2 03:15:36 srv-web01 sshd[54412]: Failed password for root from 185.220.101.47 port 63081 ssh2
+Nov  2 03:19:17 srv-web01 CRON[46011]: pam_unix(cron:session): session closed for user root
+Nov  2 03:32:15 srv-web01 systemd-logind[812]: New session 743 of user carlos.
+Nov  2 03:35:03 srv-web01 CRON[49940]: pam_unix(cron:session): session closed for user root
+Nov  2 03:39:14 srv-web01 systemd-logind[812]: New session 990 of user carlos.
+Nov  2 03:40:56 srv-web01 CRON[6057]: pam_unix(cron:session): session closed for user root
+Nov  2 03:44:34 srv-web01 sshd[24009]: Received disconnect from 192.168.1.22 port 39679:11: disconnected by user
+Nov  2 03:48:30 srv-web01 sshd[22843]: pam_unix(sshd:session): session closed for user ana
+Nov  2 03:56:24 srv-web01 CRON[11140]: pam_unix(cron:session): session closed for user root
+Nov  2 04:02:10 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 04:02:14 srv-web01 systemd-logind[812]: New session 540 of user carlos.
+Nov  2 04:02:53 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 04:08:16 srv-web01 CRON[9307]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 04:10:43 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 04:27:01 srv-web01 systemd-logind[812]: New session 786 of user carlos.
+Nov  2 04:35:05 srv-web01 CRON[4314]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 04:35:40 srv-web01 CRON[22109]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 04:56:21 srv-web01 CRON[7369]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 04:58:12 srv-web01 sshd[13491]: pam_unix(sshd:session): session closed for user carlos
+Nov  2 05:08:57 srv-web01 CRON[22847]: pam_unix(cron:session): session closed for user root
+Nov  2 05:10:43 srv-web01 CRON[43443]: pam_unix(cron:session): session closed for user root
+Nov  2 05:12:56 srv-web01 sshd[1400]: Received disconnect from 10.0.0.8 port 41888:11: disconnected by user
+Nov  2 05:14:54 srv-web01 CRON[35468]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 05:26:37 srv-web01 CRON[17772]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 05:29:33 srv-web01 sshd[40649]: Received disconnect from 192.168.1.22 port 61170:11: disconnected by user
+Nov  2 05:33:56 srv-web01 sshd[13928]: Received disconnect from 192.168.1.22 port 41370:11: disconnected by user
+Nov  2 05:36:21 srv-web01 sshd[63066]: pam_unix(sshd:session): session closed for user maria
+Nov  2 05:37:33 srv-web01 sshd[25314]: pam_unix(sshd:session): session closed for user deploy
+Nov  2 05:39:52 srv-web01 systemd-logind[812]: New session 153 of user ana.
+Nov  2 05:45:58 srv-web01 CRON[2891]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 05:54:26 srv-web01 CRON[40141]: pam_unix(cron:session): session closed for user root
+Nov  2 05:59:27 srv-web01 systemd-logind[812]: New session 950 of user ana.
+Nov  2 06:20:38 srv-web01 CRON[39591]: pam_unix(cron:session): session closed for user root
+Nov  2 06:31:59 srv-web01 CRON[20414]: pam_unix(cron:session): session closed for user root
+Nov  2 06:33:20 srv-web01 CRON[35810]: pam_unix(cron:session): session closed for user root
+Nov  2 06:36:28 srv-web01 sshd[35010]: pam_unix(sshd:session): session closed for user carlos
+Nov  2 06:38:11 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 07:00:37 srv-web01 sshd[33021]: Accepted publickey for backup from 192.168.1.100 port 31276 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 07:00:37 srv-web01 sshd[33021]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 07:03:32 srv-web01 sshd[58399]: Accepted publickey for backup from 192.168.1.100 port 47261 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 07:03:32 srv-web01 sshd[58399]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 07:03:50 srv-web01 sshd[64281]: Received disconnect from 192.168.1.22 port 60737:11: disconnected by user
+Nov  2 07:07:05 srv-web01 sshd[11463]: Accepted password for maria from 192.168.1.15 port 57696 ssh2
+Nov  2 07:07:05 srv-web01 sshd[11463]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 07:16:14 srv-web01 systemd-logind[812]: New session 265 of user deploy.
+Nov  2 07:26:34 srv-web01 CRON[26903]: pam_unix(cron:session): session closed for user root
+Nov  2 07:27:19 srv-web01 sshd[17049]: Accepted password for maria from 192.168.1.15 port 44628 ssh2
+Nov  2 07:27:19 srv-web01 sshd[17049]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 07:33:55 srv-web01 CRON[40952]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 07:43:21 srv-web01 CRON[63194]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 07:47:27 srv-web01 sshd[36142]: Accepted password for carlos from 192.168.1.22 port 38180 ssh2
+Nov  2 07:47:27 srv-web01 sshd[36142]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 07:50:03 srv-web01 sshd[51663]: Accepted password for carlos from 192.168.1.22 port 48965 ssh2
+Nov  2 07:50:03 srv-web01 sshd[51663]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 07:51:45 srv-web01 CRON[5496]: pam_unix(cron:session): session closed for user root
+Nov  2 08:03:35 srv-web01 CRON[41602]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 08:05:02 srv-web01 CRON[55463]: pam_unix(cron:session): session closed for user root
+Nov  2 08:10:51 srv-web01 systemd-logind[812]: New session 195 of user ana.
+Nov  2 08:12:51 srv-web01 sshd[64104]: pam_unix(sshd:session): session closed for user maria
+Nov  2 08:14:53 srv-web01 CRON[23395]: pam_unix(cron:session): session closed for user root
+Nov  2 08:22:41 srv-web01 CRON[25917]: pam_unix(cron:session): session closed for user root
+Nov  2 08:27:09 srv-web01 sshd[57785]: Accepted password for carlos from 192.168.1.22 port 36619 ssh2
+Nov  2 08:27:09 srv-web01 sshd[57785]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 08:30:47 srv-web01 systemd-logind[812]: New session 210 of user ana.
+Nov  2 08:40:52 srv-web01 CRON[20736]: pam_unix(cron:session): session closed for user root
+Nov  2 08:43:59 srv-web01 sshd[44281]: Received disconnect from 192.168.1.22 port 35320:11: disconnected by user
+Nov  2 08:45:38 srv-web01 sshd[23541]: Accepted password for carlos from 192.168.1.22 port 47335 ssh2
+Nov  2 08:45:38 srv-web01 sshd[23541]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 08:46:06 srv-web01 CRON[6175]: pam_unix(cron:session): session closed for user root
+Nov  2 08:59:45 srv-web01 sshd[11484]: Failed password for deploy from 10.0.0.50 port 57666 ssh2
+Nov  2 08:59:57 srv-web01 sshd[5163]: Accepted publickey for deploy from 10.0.0.50 port 55216 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 08:59:57 srv-web01 sshd[5163]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 09:01:50 srv-web01 sshd[11365]: Accepted publickey for backup from 192.168.1.100 port 59735 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 09:01:50 srv-web01 sshd[11365]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 09:02:10 srv-web01 CRON[10777]: pam_unix(cron:session): session closed for user root
+Nov  2 09:02:11 srv-web01 sshd[58587]: Accepted publickey for backup from 192.168.1.100 port 50153 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 09:02:11 srv-web01 sshd[58587]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 09:06:20 srv-web01 systemd-logind[812]: New session 806 of user ana.
+Nov  2 09:10:29 srv-web01 systemd-logind[812]: New session 390 of user maria.
+Nov  2 09:11:22 srv-web01 CRON[30807]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 09:16:48 srv-web01 sshd[28968]: Received disconnect from 192.168.1.15 port 50481:11: disconnected by user
+Nov  2 09:18:11 srv-web01 CRON[51289]: pam_unix(cron:session): session closed for user root
+Nov  2 09:32:24 srv-web01 sshd[45348]: Accepted password for maria from 192.168.1.15 port 35697 ssh2
+Nov  2 09:32:24 srv-web01 sshd[45348]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 09:56:44 srv-web01 sshd[40785]: pam_unix(sshd:session): session closed for user deploy
+Nov  2 09:57:18 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 09:57:39 srv-web01 sshd[14730]: Accepted password for carlos from 192.168.1.22 port 47496 ssh2
+Nov  2 09:57:39 srv-web01 sshd[14730]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 09:58:28 srv-web01 sshd[18691]: Accepted password for ana from 10.0.0.8 port 44392 ssh2
+Nov  2 09:58:28 srv-web01 sshd[18691]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 10:02:40 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 10:08:32 srv-web01 systemd-logind[812]: New session 880 of user ana.
+Nov  2 10:15:32 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 10:18:13 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 10:41:02 srv-web01 CRON[47926]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 10:46:20 srv-web01 CRON[25993]: pam_unix(cron:session): session closed for user root
+Nov  2 10:52:14 srv-web01 sshd[26928]: Accepted password for ana from 10.0.0.8 port 60071 ssh2
+Nov  2 10:52:14 srv-web01 sshd[26928]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 10:58:48 srv-web01 sshd[40453]: Accepted password for maria from 192.168.1.15 port 31739 ssh2
+Nov  2 10:58:48 srv-web01 sshd[40453]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 11:00:08 srv-web01 sudo:    maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 11:04:17 srv-web01 sshd[9149]: pam_unix(sshd:session): session closed for user ana
+Nov  2 11:04:53 srv-web01 CRON[10160]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 11:10:10 srv-web01 sshd[53759]: Accepted password for ana from 10.0.0.8 port 50673 ssh2
+Nov  2 11:10:10 srv-web01 sshd[53759]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 11:13:45 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 11:14:43 srv-web01 systemd-logind[812]: New session 471 of user deploy.
+Nov  2 11:14:59 srv-web01 CRON[12823]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 11:20:46 srv-web01 sshd[23340]: pam_unix(sshd:session): session closed for user deploy
+Nov  2 11:21:32 srv-web01 sshd[58541]: Failed password for backup from 192.168.1.100 port 35161 ssh2
+Nov  2 11:21:36 srv-web01 sshd[48966]: Accepted publickey for backup from 192.168.1.100 port 61849 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 11:21:36 srv-web01 sshd[48966]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 11:23:53 srv-web01 sshd[2228]: pam_unix(sshd:session): session closed for user maria
+Nov  2 11:29:25 srv-web01 CRON[52846]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 11:31:45 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 11:34:36 srv-web01 sshd[57412]: Accepted publickey for deploy from 10.0.0.50 port 30752 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 11:34:36 srv-web01 sshd[57412]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 11:42:56 srv-web01 sshd[22786]: Received disconnect from 10.0.0.50 port 54720:11: disconnected by user
+Nov  2 11:44:07 srv-web01 CRON[59289]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 11:49:19 srv-web01 sshd[49823]: Failed password for deploy from 10.0.0.50 port 47219 ssh2
+Nov  2 11:49:28 srv-web01 sshd[8548]: Received disconnect from 10.0.0.50 port 56544:11: disconnected by user
+Nov  2 11:49:33 srv-web01 sshd[39311]: Accepted publickey for deploy from 10.0.0.50 port 58077 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 11:49:33 srv-web01 sshd[39311]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 11:53:43 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 11:57:34 srv-web01 sshd[37629]: Received disconnect from 192.168.1.15 port 54686:11: disconnected by user
+Nov  2 12:00:13 srv-web01 sudo:    maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 12:03:30 srv-web01 sshd[63731]: Failed password for carlos from 192.168.1.22 port 52059 ssh2
+Nov  2 12:03:34 srv-web01 sshd[7078]: Accepted password for carlos from 192.168.1.22 port 54898 ssh2
+Nov  2 12:03:34 srv-web01 sshd[7078]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 12:07:35 srv-web01 sshd[49877]: Received disconnect from 10.0.0.50 port 52250:11: disconnected by user
+Nov  2 12:15:40 srv-web01 systemd-logind[812]: New session 138 of user backup.
+Nov  2 12:19:34 srv-web01 CRON[3905]: pam_unix(cron:session): session closed for user root
+Nov  2 12:19:56 srv-web01 sshd[64398]: pam_unix(sshd:session): session closed for user ana
+Nov  2 12:48:36 srv-web01 sshd[18754]: Failed password for root from 92.255.85.37 port 50094 ssh2
+Nov  2 12:48:39 srv-web01 sshd[16108]: Failed password for root from 92.255.85.37 port 37907 ssh2
+Nov  2 12:48:41 srv-web01 sshd[21679]: Failed password for root from 92.255.85.37 port 37835 ssh2
+Nov  2 13:07:45 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 13:22:27 srv-web01 CRON[57062]: pam_unix(cron:session): session closed for user root
+Nov  2 13:25:11 srv-web01 sshd[36164]: Received disconnect from 192.168.1.15 port 38099:11: disconnected by user
+Nov  2 13:34:03 srv-web01 CRON[29303]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 13:34:30 srv-web01 systemd-logind[812]: New session 472 of user deploy.
+Nov  2 13:41:48 srv-web01 CRON[49897]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 13:52:48 srv-web01 sshd[49804]: Received disconnect from 192.168.1.15 port 60996:11: disconnected by user
+Nov  2 13:53:27 srv-web01 sshd[20213]: Failed password for carlos from 192.168.1.22 port 53700 ssh2
+Nov  2 13:53:39 srv-web01 sshd[13601]: Accepted password for carlos from 192.168.1.22 port 34558 ssh2
+Nov  2 13:53:39 srv-web01 sshd[13601]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 13:55:11 srv-web01 sshd[42660]: Accepted password for carlos from 192.168.1.22 port 53909 ssh2
+Nov  2 13:55:11 srv-web01 sshd[42660]: pam_unix(sshd:session): session opened for user carlos(uid=1001) by (uid=0)
+Nov  2 13:56:49 srv-web01 sshd[31674]: Accepted publickey for deploy from 10.0.0.50 port 64676 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 13:56:49 srv-web01 sshd[31674]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 14:18:10 srv-web01 sshd[14826]: Accepted password for ana from 10.0.0.8 port 50622 ssh2
+Nov  2 14:18:10 srv-web01 sshd[14826]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 14:21:57 srv-web01 systemd-logind[812]: New session 909 of user deploy.
+Nov  2 14:27:24 srv-web01 systemd-logind[812]: New session 173 of user backup.
+Nov  2 14:34:48 srv-web01 sshd[27977]: Received disconnect from 192.168.1.22 port 62471:11: disconnected by user
+Nov  2 14:40:05 srv-web01 sshd[60431]: Invalid user www from 45.134.26.89 port 59223
+Nov  2 14:40:05 srv-web01 sshd[60431]: Failed password for invalid user www from 45.134.26.89 port 59223 ssh2
+Nov  2 14:40:08 srv-web01 sshd[57458]: Invalid user nagios from 45.134.26.89 port 61108
+Nov  2 14:40:08 srv-web01 sshd[57458]: Failed password for invalid user nagios from 45.134.26.89 port 61108 ssh2
+Nov  2 14:40:13 srv-web01 sshd[50268]: Invalid user ftpuser from 45.134.26.89 port 46203
+Nov  2 14:40:13 srv-web01 sshd[50268]: Failed password for invalid user ftpuser from 45.134.26.89 port 46203 ssh2
+Nov  2 14:40:17 srv-web01 sshd[51965]: Invalid user dev from 45.134.26.89 port 64163
+Nov  2 14:40:17 srv-web01 sshd[51965]: Failed password for invalid user dev from 45.134.26.89 port 64163 ssh2
+Nov  2 14:40:22 srv-web01 sshd[16679]: Invalid user jenkins from 45.134.26.89 port 47996
+Nov  2 14:40:22 srv-web01 sshd[16679]: Failed password for invalid user jenkins from 45.134.26.89 port 47996 ssh2
+Nov  2 14:40:27 srv-web01 sshd[47762]: Invalid user postgres from 45.134.26.89 port 48725
+Nov  2 14:40:27 srv-web01 sshd[47762]: Failed password for invalid user postgres from 45.134.26.89 port 48725 ssh2
+Nov  2 14:40:30 srv-web01 sshd[23010]: Invalid user ftpuser from 45.134.26.89 port 50952
+Nov  2 14:40:30 srv-web01 sshd[23010]: Failed password for invalid user ftpuser from 45.134.26.89 port 50952 ssh2
+Nov  2 14:40:36 srv-web01 sshd[10068]: Invalid user postgres from 45.134.26.89 port 39884
+Nov  2 14:40:36 srv-web01 sshd[10068]: Failed password for invalid user postgres from 45.134.26.89 port 39884 ssh2
+Nov  2 14:40:39 srv-web01 sshd[46478]: Invalid user git from 45.134.26.89 port 40014
+Nov  2 14:40:39 srv-web01 sshd[46478]: Failed password for invalid user git from 45.134.26.89 port 40014 ssh2
+Nov  2 14:40:42 srv-web01 sshd[28188]: Invalid user postgres from 45.134.26.89 port 56712
+Nov  2 14:40:42 srv-web01 sshd[28188]: Failed password for invalid user postgres from 45.134.26.89 port 56712 ssh2
+Nov  2 14:40:46 srv-web01 sshd[31534]: Invalid user mysql from 45.134.26.89 port 57248
+Nov  2 14:40:46 srv-web01 sshd[31534]: Failed password for invalid user mysql from 45.134.26.89 port 57248 ssh2
+Nov  2 14:40:48 srv-web01 sshd[55584]: Invalid user user from 45.134.26.89 port 57534
+Nov  2 14:40:48 srv-web01 sshd[55584]: Failed password for invalid user user from 45.134.26.89 port 57534 ssh2
+Nov  2 14:40:53 srv-web01 sshd[39278]: Invalid user dev from 45.134.26.89 port 31280
+Nov  2 14:40:53 srv-web01 sshd[39278]: Failed password for invalid user dev from 45.134.26.89 port 31280 ssh2
+Nov  2 14:40:59 srv-web01 sshd[32259]: Invalid user git from 45.134.26.89 port 30386
+Nov  2 14:40:59 srv-web01 sshd[32259]: Failed password for invalid user git from 45.134.26.89 port 30386 ssh2
+Nov  2 14:41:03 srv-web01 sshd[50379]: Invalid user ftpuser from 45.134.26.89 port 55558
+Nov  2 14:41:03 srv-web01 sshd[50379]: Failed password for invalid user ftpuser from 45.134.26.89 port 55558 ssh2
+Nov  2 14:41:08 srv-web01 sshd[49989]: Invalid user mysql from 45.134.26.89 port 44453
+Nov  2 14:41:08 srv-web01 sshd[49989]: Failed password for invalid user mysql from 45.134.26.89 port 44453 ssh2
+Nov  2 14:41:13 srv-web01 sshd[18887]: Invalid user user from 45.134.26.89 port 58562
+Nov  2 14:41:13 srv-web01 sshd[18887]: Failed password for invalid user user from 45.134.26.89 port 58562 ssh2
+Nov  2 14:41:18 srv-web01 sshd[26484]: Invalid user oracle from 45.134.26.89 port 52028
+Nov  2 14:41:18 srv-web01 sshd[26484]: Failed password for invalid user oracle from 45.134.26.89 port 52028 ssh2
+Nov  2 14:41:23 srv-web01 sshd[11816]: Invalid user nagios from 45.134.26.89 port 60630
+Nov  2 14:41:23 srv-web01 sshd[11816]: Failed password for invalid user nagios from 45.134.26.89 port 60630 ssh2
+Nov  2 14:41:26 srv-web01 sshd[36004]: Invalid user tomcat from 45.134.26.89 port 31767
+Nov  2 14:41:26 srv-web01 sshd[36004]: Failed password for invalid user tomcat from 45.134.26.89 port 31767 ssh2
+Nov  2 14:41:31 srv-web01 sshd[37987]: Invalid user tomcat from 45.134.26.89 port 31776
+Nov  2 14:41:31 srv-web01 sshd[37987]: Failed password for invalid user tomcat from 45.134.26.89 port 31776 ssh2
+Nov  2 14:41:33 srv-web01 sshd[29089]: Invalid user jenkins from 45.134.26.89 port 38893
+Nov  2 14:41:33 srv-web01 sshd[29089]: Failed password for invalid user jenkins from 45.134.26.89 port 38893 ssh2
+Nov  2 14:41:38 srv-web01 sshd[4295]: Invalid user guest from 45.134.26.89 port 47049
+Nov  2 14:41:38 srv-web01 sshd[4295]: Failed password for invalid user guest from 45.134.26.89 port 47049 ssh2
+Nov  2 14:41:43 srv-web01 sshd[14871]: Invalid user pi from 45.134.26.89 port 59799
+Nov  2 14:41:43 srv-web01 sshd[14871]: Failed password for invalid user pi from 45.134.26.89 port 59799 ssh2
+Nov  2 14:41:47 srv-web01 sshd[50887]: Invalid user pi from 45.134.26.89 port 54846
+Nov  2 14:41:47 srv-web01 sshd[50887]: Failed password for invalid user pi from 45.134.26.89 port 54846 ssh2
+Nov  2 14:41:51 srv-web01 sshd[63338]: Invalid user dev from 45.134.26.89 port 57627
+Nov  2 14:41:51 srv-web01 sshd[63338]: Failed password for invalid user dev from 45.134.26.89 port 57627 ssh2
+Nov  2 14:41:55 srv-web01 sshd[6367]: Invalid user www from 45.134.26.89 port 60822
+Nov  2 14:41:55 srv-web01 sshd[6367]: Failed password for invalid user www from 45.134.26.89 port 60822 ssh2
+Nov  2 14:41:57 srv-web01 sshd[36351]: Invalid user nagios from 45.134.26.89 port 33413
+Nov  2 14:41:57 srv-web01 sshd[36351]: Failed password for invalid user nagios from 45.134.26.89 port 33413 ssh2
+Nov  2 14:42:01 srv-web01 sshd[43607]: Invalid user user from 45.134.26.89 port 34496
+Nov  2 14:42:01 srv-web01 sshd[43607]: Failed password for invalid user user from 45.134.26.89 port 34496 ssh2
+Nov  2 14:42:03 srv-web01 sshd[3033]: Invalid user dev from 45.134.26.89 port 46205
+Nov  2 14:42:03 srv-web01 sshd[3033]: Failed password for invalid user dev from 45.134.26.89 port 46205 ssh2
+Nov  2 14:42:06 srv-web01 sshd[2335]: Invalid user www from 45.134.26.89 port 39986
+Nov  2 14:42:06 srv-web01 sshd[2335]: Failed password for invalid user www from 45.134.26.89 port 39986 ssh2
+Nov  2 14:42:09 srv-web01 sshd[32035]: Invalid user guest from 45.134.26.89 port 37496
+Nov  2 14:42:09 srv-web01 sshd[32035]: Failed password for invalid user guest from 45.134.26.89 port 37496 ssh2
+Nov  2 14:42:15 srv-web01 sshd[31476]: Invalid user user from 45.134.26.89 port 46793
+Nov  2 14:42:15 srv-web01 sshd[31476]: Failed password for invalid user user from 45.134.26.89 port 46793 ssh2
+Nov  2 14:42:19 srv-web01 sshd[40707]: Invalid user guest from 45.134.26.89 port 37506
+Nov  2 14:42:19 srv-web01 sshd[40707]: Failed password for invalid user guest from 45.134.26.89 port 37506 ssh2
+Nov  2 14:42:22 srv-web01 sshd[8084]: Invalid user ftpuser from 45.134.26.89 port 31682
+Nov  2 14:42:22 srv-web01 sshd[8084]: Failed password for invalid user ftpuser from 45.134.26.89 port 31682 ssh2
+Nov  2 14:42:26 srv-web01 sshd[45390]: Invalid user tomcat from 45.134.26.89 port 54596
+Nov  2 14:42:26 srv-web01 sshd[45390]: Failed password for invalid user tomcat from 45.134.26.89 port 54596 ssh2
+Nov  2 14:42:31 srv-web01 sshd[13997]: Invalid user nagios from 45.134.26.89 port 34980
+Nov  2 14:42:31 srv-web01 sshd[13997]: Failed password for invalid user nagios from 45.134.26.89 port 34980 ssh2
+Nov  2 14:42:37 srv-web01 sshd[55432]: Invalid user nagios from 45.134.26.89 port 45915
+Nov  2 14:42:37 srv-web01 sshd[55432]: Failed password for invalid user nagios from 45.134.26.89 port 45915 ssh2
+Nov  2 14:42:39 srv-web01 sshd[51625]: Invalid user nagios from 45.134.26.89 port 49764
+Nov  2 14:42:39 srv-web01 sshd[51625]: Failed password for invalid user nagios from 45.134.26.89 port 49764 ssh2
+Nov  2 14:42:45 srv-web01 sshd[8933]: Invalid user dev from 45.134.26.89 port 32691
+Nov  2 14:42:45 srv-web01 sshd[8933]: Failed password for invalid user dev from 45.134.26.89 port 32691 ssh2
+Nov  2 14:42:49 srv-web01 sshd[29074]: Invalid user mysql from 45.134.26.89 port 54285
+Nov  2 14:42:49 srv-web01 sshd[29074]: Failed password for invalid user mysql from 45.134.26.89 port 54285 ssh2
+Nov  2 14:42:51 srv-web01 sshd[43437]: Invalid user mysql from 45.134.26.89 port 52362
+Nov  2 14:42:51 srv-web01 sshd[43437]: Failed password for invalid user mysql from 45.134.26.89 port 52362 ssh2
+Nov  2 14:42:53 srv-web01 sshd[28528]: Invalid user www from 45.134.26.89 port 62125
+Nov  2 14:42:53 srv-web01 sshd[28528]: Failed password for invalid user www from 45.134.26.89 port 62125 ssh2
+Nov  2 14:42:55 srv-web01 sshd[63966]: Invalid user git from 45.134.26.89 port 53736
+Nov  2 14:42:55 srv-web01 sshd[63966]: Failed password for invalid user git from 45.134.26.89 port 53736 ssh2
+Nov  2 14:43:00 srv-web01 sshd[11026]: Invalid user nagios from 45.134.26.89 port 58540
+Nov  2 14:43:00 srv-web01 sshd[11026]: Failed password for invalid user nagios from 45.134.26.89 port 58540 ssh2
+Nov  2 14:43:03 srv-web01 sshd[35193]: Invalid user nagios from 45.134.26.89 port 47700
+Nov  2 14:43:03 srv-web01 sshd[35193]: Failed password for invalid user nagios from 45.134.26.89 port 47700 ssh2
+Nov  2 14:43:09 srv-web01 sshd[61268]: Invalid user dev from 45.134.26.89 port 61686
+Nov  2 14:43:09 srv-web01 sshd[61268]: Failed password for invalid user dev from 45.134.26.89 port 61686 ssh2
+Nov  2 14:43:14 srv-web01 sshd[55115]: Invalid user git from 45.134.26.89 port 47589
+Nov  2 14:43:14 srv-web01 sshd[55115]: Failed password for invalid user git from 45.134.26.89 port 47589 ssh2
+Nov  2 14:43:18 srv-web01 sshd[17088]: Invalid user www from 45.134.26.89 port 35679
+Nov  2 14:43:18 srv-web01 sshd[17088]: Failed password for invalid user www from 45.134.26.89 port 35679 ssh2
+Nov  2 14:43:22 srv-web01 sshd[16981]: Invalid user support from 45.134.26.89 port 60455
+Nov  2 14:43:22 srv-web01 sshd[16981]: Failed password for invalid user support from 45.134.26.89 port 60455 ssh2
+Nov  2 14:43:27 srv-web01 sshd[21067]: Failed password for root from 218.92.0.112 port 54184 ssh2
+Nov  2 14:43:28 srv-web01 sshd[44790]: Invalid user tomcat from 45.134.26.89 port 54837
+Nov  2 14:43:28 srv-web01 sshd[44790]: Failed password for invalid user tomcat from 45.134.26.89 port 54837 ssh2
+Nov  2 14:43:31 srv-web01 sshd[37272]: Failed password for root from 218.92.0.112 port 64794 ssh2
+Nov  2 14:43:32 srv-web01 sshd[33394]: Invalid user oracle from 45.134.26.89 port 51300
+Nov  2 14:43:32 srv-web01 sshd[33394]: Failed password for invalid user oracle from 45.134.26.89 port 51300 ssh2
+Nov  2 14:43:34 srv-web01 sshd[28885]: Failed password for root from 218.92.0.112 port 51678 ssh2
+Nov  2 14:43:35 srv-web01 sshd[14901]: Invalid user support from 45.134.26.89 port 53253
+Nov  2 14:43:35 srv-web01 sshd[14901]: Failed password for invalid user support from 45.134.26.89 port 53253 ssh2
+Nov  2 14:43:39 srv-web01 sshd[19327]: Invalid user pi from 45.134.26.89 port 48105
+Nov  2 14:43:39 srv-web01 sshd[19327]: Failed password for invalid user pi from 45.134.26.89 port 48105 ssh2
+Nov  2 14:43:45 srv-web01 sshd[34857]: Invalid user oracle from 45.134.26.89 port 42521
+Nov  2 14:43:45 srv-web01 sshd[34857]: Failed password for invalid user oracle from 45.134.26.89 port 42521 ssh2
+Nov  2 14:43:49 srv-web01 sshd[6610]: Accepted password for test from 45.134.26.89 port 45817 ssh2
+Nov  2 14:43:49 srv-web01 sshd[6610]: pam_unix(sshd:session): session opened for user test(uid=1001) by (uid=0)
+Nov  2 14:47:56 srv-web01 sshd[50687]: Failed password for root from 103.152.18.4 port 45749 ssh2
+Nov  2 14:48:00 srv-web01 sshd[43329]: Failed password for root from 103.152.18.4 port 62166 ssh2
+Nov  2 14:51:32 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 14:52:25 srv-web01 systemd-logind[812]: New session 102 of user carlos.
+Nov  2 14:57:21 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 15:08:44 srv-web01 sshd[23212]: pam_unix(sshd:session): session closed for user carlos
+Nov  2 15:10:00 srv-web01 systemd-logind[812]: New session 684 of user maria.
+Nov  2 15:37:41 srv-web01 CRON[48090]: pam_unix(cron:session): session closed for user root
+Nov  2 15:39:47 srv-web01 sshd[30734]: Received disconnect from 192.168.1.100 port 63131:11: disconnected by user
+Nov  2 15:40:46 srv-web01 sshd[8863]: Received disconnect from 10.0.0.8 port 30506:11: disconnected by user
+Nov  2 15:40:50 srv-web01 CRON[20226]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 15:54:00 srv-web01 systemd-logind[812]: New session 190 of user carlos.
+Nov  2 15:56:06 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 15:56:17 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 15:57:04 srv-web01 CRON[18501]: pam_unix(cron:session): session closed for user root
+Nov  2 16:04:58 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 16:05:39 srv-web01 systemd-logind[812]: New session 740 of user carlos.
+Nov  2 16:06:01 srv-web01 CRON[29820]: pam_unix(cron:session): session closed for user root
+Nov  2 16:06:46 srv-web01 sshd[34271]: Accepted publickey for backup from 192.168.1.100 port 36973 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 16:06:46 srv-web01 sshd[34271]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 16:07:59 srv-web01 systemd-logind[812]: New session 378 of user carlos.
+Nov  2 16:08:35 srv-web01 CRON[46238]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 16:08:58 srv-web01 sshd[45964]: pam_unix(sshd:session): session closed for user deploy
+Nov  2 16:16:32 srv-web01 sshd[50530]: Accepted publickey for deploy from 10.0.0.50 port 33087 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 16:16:32 srv-web01 sshd[50530]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 16:19:04 srv-web01 sshd[20283]: Failed password for root from 61.177.172.140 port 44522 ssh2
+Nov  2 16:21:33 srv-web01 sshd[6496]: Received disconnect from 192.168.1.15 port 40506:11: disconnected by user
+Nov  2 16:24:09 srv-web01 CRON[51835]: pam_unix(cron:session): session closed for user root
+Nov  2 16:26:26 srv-web01 sudo:    maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 16:31:50 srv-web01 sshd[47331]: Received disconnect from 192.168.1.22 port 48528:11: disconnected by user
+Nov  2 16:56:21 srv-web01 sshd[17733]: pam_unix(sshd:session): session closed for user ana
+Nov  2 17:05:37 srv-web01 sudo:    deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 17:06:45 srv-web01 sshd[42601]: pam_unix(sshd:session): session closed for user backup
+Nov  2 17:12:05 srv-web01 CRON[10017]: pam_unix(cron:session): session closed for user root
+Nov  2 17:13:01 srv-web01 sshd[43590]: Failed password for maria from 192.168.1.15 port 57493 ssh2
+Nov  2 17:13:07 srv-web01 sshd[30439]: Accepted password for maria from 192.168.1.15 port 48231 ssh2
+Nov  2 17:13:07 srv-web01 sshd[30439]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 17:23:36 srv-web01 sshd[13082]: Received disconnect from 10.0.0.50 port 33367:11: disconnected by user
+Nov  2 17:25:46 srv-web01 CRON[38621]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 17:26:21 srv-web01 sshd[31018]: Received disconnect from 192.168.1.100 port 32041:11: disconnected by user
+Nov  2 17:35:35 srv-web01 sshd[14055]: Received disconnect from 10.0.0.50 port 55211:11: disconnected by user
+Nov  2 17:37:22 srv-web01 sshd[15373]: Accepted publickey for deploy from 10.0.0.50 port 39065 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 17:37:22 srv-web01 sshd[15373]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 17:37:44 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 17:44:58 srv-web01 sshd[2952]: Accepted password for maria from 192.168.1.15 port 36140 ssh2
+Nov  2 17:44:58 srv-web01 sshd[2952]: pam_unix(sshd:session): session opened for user maria(uid=1001) by (uid=0)
+Nov  2 17:52:20 srv-web01 systemd-logind[812]: New session 753 of user maria.
+Nov  2 18:05:07 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 18:05:09 srv-web01 sshd[25504]: Failed password for backup from 192.168.1.100 port 40587 ssh2
+Nov  2 18:05:20 srv-web01 sshd[36005]: Accepted password for ana from 10.0.0.8 port 46043 ssh2
+Nov  2 18:05:20 srv-web01 sshd[36005]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 18:05:20 srv-web01 sshd[63488]: Accepted publickey for backup from 192.168.1.100 port 64757 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 18:05:20 srv-web01 sshd[63488]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 18:22:59 srv-web01 sshd[42874]: Accepted publickey for backup from 192.168.1.100 port 63270 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 18:22:59 srv-web01 sshd[42874]: pam_unix(sshd:session): session opened for user backup(uid=1001) by (uid=0)
+Nov  2 18:28:17 srv-web01 sshd[39759]: Received disconnect from 10.0.0.8 port 33681:11: disconnected by user
+Nov  2 18:28:55 srv-web01 systemd-logind[812]: New session 905 of user maria.
+Nov  2 18:29:10 srv-web01 sshd[51638]: Received disconnect from 192.168.1.15 port 57193:11: disconnected by user
+Nov  2 18:34:00 srv-web01 CRON[34455]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 18:44:09 srv-web01 CRON[64582]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 18:45:51 srv-web01 systemd-logind[812]: New session 747 of user deploy.
+Nov  2 18:47:01 srv-web01 sshd[37342]: Received disconnect from 10.0.0.50 port 36723:11: disconnected by user
+Nov  2 19:23:03 srv-web01 sshd[45676]: Accepted publickey for deploy from 10.0.0.50 port 47486 ssh2: ED25519 SHA256:q3Xb8kR0vNfY2mZ1cWpLhT7sA9eD4gU6iJ5oK0lM2nE
+Nov  2 19:23:03 srv-web01 sshd[45676]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov  2 19:26:33 srv-web01 sudo:    ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 19:27:46 srv-web01 sshd[51352]: Accepted password for ana from 10.0.0.8 port 33665 ssh2
+Nov  2 19:27:46 srv-web01 sshd[51352]: pam_unix(sshd:session): session opened for user ana(uid=1001) by (uid=0)
+Nov  2 19:36:32 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 19:38:21 srv-web01 CRON[14159]: pam_unix(cron:session): session closed for user root
+Nov  2 19:40:07 srv-web01 sshd[57256]: Received disconnect from 192.168.1.15 port 39482:11: disconnected by user
+Nov  2 20:04:15 srv-web01 sshd[31947]: pam_unix(sshd:session): session closed for user deploy
+Nov  2 20:25:26 srv-web01 CRON[53902]: pam_unix(cron:session): session closed for user root
+Nov  2 20:31:29 srv-web01 CRON[63343]: pam_unix(cron:session): session closed for user root
+Nov  2 20:42:11 srv-web01 sshd[57371]: Received disconnect from 10.0.0.50 port 58103:11: disconnected by user
+Nov  2 20:43:27 srv-web01 CRON[11873]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 20:48:48 srv-web01 sshd[31324]: pam_unix(sshd:session): session closed for user backup
+Nov  2 20:56:32 srv-web01 sshd[2695]: Received disconnect from 192.168.1.100 port 35985:11: disconnected by user
+Nov  2 21:00:31 srv-web01 CRON[27260]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 21:02:28 srv-web01 systemd-logind[812]: New session 206 of user ana.
+Nov  2 21:06:05 srv-web01 sshd[52682]: Received disconnect from 192.168.1.15 port 58889:11: disconnected by user
+Nov  2 21:11:11 srv-web01 CRON[49034]: pam_unix(cron:session): session closed for user root
+Nov  2 21:22:11 srv-web01 CRON[19536]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 21:36:52 srv-web01 sshd[30378]: pam_unix(sshd:session): session closed for user maria
+Nov  2 21:37:47 srv-web01 sshd[6028]: Received disconnect from 10.0.0.8 port 35917:11: disconnected by user
+Nov  2 21:39:53 srv-web01 sshd[64418]: Received disconnect from 10.0.0.8 port 55687:11: disconnected by user
+Nov  2 21:41:56 srv-web01 sshd[51749]: Received disconnect from 192.168.1.22 port 39670:11: disconnected by user
+Nov  2 21:42:15 srv-web01 systemd-logind[812]: New session 720 of user maria.
+Nov  2 21:45:01 srv-web01 systemd-logind[812]: New session 490 of user ana.
+Nov  2 21:46:06 srv-web01 sshd[27789]: pam_unix(sshd:session): session closed for user ana
+Nov  2 22:13:51 srv-web01 sshd[24874]: pam_unix(sshd:session): session closed for user maria
+Nov  2 22:45:27 srv-web01 sudo:    maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 22:50:10 srv-web01 sshd[45638]: pam_unix(sshd:session): session closed for user backup
+Nov  2 22:58:47 srv-web01 systemd-logind[812]: New session 340 of user deploy.
+Nov  2 23:03:11 srv-web01 sudo:    backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 23:08:38 srv-web01 CRON[26588]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov  2 23:10:42 srv-web01 CRON[40784]: pam_unix(cron:session): session closed for user root
+Nov  2 23:13:31 srv-web01 systemd-logind[812]: New session 572 of user deploy.
+Nov  2 23:18:24 srv-web01 sshd[38578]: pam_unix(sshd:session): session closed for user backup
+Nov  2 23:20:40 srv-web01 CRON[58213]: pam_unix(cron:session): session closed for user root
+Nov  2 23:31:15 srv-web01 sudo:    carlos : TTY=pts/0 ; PWD=/home/carlos ; USER=root ; COMMAND=/usr/bin/apt update
+Nov  2 23:39:51 srv-web01 CRON[2847]: pam_unix(cron:session): session closed for user root
+Nov  2 23:57:03 srv-web01 systemd-logind[812]: New session 723 of user backup.
