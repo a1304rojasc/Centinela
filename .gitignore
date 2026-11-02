@@ -1,1 +1,5 @@
 figuras/*/shots/
+
+# Laboratorio recreado localmente en el reto 08 (no se versiona)
+ctf/08-permisos-linux/archivos/laboratorio/
+__pycache__/

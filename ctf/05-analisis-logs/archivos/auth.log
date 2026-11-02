@@ -1,0 +1,446 @@
+Nov  1 00:00:09 srv-web01 sshd[23304]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 00:01:26 srv-web01 sshd[21246]: Accepted password for jorge from 192.168.1.22 port 53283 ssh2
+Nov  1 00:06:27 srv-web01 sshd[24468]: Server listening on 0.0.0.0 port 22.
+Nov  1 00:13:42 srv-web01 sshd[22847]: Accepted password for jorge from 192.168.1.22 port 41994 ssh2
+Nov  1 00:26:59 srv-web01 sshd[23083]: Accepted password for jorge from 192.168.1.22 port 62564 ssh2
+Nov  1 00:31:35 srv-web01 sshd[24330]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 00:35:19 srv-web01 sshd[21681]: Accepted password for maria from 192.168.1.15 port 49853 ssh2
+Nov  1 00:48:32 srv-web01 sshd[24107]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 01:03:21 srv-web01 sshd[20045]: Accepted password for jorge from 192.168.1.22 port 48160 ssh2
+Nov  1 01:14:21 srv-web01 sshd[23444]: pam_unix(sshd:session): session closed for user maria
+Nov  1 01:20:18 srv-web01 sshd[21620]: Accepted password for maria from 192.168.1.15 port 56060 ssh2
+Nov  1 01:21:03 srv-web01 sshd[22539]: Accepted password for maria from 192.168.1.15 port 46106 ssh2
+Nov  1 01:35:56 srv-web01 sshd[22820]: Accepted password for deploy from 10.0.0.5 port 59945 ssh2
+Nov  1 01:44:55 srv-web01 sshd[23232]: Accepted password for deploy from 10.0.0.5 port 46548 ssh2
+Nov  1 01:46:04 srv-web01 sshd[21973]: Accepted password for maria from 192.168.1.15 port 64006 ssh2
+Nov  1 02:01:47 srv-web01 sshd[22158]: Accepted password for maria from 192.168.1.15 port 62849 ssh2
+Nov  1 02:04:31 srv-web01 sshd[20334]: Accepted password for jorge from 192.168.1.22 port 40749 ssh2
+Nov  1 02:15:35 srv-web01 sshd[23910]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 02:17:26 srv-web01 sshd[22001]: Accepted password for deploy from 10.0.0.5 port 40837 ssh2
+Nov  1 02:24:13 srv-web01 sshd[20299]: Accepted password for jorge from 192.168.1.22 port 51644 ssh2
+Nov  1 02:26:51 srv-web01 sshd[22045]: Failed password for deploy from 10.0.0.5 port 46984 ssh2
+Nov  1 02:27:06 srv-web01 sshd[22050]: Accepted password for deploy from 10.0.0.5 port 46984 ssh2
+Nov  1 02:30:05 srv-web01 sshd[22009]: Accepted password for jorge from 192.168.1.22 port 62978 ssh2
+Nov  1 02:37:21 srv-web01 sshd[24336]: pam_unix(sshd:session): session closed for user maria
+Nov  1 03:04:17 srv-web01 sshd[23013]: Failed password for jorge from 192.168.1.22 port 43538 ssh2
+Nov  1 03:04:22 srv-web01 sshd[23027]: Accepted password for jorge from 192.168.1.22 port 43538 ssh2
+Nov  1 03:10:38 srv-web01 sshd[24294]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 03:12:00 srv-web01 sshd[24739]: Failed password for invalid user oracle from 45.155.205.9 port 30998 ssh2
+Nov  1 03:12:01 srv-web01 sshd[24775]: Failed password for invalid user test from 45.155.205.9 port 48434 ssh2
+Nov  1 03:12:04 srv-web01 sshd[24803]: Failed password for ubuntu from 45.155.205.9 port 36025 ssh2
+Nov  1 03:12:05 srv-web01 sshd[24810]: Failed password for invalid user test from 45.155.205.9 port 49481 ssh2
+Nov  1 03:12:08 srv-web01 sshd[24815]: Failed password for invalid user pi from 45.155.205.9 port 40818 ssh2
+Nov  1 03:12:09 srv-web01 sshd[24849]: Failed password for invalid user oracle from 45.155.205.9 port 34512 ssh2
+Nov  1 03:12:10 srv-web01 sshd[24879]: Failed password for invalid user test from 45.155.205.9 port 36204 ssh2
+Nov  1 03:12:13 srv-web01 sshd[24894]: Failed password for invalid user oracle from 45.155.205.9 port 59553 ssh2
+Nov  1 03:12:16 srv-web01 sshd[24925]: Failed password for ubuntu from 45.155.205.9 port 57548 ssh2
+Nov  1 03:12:17 srv-web01 sshd[24936]: Failed password for root from 45.155.205.9 port 36341 ssh2
+Nov  1 03:12:18 srv-web01 sshd[24946]: Failed password for root from 45.155.205.9 port 41001 ssh2
+Nov  1 03:12:20 srv-web01 sshd[24953]: Failed password for ubuntu from 45.155.205.9 port 54917 ssh2
+Nov  1 03:12:23 srv-web01 sshd[24974]: Failed password for invalid user oracle from 45.155.205.9 port 54124 ssh2
+Nov  1 03:12:24 srv-web01 sshd[25010]: Failed password for invalid user pi from 45.155.205.9 port 59283 ssh2
+Nov  1 03:12:27 srv-web01 sshd[25017]: Failed password for invalid user pi from 45.155.205.9 port 58483 ssh2
+Nov  1 03:12:29 srv-web01 sshd[25022]: Failed password for root from 45.155.205.9 port 56679 ssh2
+Nov  1 03:12:30 srv-web01 sshd[25046]: Failed password for admin from 45.155.205.9 port 40622 ssh2
+Nov  1 03:12:31 srv-web01 sshd[25052]: Failed password for invalid user oracle from 45.155.205.9 port 59192 ssh2
+Nov  1 03:12:32 srv-web01 sshd[25082]: Failed password for invalid user oracle from 45.155.205.9 port 47808 ssh2
+Nov  1 03:12:34 srv-web01 sshd[25121]: Failed password for root from 45.155.205.9 port 33851 ssh2
+Nov  1 03:12:36 srv-web01 sshd[25122]: Failed password for admin from 45.155.205.9 port 52404 ssh2
+Nov  1 03:12:38 srv-web01 sshd[25127]: Failed password for invalid user oracle from 45.155.205.9 port 41226 ssh2
+Nov  1 03:12:40 srv-web01 sshd[25146]: Failed password for invalid user pi from 45.155.205.9 port 53342 ssh2
+Nov  1 03:12:41 srv-web01 sshd[25177]: Failed password for root from 45.155.205.9 port 56527 ssh2
+Nov  1 03:12:43 srv-web01 sshd[25199]: Failed password for invalid user pi from 45.155.205.9 port 36403 ssh2
+Nov  1 03:12:45 srv-web01 sshd[25231]: Failed password for admin from 45.155.205.9 port 39522 ssh2
+Nov  1 03:12:48 srv-web01 sshd[25237]: Failed password for invalid user pi from 45.155.205.9 port 55104 ssh2
+Nov  1 03:12:51 srv-web01 sshd[25264]: Failed password for root from 45.155.205.9 port 39698 ssh2
+Nov  1 03:12:53 srv-web01 sshd[25292]: Failed password for root from 45.155.205.9 port 47014 ssh2
+Nov  1 03:12:54 srv-web01 sshd[25308]: Failed password for admin from 45.155.205.9 port 43787 ssh2
+Nov  1 03:12:56 srv-web01 sshd[25313]: Failed password for invalid user pi from 45.155.205.9 port 53593 ssh2
+Nov  1 03:12:57 srv-web01 sshd[25349]: Failed password for invalid user test from 45.155.205.9 port 33146 ssh2
+Nov  1 03:12:59 srv-web01 sshd[25384]: Failed password for invalid user oracle from 45.155.205.9 port 35895 ssh2
+Nov  1 03:13:01 srv-web01 sshd[25413]: Failed password for admin from 45.155.205.9 port 33008 ssh2
+Nov  1 03:13:03 srv-web01 sshd[25419]: Failed password for admin from 45.155.205.9 port 56567 ssh2
+Nov  1 03:13:04 srv-web01 sshd[25421]: Failed password for admin from 45.155.205.9 port 41830 ssh2
+Nov  1 03:13:05 srv-web01 sshd[25451]: Failed password for invalid user test from 45.155.205.9 port 48426 ssh2
+Nov  1 03:13:07 srv-web01 sshd[25455]: Failed password for ubuntu from 45.155.205.9 port 32569 ssh2
+Nov  1 03:13:08 srv-web01 sshd[25484]: Failed password for admin from 45.155.205.9 port 56328 ssh2
+Nov  1 03:13:09 srv-web01 sshd[25490]: Failed password for invalid user oracle from 45.155.205.9 port 47013 ssh2
+Nov  1 03:13:11 srv-web01 sshd[25521]: Failed password for ubuntu from 45.155.205.9 port 57498 ssh2
+Nov  1 03:13:14 srv-web01 sshd[25532]: Failed password for root from 45.155.205.9 port 31736 ssh2
+Nov  1 03:13:16 srv-web01 sshd[25570]: Failed password for ubuntu from 45.155.205.9 port 44244 ssh2
+Nov  1 03:13:19 srv-web01 sshd[25608]: Failed password for invalid user pi from 45.155.205.9 port 50257 ssh2
+Nov  1 03:13:20 srv-web01 sshd[25635]: Failed password for admin from 45.155.205.9 port 30780 ssh2
+Nov  1 03:13:23 srv-web01 sshd[25663]: Failed password for invalid user oracle from 45.155.205.9 port 56623 ssh2
+Nov  1 03:13:25 srv-web01 sshd[25674]: Failed password for root from 45.155.205.9 port 56727 ssh2
+Nov  1 03:13:27 srv-web01 sshd[25687]: Failed password for admin from 45.155.205.9 port 39927 ssh2
+Nov  1 03:13:29 srv-web01 sshd[25701]: Failed password for root from 45.155.205.9 port 42107 ssh2
+Nov  1 03:13:31 srv-web01 sshd[25719]: Failed password for invalid user oracle from 45.155.205.9 port 36247 ssh2
+Nov  1 03:13:32 srv-web01 sshd[25738]: Failed password for invalid user oracle from 45.155.205.9 port 41908 ssh2
+Nov  1 03:13:33 srv-web01 sshd[25746]: Failed password for invalid user pi from 45.155.205.9 port 50754 ssh2
+Nov  1 03:13:34 srv-web01 sshd[25751]: Failed password for invalid user oracle from 45.155.205.9 port 32520 ssh2
+Nov  1 03:13:37 srv-web01 sshd[25778]: Failed password for invalid user oracle from 45.155.205.9 port 31176 ssh2
+Nov  1 03:13:38 srv-web01 sshd[25780]: Failed password for admin from 45.155.205.9 port 51239 ssh2
+Nov  1 03:13:41 srv-web01 sshd[25819]: Failed password for invalid user oracle from 45.155.205.9 port 40409 ssh2
+Nov  1 03:13:43 srv-web01 sshd[25835]: Failed password for admin from 45.155.205.9 port 45340 ssh2
+Nov  1 03:13:44 srv-web01 sshd[25837]: Failed password for invalid user test from 45.155.205.9 port 50281 ssh2
+Nov  1 03:13:45 srv-web01 sshd[25865]: Failed password for admin from 45.155.205.9 port 56620 ssh2
+Nov  1 03:13:46 srv-web01 sshd[25889]: Failed password for invalid user test from 45.155.205.9 port 34304 ssh2
+Nov  1 03:13:48 srv-web01 sshd[25908]: Failed password for admin from 45.155.205.9 port 34980 ssh2
+Nov  1 03:13:51 srv-web01 sshd[25914]: Failed password for invalid user pi from 45.155.205.9 port 48270 ssh2
+Nov  1 03:13:53 srv-web01 sshd[25940]: Failed password for root from 45.155.205.9 port 33468 ssh2
+Nov  1 03:13:55 srv-web01 sshd[25971]: Failed password for invalid user test from 45.155.205.9 port 42081 ssh2
+Nov  1 03:13:58 srv-web01 sshd[25987]: Failed password for ubuntu from 45.155.205.9 port 44528 ssh2
+Nov  1 03:14:01 srv-web01 sshd[25989]: Failed password for admin from 45.155.205.9 port 38620 ssh2
+Nov  1 03:14:04 srv-web01 sshd[26014]: Failed password for root from 45.155.205.9 port 53968 ssh2
+Nov  1 03:14:05 srv-web01 sshd[26018]: Failed password for admin from 45.155.205.9 port 45766 ssh2
+Nov  1 03:14:06 srv-web01 sshd[26032]: Failed password for root from 45.155.205.9 port 55268 ssh2
+Nov  1 03:14:08 srv-web01 sshd[26072]: Failed password for admin from 45.155.205.9 port 46520 ssh2
+Nov  1 03:14:09 srv-web01 sshd[26105]: Failed password for invalid user test from 45.155.205.9 port 31836 ssh2
+Nov  1 03:14:10 srv-web01 sshd[26130]: Failed password for root from 45.155.205.9 port 52683 ssh2
+Nov  1 03:14:12 srv-web01 sshd[26150]: Failed password for root from 45.155.205.9 port 48276 ssh2
+Nov  1 03:14:14 srv-web01 sshd[26158]: Failed password for invalid user oracle from 45.155.205.9 port 33360 ssh2
+Nov  1 03:14:16 srv-web01 sshd[26176]: Failed password for ubuntu from 45.155.205.9 port 47369 ssh2
+Nov  1 03:14:19 srv-web01 sshd[26201]: Failed password for ubuntu from 45.155.205.9 port 49471 ssh2
+Nov  1 03:14:21 srv-web01 sshd[26212]: Failed password for invalid user test from 45.155.205.9 port 57746 ssh2
+Nov  1 03:14:24 srv-web01 sshd[26241]: Failed password for invalid user pi from 45.155.205.9 port 32535 ssh2
+Nov  1 03:14:25 srv-web01 sshd[26275]: Failed password for invalid user pi from 45.155.205.9 port 36948 ssh2
+Nov  1 03:14:28 srv-web01 sshd[26308]: Failed password for invalid user oracle from 45.155.205.9 port 33226 ssh2
+Nov  1 03:14:30 srv-web01 sshd[26335]: Failed password for ubuntu from 45.155.205.9 port 42225 ssh2
+Nov  1 03:14:31 srv-web01 sshd[26340]: Failed password for invalid user oracle from 45.155.205.9 port 41500 ssh2
+Nov  1 03:14:33 srv-web01 sshd[26377]: Failed password for root from 45.155.205.9 port 48544 ssh2
+Nov  1 03:14:34 srv-web01 sshd[26380]: Failed password for ubuntu from 45.155.205.9 port 44874 ssh2
+Nov  1 03:14:35 srv-web01 sshd[26388]: Failed password for invalid user pi from 45.155.205.9 port 32881 ssh2
+Nov  1 03:14:37 srv-web01 sshd[26410]: Failed password for admin from 45.155.205.9 port 42260 ssh2
+Nov  1 03:14:39 srv-web01 sshd[26420]: Failed password for invalid user test from 45.155.205.9 port 45858 ssh2
+Nov  1 03:14:42 srv-web01 sshd[26437]: Failed password for root from 45.155.205.9 port 38588 ssh2
+Nov  1 03:14:43 srv-web01 sshd[20778]: Accepted password for jorge from 192.168.1.22 port 48923 ssh2
+Nov  1 03:14:43 srv-web01 sshd[26462]: Failed password for invalid user pi from 45.155.205.9 port 38268 ssh2
+Nov  1 03:14:44 srv-web01 sshd[26478]: Failed password for invalid user pi from 45.155.205.9 port 55860 ssh2
+Nov  1 03:14:47 srv-web01 sshd[26507]: Failed password for invalid user test from 45.155.205.9 port 49399 ssh2
+Nov  1 03:14:48 srv-web01 sshd[26544]: Failed password for ubuntu from 45.155.205.9 port 34499 ssh2
+Nov  1 03:14:49 srv-web01 sshd[26580]: Failed password for invalid user pi from 45.155.205.9 port 41635 ssh2
+Nov  1 03:14:50 srv-web01 sshd[26583]: Failed password for root from 45.155.205.9 port 44938 ssh2
+Nov  1 03:14:53 srv-web01 sshd[26586]: Failed password for ubuntu from 45.155.205.9 port 46199 ssh2
+Nov  1 03:14:54 srv-web01 sshd[26594]: Failed password for ubuntu from 45.155.205.9 port 43480 ssh2
+Nov  1 03:14:56 srv-web01 sshd[26634]: Failed password for invalid user pi from 45.155.205.9 port 47407 ssh2
+Nov  1 03:14:58 srv-web01 sshd[26649]: Failed password for ubuntu from 45.155.205.9 port 48908 ssh2
+Nov  1 03:15:01 srv-web01 sshd[26654]: Failed password for invalid user pi from 45.155.205.9 port 33638 ssh2
+Nov  1 03:15:04 srv-web01 sshd[26660]: Failed password for invalid user pi from 45.155.205.9 port 49388 ssh2
+Nov  1 03:15:05 srv-web01 sshd[26690]: Failed password for root from 45.155.205.9 port 53455 ssh2
+Nov  1 03:15:07 srv-web01 sshd[26725]: Failed password for invalid user pi from 45.155.205.9 port 47187 ssh2
+Nov  1 03:15:10 srv-web01 sshd[26743]: Failed password for root from 45.155.205.9 port 51073 ssh2
+Nov  1 03:15:11 srv-web01 sshd[26763]: Failed password for invalid user oracle from 45.155.205.9 port 54723 ssh2
+Nov  1 03:15:13 srv-web01 sshd[26783]: Failed password for invalid user oracle from 45.155.205.9 port 39785 ssh2
+Nov  1 03:15:14 srv-web01 sshd[26815]: Failed password for invalid user test from 45.155.205.9 port 46900 ssh2
+Nov  1 03:15:16 srv-web01 sshd[26829]: Failed password for invalid user oracle from 45.155.205.9 port 35092 ssh2
+Nov  1 03:15:18 srv-web01 sshd[26843]: Failed password for invalid user test from 45.155.205.9 port 50044 ssh2
+Nov  1 03:15:20 srv-web01 sshd[26866]: Failed password for root from 45.155.205.9 port 34922 ssh2
+Nov  1 03:15:21 srv-web01 sshd[26895]: Failed password for invalid user pi from 45.155.205.9 port 43933 ssh2
+Nov  1 03:15:24 srv-web01 sshd[26921]: Failed password for ubuntu from 45.155.205.9 port 51319 ssh2
+Nov  1 03:15:25 srv-web01 sshd[26953]: Failed password for admin from 45.155.205.9 port 34548 ssh2
+Nov  1 03:15:26 srv-web01 sshd[26982]: Failed password for invalid user pi from 45.155.205.9 port 46455 ssh2
+Nov  1 03:15:29 srv-web01 sshd[26984]: Failed password for invalid user test from 45.155.205.9 port 59888 ssh2
+Nov  1 03:15:30 srv-web01 sshd[27021]: Failed password for invalid user oracle from 45.155.205.9 port 38776 ssh2
+Nov  1 03:15:32 srv-web01 sshd[27035]: Failed password for ubuntu from 45.155.205.9 port 47567 ssh2
+Nov  1 03:15:35 srv-web01 sshd[27046]: Failed password for admin from 45.155.205.9 port 51704 ssh2
+Nov  1 03:15:37 srv-web01 sshd[27063]: Failed password for ubuntu from 45.155.205.9 port 55699 ssh2
+Nov  1 03:15:39 srv-web01 sshd[27070]: Failed password for invalid user test from 45.155.205.9 port 50216 ssh2
+Nov  1 03:15:40 srv-web01 sshd[27093]: Failed password for invalid user test from 45.155.205.9 port 43939 ssh2
+Nov  1 03:28:10 srv-web01 sshd[23574]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 03:35:14 srv-web01 sshd[23259]: pam_unix(sshd:session): session closed for user maria
+Nov  1 03:55:03 srv-web01 sshd[21807]: Accepted password for deploy from 10.0.0.5 port 57877 ssh2
+Nov  1 04:07:18 srv-web01 sshd[20070]: Accepted password for jorge from 192.168.1.22 port 55370 ssh2
+Nov  1 04:11:23 srv-web01 sshd[21249]: Accepted password for deploy from 10.0.0.5 port 57932 ssh2
+Nov  1 04:17:35 srv-web01 sshd[22722]: Accepted password for deploy from 10.0.0.5 port 50626 ssh2
+Nov  1 04:18:13 srv-web01 sshd[23633]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 04:24:28 srv-web01 sshd[24417]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 04:25:46 srv-web01 sshd[23455]: pam_unix(sshd:session): session closed for user maria
+Nov  1 04:27:17 srv-web01 sshd[22017]: Accepted password for maria from 192.168.1.15 port 60137 ssh2
+Nov  1 04:36:46 srv-web01 sshd[20139]: Accepted password for maria from 192.168.1.15 port 40058 ssh2
+Nov  1 04:37:10 srv-web01 sshd[23728]: Server listening on 0.0.0.0 port 22.
+Nov  1 04:46:34 srv-web01 sshd[22257]: Accepted password for deploy from 10.0.0.5 port 40612 ssh2
+Nov  1 04:49:24 srv-web01 sshd[21779]: Accepted password for maria from 192.168.1.15 port 40092 ssh2
+Nov  1 04:54:05 srv-web01 sshd[22027]: Accepted password for jorge from 192.168.1.22 port 63126 ssh2
+Nov  1 05:10:26 srv-web01 sshd[21394]: Accepted password for maria from 192.168.1.15 port 59527 ssh2
+Nov  1 05:12:00 srv-web01 sshd[23952]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 05:13:01 srv-web01 sshd[21562]: Failed password for jorge from 192.168.1.22 port 40779 ssh2
+Nov  1 05:13:18 srv-web01 sshd[21578]: Accepted password for jorge from 192.168.1.22 port 40779 ssh2
+Nov  1 05:13:25 srv-web01 sshd[23337]: pam_unix(sshd:session): session closed for user maria
+Nov  1 05:20:02 srv-web01 sshd[20730]: Accepted password for maria from 192.168.1.15 port 52353 ssh2
+Nov  1 05:26:01 srv-web01 sshd[20637]: Accepted password for maria from 192.168.1.15 port 53783 ssh2
+Nov  1 05:37:53 srv-web01 sshd[22618]: Failed password for deploy from 10.0.0.5 port 45211 ssh2
+Nov  1 05:38:11 srv-web01 sshd[22628]: Accepted password for deploy from 10.0.0.5 port 45211 ssh2
+Nov  1 05:48:39 srv-web01 sshd[20138]: Accepted password for maria from 192.168.1.15 port 44547 ssh2
+Nov  1 05:49:34 srv-web01 sshd[21130]: Accepted password for deploy from 10.0.0.5 port 54452 ssh2
+Nov  1 05:56:34 srv-web01 sshd[22759]: Accepted password for maria from 192.168.1.15 port 46587 ssh2
+Nov  1 06:01:25 srv-web01 sshd[21932]: Accepted password for jorge from 192.168.1.22 port 62781 ssh2
+Nov  1 06:05:44 srv-web01 sshd[24602]: pam_unix(sshd:session): session closed for user maria
+Nov  1 06:09:58 srv-web01 sshd[23390]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 06:10:24 srv-web01 sshd[23966]: Server listening on 0.0.0.0 port 22.
+Nov  1 06:10:50 srv-web01 sshd[22881]: Accepted password for maria from 192.168.1.15 port 41090 ssh2
+Nov  1 06:29:08 srv-web01 sshd[24482]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 06:31:53 srv-web01 sshd[20742]: Accepted password for deploy from 10.0.0.5 port 56361 ssh2
+Nov  1 06:36:35 srv-web01 sshd[21190]: Accepted password for jorge from 192.168.1.22 port 46336 ssh2
+Nov  1 06:36:51 srv-web01 sshd[20197]: Accepted password for deploy from 10.0.0.5 port 46451 ssh2
+Nov  1 06:39:57 srv-web01 sshd[22038]: Accepted password for deploy from 10.0.0.5 port 46071 ssh2
+Nov  1 06:45:05 srv-web01 sshd[24607]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 07:13:57 srv-web01 sshd[21031]: Accepted password for jorge from 192.168.1.22 port 55638 ssh2
+Nov  1 07:15:03 srv-web01 sshd[21395]: Failed password for maria from 192.168.1.15 port 59942 ssh2
+Nov  1 07:15:18 srv-web01 sshd[21402]: Accepted password for maria from 192.168.1.15 port 59942 ssh2
+Nov  1 07:19:25 srv-web01 sshd[23846]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 07:32:19 srv-web01 sshd[20583]: Accepted password for maria from 192.168.1.15 port 63975 ssh2
+Nov  1 07:33:24 srv-web01 sshd[23731]: pam_unix(sshd:session): session closed for user maria
+Nov  1 07:35:26 srv-web01 sshd[20457]: Accepted password for jorge from 192.168.1.22 port 56806 ssh2
+Nov  1 07:37:33 srv-web01 sshd[20158]: Accepted password for maria from 192.168.1.15 port 45434 ssh2
+Nov  1 07:44:40 srv-web01 sshd[24570]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 07:49:24 srv-web01 sshd[22536]: Accepted password for deploy from 10.0.0.5 port 45915 ssh2
+Nov  1 07:51:01 srv-web01 sshd[23810]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 07:58:29 srv-web01 sshd[21133]: Accepted password for deploy from 10.0.0.5 port 45915 ssh2
+Nov  1 08:23:28 srv-web01 sshd[22783]: Accepted password for deploy from 10.0.0.5 port 42562 ssh2
+Nov  1 08:32:05 srv-web01 sshd[22251]: Accepted password for jorge from 192.168.1.22 port 54854 ssh2
+Nov  1 08:34:44 srv-web01 sshd[22239]: Accepted password for jorge from 192.168.1.22 port 64594 ssh2
+Nov  1 08:54:52 srv-web01 sshd[23192]: Accepted password for deploy from 10.0.0.5 port 42763 ssh2
+Nov  1 08:56:03 srv-web01 sshd[23208]: Accepted password for jorge from 192.168.1.22 port 42013 ssh2
+Nov  1 09:35:34 srv-web01 sshd[23124]: Failed password for jorge from 192.168.1.22 port 50252 ssh2
+Nov  1 09:35:39 srv-web01 sshd[23155]: Accepted password for jorge from 192.168.1.22 port 50252 ssh2
+Nov  1 09:36:18 srv-web01 sshd[20246]: Accepted password for maria from 192.168.1.15 port 50874 ssh2
+Nov  1 09:38:35 srv-web01 sshd[20879]: Accepted password for deploy from 10.0.0.5 port 63461 ssh2
+Nov  1 09:44:43 srv-web01 sshd[24575]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 10:11:23 srv-web01 sshd[22076]: Accepted password for maria from 192.168.1.15 port 58713 ssh2
+Nov  1 10:14:49 srv-web01 sshd[23987]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 10:24:11 srv-web01 sshd[21651]: Accepted password for jorge from 192.168.1.22 port 56130 ssh2
+Nov  1 10:25:33 srv-web01 sshd[21900]: Accepted password for deploy from 10.0.0.5 port 55481 ssh2
+Nov  1 10:25:38 srv-web01 sshd[24254]: pam_unix(sshd:session): session closed for user maria
+Nov  1 10:27:04 srv-web01 sshd[22642]: Failed password for deploy from 10.0.0.5 port 47705 ssh2
+Nov  1 10:27:18 srv-web01 sshd[22666]: Accepted password for deploy from 10.0.0.5 port 47705 ssh2
+Nov  1 10:30:57 srv-web01 sshd[20963]: Accepted password for deploy from 10.0.0.5 port 61215 ssh2
+Nov  1 10:40:17 srv-web01 sshd[21579]: Accepted password for maria from 192.168.1.15 port 44470 ssh2
+Nov  1 10:46:19 srv-web01 sshd[20447]: Accepted password for maria from 192.168.1.15 port 54187 ssh2
+Nov  1 10:47:36 srv-web01 sshd[21852]: Failed password for jorge from 192.168.1.22 port 64844 ssh2
+Nov  1 10:47:52 srv-web01 sshd[21890]: Accepted password for jorge from 192.168.1.22 port 64844 ssh2
+Nov  1 10:52:42 srv-web01 sshd[20207]: Accepted password for maria from 192.168.1.15 port 51835 ssh2
+Nov  1 10:56:39 srv-web01 sshd[24375]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 11:15:41 srv-web01 sshd[20493]: Accepted password for jorge from 192.168.1.22 port 45292 ssh2
+Nov  1 11:21:13 srv-web01 sshd[22788]: Accepted password for maria from 192.168.1.15 port 55336 ssh2
+Nov  1 11:25:10 srv-web01 sshd[20172]: Accepted password for maria from 192.168.1.15 port 57669 ssh2
+Nov  1 11:25:47 srv-web01 sshd[23295]: Server listening on 0.0.0.0 port 22.
+Nov  1 11:29:51 srv-web01 sshd[20311]: Accepted password for maria from 192.168.1.15 port 55768 ssh2
+Nov  1 11:30:27 srv-web01 sshd[22696]: Failed password for maria from 192.168.1.15 port 62535 ssh2
+Nov  1 11:30:45 srv-web01 sshd[22706]: Accepted password for maria from 192.168.1.15 port 62535 ssh2
+Nov  1 11:32:03 srv-web01 sshd[20487]: Accepted password for jorge from 192.168.1.22 port 45815 ssh2
+Nov  1 11:34:01 srv-web01 sshd[20695]: Accepted password for jorge from 192.168.1.22 port 48979 ssh2
+Nov  1 11:41:50 srv-web01 sshd[23373]: pam_unix(sshd:session): session closed for user maria
+Nov  1 11:46:13 srv-web01 sshd[22360]: Failed password for maria from 192.168.1.15 port 57390 ssh2
+Nov  1 11:46:17 srv-web01 sshd[22370]: Accepted password for maria from 192.168.1.15 port 57390 ssh2
+Nov  1 11:48:15 srv-web01 sshd[24543]: pam_unix(sshd:session): session closed for user maria
+Nov  1 11:52:14 srv-web01 sshd[21423]: Accepted password for deploy from 10.0.0.5 port 60157 ssh2
+Nov  1 12:02:30 srv-web01 sshd[21967]: Accepted password for deploy from 10.0.0.5 port 45030 ssh2
+Nov  1 12:10:22 srv-web01 sshd[21025]: Accepted password for deploy from 10.0.0.5 port 44648 ssh2
+Nov  1 12:22:39 srv-web01 sshd[20477]: Accepted password for jorge from 192.168.1.22 port 63023 ssh2
+Nov  1 12:32:18 srv-web01 sshd[20417]: Accepted password for deploy from 10.0.0.5 port 51625 ssh2
+Nov  1 12:39:57 srv-web01 sshd[20990]: Accepted password for jorge from 192.168.1.22 port 61104 ssh2
+Nov  1 12:41:41 srv-web01 sshd[22464]: Failed password for jorge from 192.168.1.22 port 52390 ssh2
+Nov  1 12:41:53 srv-web01 sshd[22492]: Accepted password for jorge from 192.168.1.22 port 52390 ssh2
+Nov  1 12:44:04 srv-web01 sshd[21749]: Accepted password for jorge from 192.168.1.22 port 62339 ssh2
+Nov  1 12:44:41 srv-web01 sshd[21014]: Accepted password for maria from 192.168.1.15 port 62555 ssh2
+Nov  1 12:53:57 srv-web01 sshd[23792]: Server listening on 0.0.0.0 port 22.
+Nov  1 12:53:58 srv-web01 sshd[22441]: Accepted password for maria from 192.168.1.15 port 49496 ssh2
+Nov  1 13:00:12 srv-web01 sshd[23472]: Server listening on 0.0.0.0 port 22.
+Nov  1 13:02:35 srv-web01 sshd[23529]: pam_unix(sshd:session): session closed for user maria
+Nov  1 13:11:16 srv-web01 sshd[22529]: Accepted password for deploy from 10.0.0.5 port 41191 ssh2
+Nov  1 13:11:41 srv-web01 sshd[23518]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 13:12:32 srv-web01 sshd[24233]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 13:20:57 srv-web01 sshd[23878]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 13:37:03 srv-web01 sshd[24550]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 13:42:10 srv-web01 sshd[20370]: Accepted password for deploy from 10.0.0.5 port 40297 ssh2
+Nov  1 13:42:20 srv-web01 sshd[24042]: pam_unix(sshd:session): session closed for user maria
+Nov  1 13:53:33 srv-web01 sshd[23959]: pam_unix(sshd:session): session closed for user maria
+Nov  1 13:55:22 srv-web01 sshd[23353]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 13:56:19 srv-web01 sshd[24171]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 13:58:37 srv-web01 sshd[21483]: Accepted password for maria from 192.168.1.15 port 59523 ssh2
+Nov  1 14:02:04 srv-web01 sshd[21851]: Accepted password for jorge from 192.168.1.22 port 52840 ssh2
+Nov  1 14:27:57 srv-web01 sshd[22972]: Accepted password for maria from 192.168.1.15 port 41569 ssh2
+Nov  1 14:35:41 srv-web01 sshd[23920]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 14:43:11 srv-web01 sshd[20358]: Accepted password for maria from 192.168.1.15 port 57991 ssh2
+Nov  1 14:47:00 srv-web01 sshd[27099]: Failed password for admin from 198.51.100.23 port 45947 ssh2
+Nov  1 14:47:01 srv-web01 sshd[27106]: Failed password for root from 198.51.100.23 port 41023 ssh2
+Nov  1 14:47:02 srv-web01 sshd[27144]: Failed password for admin from 198.51.100.23 port 57667 ssh2
+Nov  1 14:47:04 srv-web01 sshd[27179]: Failed password for root from 198.51.100.23 port 55442 ssh2
+Nov  1 14:47:08 srv-web01 sshd[27201]: Failed password for soporte from 198.51.100.23 port 50850 ssh2
+Nov  1 14:47:11 srv-web01 sshd[27223]: Failed password for root from 198.51.100.23 port 43380 ssh2
+Nov  1 14:47:12 srv-web01 sshd[27242]: Failed password for admin from 198.51.100.23 port 32110 ssh2
+Nov  1 14:47:15 srv-web01 sshd[27269]: Failed password for soporte from 198.51.100.23 port 58497 ssh2
+Nov  1 14:47:16 srv-web01 sshd[27274]: Failed password for root from 198.51.100.23 port 39877 ssh2
+Nov  1 14:47:18 srv-web01 sshd[27307]: Failed password for root from 198.51.100.23 port 33096 ssh2
+Nov  1 14:47:22 srv-web01 sshd[27334]: Failed password for root from 198.51.100.23 port 45131 ssh2
+Nov  1 14:47:23 srv-web01 sshd[27336]: Failed password for soporte from 198.51.100.23 port 43818 ssh2
+Nov  1 14:47:26 srv-web01 sshd[27369]: Failed password for root from 198.51.100.23 port 52335 ssh2
+Nov  1 14:47:29 srv-web01 sshd[27399]: Failed password for admin from 198.51.100.23 port 32483 ssh2
+Nov  1 14:47:33 srv-web01 sshd[27415]: Failed password for root from 198.51.100.23 port 35576 ssh2
+Nov  1 14:47:34 srv-web01 sshd[27422]: Failed password for invalid user backup from 198.51.100.23 port 47609 ssh2
+Nov  1 14:47:35 srv-web01 sshd[27450]: Failed password for invalid user backup from 198.51.100.23 port 42470 ssh2
+Nov  1 14:47:36 srv-web01 sshd[27486]: Failed password for admin from 198.51.100.23 port 40041 ssh2
+Nov  1 14:47:40 srv-web01 sshd[27500]: Failed password for soporte from 198.51.100.23 port 31283 ssh2
+Nov  1 14:47:42 srv-web01 sshd[27512]: Failed password for soporte from 198.51.100.23 port 51504 ssh2
+Nov  1 14:47:44 srv-web01 sshd[27546]: Failed password for admin from 198.51.100.23 port 58884 ssh2
+Nov  1 14:47:45 srv-web01 sshd[27550]: Failed password for soporte from 198.51.100.23 port 40031 ssh2
+Nov  1 14:47:49 srv-web01 sshd[27586]: Failed password for admin from 198.51.100.23 port 44522 ssh2
+Nov  1 14:47:52 srv-web01 sshd[27603]: Failed password for admin from 198.51.100.23 port 35440 ssh2
+Nov  1 14:47:56 srv-web01 sshd[27642]: Failed password for soporte from 198.51.100.23 port 43236 ssh2
+Nov  1 14:47:57 srv-web01 sshd[27655]: Failed password for soporte from 198.51.100.23 port 49528 ssh2
+Nov  1 14:48:01 srv-web01 sshd[27670]: Failed password for root from 198.51.100.23 port 44588 ssh2
+Nov  1 14:48:03 srv-web01 sshd[27676]: Failed password for soporte from 198.51.100.23 port 35495 ssh2
+Nov  1 14:48:07 srv-web01 sshd[27706]: Failed password for admin from 198.51.100.23 port 50303 ssh2
+Nov  1 14:48:09 srv-web01 sshd[27726]: Failed password for soporte from 198.51.100.23 port 33447 ssh2
+Nov  1 14:48:12 srv-web01 sshd[27730]: Failed password for admin from 198.51.100.23 port 52863 ssh2
+Nov  1 14:48:13 srv-web01 sshd[27732]: Failed password for soporte from 198.51.100.23 port 55039 ssh2
+Nov  1 14:48:16 srv-web01 sshd[27763]: Failed password for invalid user backup from 198.51.100.23 port 49389 ssh2
+Nov  1 14:48:20 srv-web01 sshd[27782]: Failed password for invalid user backup from 198.51.100.23 port 49787 ssh2
+Nov  1 14:48:23 srv-web01 sshd[27801]: Failed password for root from 198.51.100.23 port 58735 ssh2
+Nov  1 14:48:25 srv-web01 sshd[27820]: Failed password for invalid user backup from 198.51.100.23 port 43764 ssh2
+Nov  1 14:48:29 srv-web01 sshd[27829]: Failed password for admin from 198.51.100.23 port 55332 ssh2
+Nov  1 14:48:32 srv-web01 sshd[27832]: Failed password for soporte from 198.51.100.23 port 54806 ssh2
+Nov  1 14:48:33 srv-web01 sshd[27852]: Failed password for soporte from 198.51.100.23 port 35230 ssh2
+Nov  1 14:48:37 srv-web01 sshd[27890]: Failed password for admin from 198.51.100.23 port 43789 ssh2
+Nov  1 14:48:41 srv-web01 sshd[27924]: Failed password for admin from 198.51.100.23 port 59968 ssh2
+Nov  1 14:48:44 srv-web01 sshd[27925]: Failed password for invalid user backup from 198.51.100.23 port 55856 ssh2
+Nov  1 14:48:46 srv-web01 sshd[27926]: Failed password for invalid user backup from 198.51.100.23 port 46205 ssh2
+Nov  1 14:48:50 srv-web01 sshd[27950]: Failed password for soporte from 198.51.100.23 port 57430 ssh2
+Nov  1 14:48:51 srv-web01 sshd[27951]: Failed password for soporte from 198.51.100.23 port 47538 ssh2
+Nov  1 14:48:55 srv-web01 sshd[27964]: Failed password for root from 198.51.100.23 port 54146 ssh2
+Nov  1 14:48:57 srv-web01 sshd[27997]: Failed password for soporte from 198.51.100.23 port 57939 ssh2
+Nov  1 14:48:59 srv-web01 sshd[28004]: Failed password for soporte from 198.51.100.23 port 51331 ssh2
+Nov  1 14:49:03 srv-web01 sshd[28019]: Failed password for soporte from 198.51.100.23 port 51126 ssh2
+Nov  1 14:49:06 srv-web01 sshd[28035]: Failed password for root from 198.51.100.23 port 36718 ssh2
+Nov  1 14:49:07 srv-web01 sshd[28063]: Failed password for invalid user backup from 198.51.100.23 port 42227 ssh2
+Nov  1 14:49:08 srv-web01 sshd[24657]: Server listening on 0.0.0.0 port 22.
+Nov  1 14:49:10 srv-web01 sshd[28070]: Failed password for soporte from 198.51.100.23 port 54094 ssh2
+Nov  1 14:49:13 srv-web01 sshd[28106]: Failed password for invalid user backup from 198.51.100.23 port 49554 ssh2
+Nov  1 14:49:17 srv-web01 sshd[28123]: Failed password for root from 198.51.100.23 port 59223 ssh2
+Nov  1 14:49:18 srv-web01 sshd[28127]: Failed password for soporte from 198.51.100.23 port 43950 ssh2
+Nov  1 14:49:22 srv-web01 sshd[28140]: Failed password for root from 198.51.100.23 port 36210 ssh2
+Nov  1 14:49:23 srv-web01 sshd[28169]: Failed password for soporte from 198.51.100.23 port 45010 ssh2
+Nov  1 14:49:27 srv-web01 sshd[28203]: Failed password for soporte from 198.51.100.23 port 39473 ssh2
+Nov  1 14:49:28 srv-web01 sshd[28243]: Failed password for root from 198.51.100.23 port 55207 ssh2
+Nov  1 14:49:32 srv-web01 sshd[28282]: Failed password for invalid user backup from 198.51.100.23 port 50121 ssh2
+Nov  1 14:49:34 srv-web01 sshd[28311]: Failed password for root from 198.51.100.23 port 51345 ssh2
+Nov  1 14:49:36 srv-web01 sshd[28333]: Failed password for root from 198.51.100.23 port 52820 ssh2
+Nov  1 14:49:38 srv-web01 sshd[28357]: Failed password for root from 198.51.100.23 port 47500 ssh2
+Nov  1 14:49:39 srv-web01 sshd[28383]: Failed password for soporte from 198.51.100.23 port 37215 ssh2
+Nov  1 14:49:40 srv-web01 sshd[28387]: Failed password for root from 198.51.100.23 port 44046 ssh2
+Nov  1 14:49:43 srv-web01 sshd[28412]: Failed password for soporte from 198.51.100.23 port 53880 ssh2
+Nov  1 14:49:47 srv-web01 sshd[28420]: Failed password for soporte from 198.51.100.23 port 55291 ssh2
+Nov  1 14:49:51 srv-web01 sshd[28429]: Failed password for soporte from 198.51.100.23 port 37111 ssh2
+Nov  1 14:49:55 srv-web01 sshd[28456]: Failed password for soporte from 198.51.100.23 port 34827 ssh2
+Nov  1 14:49:56 srv-web01 sshd[28490]: Failed password for admin from 198.51.100.23 port 44932 ssh2
+Nov  1 14:49:58 srv-web01 sshd[28496]: Failed password for admin from 198.51.100.23 port 54993 ssh2
+Nov  1 14:50:00 srv-web01 sshd[28523]: Failed password for soporte from 198.51.100.23 port 55986 ssh2
+Nov  1 14:50:04 srv-web01 sshd[28544]: Failed password for soporte from 198.51.100.23 port 36639 ssh2
+Nov  1 14:50:07 srv-web01 sshd[28579]: Failed password for root from 198.51.100.23 port 36294 ssh2
+Nov  1 14:50:09 srv-web01 sshd[28586]: Failed password for admin from 198.51.100.23 port 50750 ssh2
+Nov  1 14:50:13 srv-web01 sshd[28596]: Failed password for admin from 198.51.100.23 port 56720 ssh2
+Nov  1 14:50:16 srv-web01 sshd[28631]: Failed password for soporte from 198.51.100.23 port 30225 ssh2
+Nov  1 14:50:18 srv-web01 sshd[28632]: Failed password for soporte from 198.51.100.23 port 33438 ssh2
+Nov  1 14:50:22 srv-web01 sshd[28638]: Failed password for admin from 198.51.100.23 port 53803 ssh2
+Nov  1 14:50:26 srv-web01 sshd[28639]: Failed password for soporte from 198.51.100.23 port 42044 ssh2
+Nov  1 14:50:27 srv-web01 sshd[28670]: Failed password for invalid user backup from 198.51.100.23 port 42112 ssh2
+Nov  1 14:50:30 srv-web01 sshd[28692]: Failed password for invalid user backup from 198.51.100.23 port 44786 ssh2
+Nov  1 14:50:34 srv-web01 sshd[28720]: Failed password for soporte from 198.51.100.23 port 42884 ssh2
+Nov  1 14:50:38 srv-web01 sshd[28751]: Failed password for root from 198.51.100.23 port 37524 ssh2
+Nov  1 14:50:41 srv-web01 sshd[28784]: Failed password for root from 198.51.100.23 port 56758 ssh2
+Nov  1 14:50:42 srv-web01 sshd[28819]: Accepted password for soporte from 198.51.100.23 port 55443 ssh2
+Nov  1 14:50:43 srv-web01 sshd[28850]: pam_unix(sshd:session): session opened for user soporte(uid=1003) by (uid=0)
+Nov  1 14:51:37 srv-web01 sshd[20109]: Accepted password for jorge from 192.168.1.22 port 45966 ssh2
+Nov  1 14:54:00 srv-web01 sshd[21363]: Accepted password for deploy from 10.0.0.5 port 61046 ssh2
+Nov  1 15:10:08 srv-web01 sshd[21069]: Accepted password for maria from 192.168.1.15 port 60210 ssh2
+Nov  1 15:13:44 srv-web01 sshd[24717]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 15:24:27 srv-web01 sshd[23068]: Accepted password for deploy from 10.0.0.5 port 52341 ssh2
+Nov  1 15:29:17 srv-web01 sshd[24691]: Server listening on 0.0.0.0 port 22.
+Nov  1 15:32:46 srv-web01 sshd[22580]: Accepted password for jorge from 192.168.1.22 port 49848 ssh2
+Nov  1 15:34:05 srv-web01 sshd[23344]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 15:34:23 srv-web01 sshd[21838]: Accepted password for deploy from 10.0.0.5 port 58862 ssh2
+Nov  1 15:36:23 srv-web01 sshd[22593]: Accepted password for jorge from 192.168.1.22 port 55255 ssh2
+Nov  1 15:37:53 srv-web01 sshd[22376]: Accepted password for deploy from 10.0.0.5 port 47310 ssh2
+Nov  1 16:04:18 srv-web01 sshd[23685]: pam_unix(sshd:session): session closed for user maria
+Nov  1 16:13:55 srv-web01 sshd[23663]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 16:14:01 srv-web01 sshd[22975]: Failed password for jorge from 192.168.1.22 port 60987 ssh2
+Nov  1 16:14:10 srv-web01 sshd[22987]: Accepted password for jorge from 192.168.1.22 port 60987 ssh2
+Nov  1 16:14:46 srv-web01 sshd[23612]: Server listening on 0.0.0.0 port 22.
+Nov  1 16:30:41 srv-web01 sshd[22335]: Accepted password for maria from 192.168.1.15 port 52774 ssh2
+Nov  1 16:35:24 srv-web01 sshd[20552]: Failed password for deploy from 10.0.0.5 port 53820 ssh2
+Nov  1 16:35:42 srv-web01 sshd[20574]: Accepted password for deploy from 10.0.0.5 port 53820 ssh2
+Nov  1 16:51:06 srv-web01 sshd[20441]: Accepted password for maria from 192.168.1.15 port 59325 ssh2
+Nov  1 16:56:31 srv-web01 sshd[21195]: Accepted password for jorge from 192.168.1.22 port 52461 ssh2
+Nov  1 17:02:26 srv-web01 sshd[22802]: Accepted password for maria from 192.168.1.15 port 47881 ssh2
+Nov  1 17:10:11 srv-web01 sshd[21142]: Failed password for maria from 192.168.1.15 port 45431 ssh2
+Nov  1 17:10:17 srv-web01 sshd[21163]: Accepted password for maria from 192.168.1.15 port 45431 ssh2
+Nov  1 17:22:21 srv-web01 sshd[24022]: Server listening on 0.0.0.0 port 22.
+Nov  1 17:29:13 srv-web01 sshd[21610]: Accepted password for deploy from 10.0.0.5 port 58360 ssh2
+Nov  1 17:35:19 srv-web01 sshd[24395]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 17:50:29 srv-web01 sshd[22540]: Accepted password for jorge from 192.168.1.22 port 61667 ssh2
+Nov  1 17:52:57 srv-web01 sshd[22913]: Failed password for maria from 192.168.1.15 port 55442 ssh2
+Nov  1 17:53:01 srv-web01 sshd[22945]: Accepted password for maria from 192.168.1.15 port 55442 ssh2
+Nov  1 17:53:34 srv-web01 sshd[22401]: Accepted password for maria from 192.168.1.15 port 44579 ssh2
+Nov  1 17:57:52 srv-web01 sshd[21463]: Accepted password for jorge from 192.168.1.22 port 55714 ssh2
+Nov  1 18:04:11 srv-web01 sshd[21503]: Failed password for jorge from 192.168.1.22 port 53614 ssh2
+Nov  1 18:04:29 srv-web01 sshd[21522]: Accepted password for jorge from 192.168.1.22 port 53614 ssh2
+Nov  1 18:07:17 srv-web01 sshd[23409]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 18:18:26 srv-web01 sshd[20801]: Accepted password for jorge from 192.168.1.22 port 42067 ssh2
+Nov  1 18:31:07 srv-web01 sshd[23002]: Accepted password for deploy from 10.0.0.5 port 53184 ssh2
+Nov  1 18:37:55 srv-web01 sshd[24080]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 18:46:50 srv-web01 sshd[23862]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 18:48:12 srv-web01 sshd[21105]: Accepted password for deploy from 10.0.0.5 port 53788 ssh2
+Nov  1 18:52:04 srv-web01 sshd[21659]: Accepted password for deploy from 10.0.0.5 port 59787 ssh2
+Nov  1 19:00:46 srv-web01 sshd[24252]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 19:12:12 srv-web01 sshd[23496]: Server listening on 0.0.0.0 port 22.
+Nov  1 19:23:29 srv-web01 sshd[23717]: Server listening on 0.0.0.0 port 22.
+Nov  1 19:32:28 srv-web01 sshd[24231]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 19:47:51 srv-web01 sshd[20084]: Accepted password for maria from 192.168.1.15 port 58806 ssh2
+Nov  1 19:48:17 srv-web01 sshd[24443]: Server listening on 0.0.0.0 port 22.
+Nov  1 19:52:00 srv-web01 sshd[24200]: Server listening on 0.0.0.0 port 22.
+Nov  1 19:54:55 srv-web01 sshd[20940]: Accepted password for jorge from 192.168.1.22 port 50679 ssh2
+Nov  1 20:01:14 srv-web01 sshd[22230]: Accepted password for deploy from 10.0.0.5 port 47228 ssh2
+Nov  1 20:01:20 srv-web01 sshd[21284]: Failed password for deploy from 10.0.0.5 port 49875 ssh2
+Nov  1 20:01:39 srv-web01 sshd[21306]: Accepted password for deploy from 10.0.0.5 port 49875 ssh2
+Nov  1 20:06:00 srv-web01 sshd[22639]: Accepted password for jorge from 192.168.1.22 port 43612 ssh2
+Nov  1 20:11:14 srv-web01 sshd[23089]: Accepted password for maria from 192.168.1.15 port 44545 ssh2
+Nov  1 20:17:16 srv-web01 sshd[23446]: pam_unix(sshd:session): session closed for user maria
+Nov  1 20:21:50 srv-web01 sshd[20857]: Accepted password for deploy from 10.0.0.5 port 61899 ssh2
+Nov  1 20:34:41 srv-web01 sshd[22897]: Accepted password for jorge from 192.168.1.22 port 43074 ssh2
+Nov  1 20:45:00 srv-web01 sshd[24642]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 20:52:13 srv-web01 sshd[22265]: Failed password for deploy from 10.0.0.5 port 41177 ssh2
+Nov  1 20:52:32 srv-web01 sshd[22304]: Accepted password for deploy from 10.0.0.5 port 41177 ssh2
+Nov  1 20:55:30 srv-web01 sshd[23333]: pam_unix(sshd:session): session closed for user maria
+Nov  1 21:00:27 srv-web01 sshd[23762]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 21:05:40 srv-web01 sshd[24204]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 21:07:53 srv-web01 sshd[24314]: Server listening on 0.0.0.0 port 22.
+Nov  1 21:08:59 srv-web01 sshd[21333]: Accepted password for jorge from 192.168.1.22 port 51521 ssh2
+Nov  1 21:16:41 srv-web01 sshd[23540]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 21:20:26 srv-web01 sshd[20268]: Accepted password for maria from 192.168.1.15 port 59529 ssh2
+Nov  1 21:23:22 srv-web01 sshd[20825]: Accepted password for deploy from 10.0.0.5 port 41124 ssh2
+Nov  1 21:29:14 srv-web01 sshd[21219]: Accepted password for maria from 192.168.1.15 port 47793 ssh2
+Nov  1 21:42:00 srv-web01 sshd[23724]: pam_unix(sshd:session): session closed for user maria
+Nov  1 21:42:28 srv-web01 sshd[23674]: Server listening on 0.0.0.0 port 22.
+Nov  1 21:42:28 srv-web01 sshd[24711]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 21:51:11 srv-web01 sshd[22121]: Accepted password for jorge from 192.168.1.22 port 56042 ssh2
+Nov  1 21:52:08 srv-web01 sshd[20532]: Failed password for deploy from 10.0.0.5 port 53300 ssh2
+Nov  1 21:52:22 srv-web01 sshd[20549]: Accepted password for deploy from 10.0.0.5 port 53300 ssh2
+Nov  1 22:02:26 srv-web01 sshd[24729]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 22:03:39 srv-web01 sshd[23584]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 22:13:05 srv-web01 sshd[24140]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 22:14:42 srv-web01 sshd[24389]: Connection closed by 45.155.205.9 port 39822 [preauth]
+Nov  1 22:16:56 srv-web01 sshd[23487]: pam_unix(sshd:session): session closed for user maria
+Nov  1 22:20:16 srv-web01 sshd[24507]: Received disconnect from 192.168.1.22 port 51234:11: disconnected by user
+Nov  1 22:20:22 srv-web01 sshd[21711]: Accepted password for jorge from 192.168.1.22 port 63962 ssh2
+Nov  1 22:35:17 srv-web01 sshd[20669]: Accepted password for maria from 192.168.1.15 port 57111 ssh2
+Nov  1 22:36:28 srv-web01 sshd[24105]: pam_unix(sshd:session): session closed for user jorge
+Nov  1 22:40:44 srv-web01 sshd[20034]: Accepted password for jorge from 192.168.1.22 port 64306 ssh2
+Nov  1 22:41:11 srv-web01 sshd[24035]: pam_unix(sshd:session): session closed for user maria
+Nov  1 22:42:31 srv-web01 sshd[20400]: Accepted password for maria from 192.168.1.15 port 43900 ssh2
+Nov  1 22:42:32 srv-web01 sshd[22097]: Accepted password for maria from 192.168.1.15 port 40326 ssh2
+Nov  1 22:45:13 srv-web01 sshd[23059]: Accepted password for maria from 192.168.1.15 port 54457 ssh2
+Nov  1 22:55:04 srv-web01 sshd[21438]: Accepted password for deploy from 10.0.0.5 port 52315 ssh2
+Nov  1 22:57:07 srv-web01 sshd[20607]: Accepted password for jorge from 192.168.1.22 port 43494 ssh2
+Nov  1 22:59:11 srv-web01 sshd[22194]: Accepted password for deploy from 10.0.0.5 port 56575 ssh2
+Nov  1 23:11:15 srv-web01 sshd[21118]: Accepted password for jorge from 192.168.1.22 port 63606 ssh2
+Nov  1 23:39:16 srv-web01 sshd[20910]: Accepted password for maria from 192.168.1.15 port 59027 ssh2

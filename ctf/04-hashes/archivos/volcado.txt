@@ -1,0 +1,6 @@
+# volcado de la tabla usuarios (usuario:hash)
+ana:cce4dc8008d7cf2c8aef5a7c82ac6e8d
+luis:89bc5302bc3be7e176bd40db3e026587
+admin:670026045122dcc95566ebbe281a1080
+invitado:787eb37068bf4a5b174c44f75d22cc51
+soporte:ec2668f392bc95f574863db2c3c2e091

@@ -15,3 +15,18 @@ python3 centinela.py      # analiza logs/auth.log
 ```
 
 No necesita librerías externas (solo Python 3.8+).
+
+## 🚩 CTF Centinela — mini CTF para principiantes
+
+En la carpeta [`ctf/`](ctf/) hay un mini CTF de ciberseguridad en español: **10
+retos progresivos** (Base64, César, Vigenère, hashes, análisis de logs, magic
+bytes, esteganografía, permisos de Linux e inyección SQL en una app Flask
+vulnerable a propósito). Cada reto trae enunciado, archivos, pista, solución
+paso a paso y un script que verifica tu flag.
+
+Empieza por [`ctf/README.md`](ctf/README.md).
+
+```bash
+pip install -r ctf/requirements.txt    # flask y pillow (retos 7, 9 y 10)
+cat ctf/INTRODUCCION.md                 # cómo jugar
+```

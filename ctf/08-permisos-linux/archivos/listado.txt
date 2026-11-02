@@ -1,0 +1,21 @@
+# Salida de: ls -lR /srv/sistema   (capturada en el servidor comprometido)
+
+/srv/sistema/bin:
+-rwsr-xr-x 1 root   root        990 nov  1 03:00 actualizar.sh
+-rwxr-sr-x 1 root   staff     15872 nov  1 03:00 herramienta
+-rwxr-xr-x 1 root   root        812 nov  1 03:00 limpiar_cache.sh
+-rwxrwxr-x 1 deploy deploy     3021 nov  1 03:00 monitor.py
+-rwsrwxrwx 1 root   root       2210 nov  1 03:00 respaldo_nocturno.sh
+-rwxr-x--- 1 root   adm        1430 nov  1 03:00 rotar_logs.sh
+
+/srv/sistema/compartido:
+-rw-rw-rw- 1 maria  maria       340 nov  1 03:00 notas.txt
+drwxrwxrwt 1 root   root       4096 nov  1 03:00 tmp_subidas
+
+/srv/sistema/config:
+-rw-r----- 1 root   www-data    520 nov  1 03:00 app.conf
+-rw------- 1 root   root        128 nov  1 03:00 claves.env
+-rw-r--r-- 1 root   root         77 nov  1 03:00 publico.conf
+
+/srv/sistema/home/jorge:
+-rw-r--r-- 1 jorge  jorge      3771 nov  1 03:00 .bashrc

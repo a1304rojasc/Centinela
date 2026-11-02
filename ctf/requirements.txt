@@ -1,0 +1,4 @@
+# Dependencias del CTF de Centinela.
+#   pip install -r ctf/requirements.txt
+flask>=3.0      # retos 09 y 10 (app web vulnerable)
+pillow>=10.0    # reto 07 (esteganografía)
