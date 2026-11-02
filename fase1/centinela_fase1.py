@@ -5,8 +5,8 @@ Para cada intento obtenemos 4 datos:
     fecha, ip, usuario y resultado (EXITOSO o FALLIDO).
 
 Uso:
-    python centinela.py                 # usa logs/auth.log
-    python centinela.py otro/archivo.log
+    python fase1/centinela_fase1.py                 # usa logs/auth.log
+    python fase1/centinela_fase1.py otro/archivo.log
 """
 
 import re    # 're' = regular expressions (expresiones regulares)
@@ -111,7 +111,7 @@ def main():
     try:
         intentos = leer_log(ruta)
     except FileNotFoundError:
-        print(f"No encuentro el archivo '{ruta}'. ¿Ejecutaste generar_logs.py?")
+        print(f"No encuentro el archivo '{ruta}'. ¿Ejecutaste python -m centinela generar?")
         sys.exit(1)
 
     mostrar_intentos(intentos)
