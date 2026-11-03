@@ -58,7 +58,7 @@ centinela/
 ├── lista_negra.py  Fase 4 · lista negra, lista blanca y script iptables
 ├── cli.py          línea de comandos (python -m centinela ...)
 └── __main__.py
-tests/              63 tests con pytest (19 de seguridad, 4 del honeypot)
+tests/              70 tests con pytest (19 de seguridad, 4 del honeypot, 7 de ataques distribuidos)
 fase1/              los scripts originales de la Fase 1, para comparar
 logs/auth.log       log de ejemplo (semilla 42)
 docs/img/           capturas de este README
@@ -131,7 +131,11 @@ En naranja aparecen los usuarios que no existen en el servidor, la huella típic
 python -m pytest
 ```
 
-Hay 63 tests que cubren el parser (formatos, ruido, IPs imposibles, cambio de año), las reglas del detector (justo en el umbral, por debajo, ataques lentos, compromisos), la lista blanca, la fusión de la lista negra, que el script no admita texto que no sea una IP, el reporte completo y la línea de comandos de principio a fin, y que el honeypot registra cada intento sin dar nunca acceso.
+Hay 70 tests que cubren el parser (formatos, ruido, IPs imposibles, cambio de año), las reglas del detector (justo en el umbral, por debajo, ataques lentos, compromisos), la lista blanca, la fusión de la lista negra, que el script no admita texto que no sea una IP, el reporte completo y la línea de comandos de principio a fin, y que el honeypot registra cada intento sin dar nunca acceso.
+
+## Ataques distribuidos (/24)
+
+Una botnet puede repartir el ataque entre muchas IPs con 2-3 intentos cada una, por debajo de la regla por IP. `detectar` y `todo` agrupan además los fallos por red /24 y avisan si una red acumula 15 fallos en 30 minutos desde al menos 5 IPs distintas. Ignora las redes privadas y no bloquea redes enteras de forma automática: eso se decide a mano.
 
 ## Honeypot SSH
 

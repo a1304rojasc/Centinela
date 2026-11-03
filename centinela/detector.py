@@ -23,8 +23,10 @@ Si una IP con incidente tiene además un login EXITOSO a partir del inicio
 del ataque, el incidente se marca como COMPROMETIDO: probablemente el
 atacante adivinó la contraseña. Es lo más urgente de revisar.
 
-Limitación conocida: como contamos por IP, un ataque repartido entre muchas
-IPs (una botnet con 2-3 intentos por IP) no dispara ninguna regla.
+Las reglas anteriores cuentan por IP, así que un ataque repartido entre muchas
+IPs (una botnet con 2-3 intentos por IP) no dispara ninguna. Para eso está
+detectar_distribuidos(): agrupa los fallos por red /24 y avisa cuando muchas
+IPs de la misma red fallan a la vez.
 """
 
 from __future__ import annotations
@@ -33,6 +35,7 @@ from bisect import bisect_left, bisect_right
 from collections import defaultdict, deque
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
+from ipaddress import ip_address, ip_network
 from typing import Iterable
 
 from centinela.parser import Intento
@@ -165,3 +168,42 @@ def _sin_duplicados(incidentes: list[Incidente], orden_reglas: list[str]) -> lis
 
 def ips_atacantes(incidentes: Iterable[Incidente]) -> set[str]:
     return {i.ip for i in incidentes}
+
+
+def _red24(ip: str) -> str | None:
+    """'5.188.62.17' -> '5.188.62.0/24'. None para IPv6 o redes privadas:
+    en una red interna muchos equipos comparten /24 y los errores normales
+    de los usuarios darían falsos positivos."""
+    try:
+        direccion = ip_address(ip)
+    except ValueError:
+        return None
+    if direccion.version != 4 or direccion.is_private:
+        return None
+    return str(ip_network(f"{direccion}/24", strict=False))
+
+
+def detectar_distribuidos(intentos: Iterable[Intento], umbral: int = 15,
+                          ventana: timedelta = timedelta(minutes=30),
+                          min_ips: int = 5) -> list[Incidente]:
+    """Ataques repartidos entre muchas IPs de la misma red /24.
+
+    Salta cuando una red acumula al menos 'umbral' fallos dentro de 'ventana'
+    y esos fallos vienen de al menos 'min_ips' IPs distintas. En el incidente,
+    'ip' es la red (p. ej. '5.188.62.0/24') y 'regla' es 'distribuido'.
+    """
+    regla = Regla("distribuido", umbral, ventana)
+    por_red: dict[str, list[Intento]] = defaultdict(list)
+    for intento in intentos:
+        if not intento.exito and (red := _red24(intento.ip)):
+            por_red[red].append(intento)
+
+    incidentes: list[Incidente] = []
+    for red, fallos in por_red.items():
+        fallos.sort(key=lambda i: i.momento)
+        momentos = [f.momento for f in fallos]
+        for inicio, fin in _rachas(momentos, regla):
+            dentro = fallos[bisect_left(momentos, inicio):bisect_right(momentos, fin)]
+            if len({f.ip for f in dentro}) >= min_ips:
+                incidentes.append(Incidente(red, regla.nombre, inicio, fin, len(dentro), {f.usuario for f in dentro}))
+    return sorted(incidentes, key=lambda i: i.inicio)
