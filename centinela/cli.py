@@ -39,6 +39,16 @@ def _leer(args) -> list[parser.Intento]:
         sys.exit(f"No encuentro '{args.log}'. Puedes crear uno de ejemplo con:  python -m centinela generar")
 
 
+def _imprimir_distribuidos(intentos) -> None:
+    distribuidos = detector.detectar_distribuidos(intentos)
+    if not distribuidos:
+        return
+    print(f"\n{len(distribuidos)} ataques distribuidos (muchas IPs de la misma red /24):\n")
+    for inc in distribuidos:
+        print(f"   {inc.ip:<18} {inc.describir()}")
+    print("   No se añaden solos a la lista negra: bloquear una red entera es una decisión manual.")
+
+
 def _imprimir_incidentes(incidentes: list[detector.Incidente]) -> None:
     if not incidentes:
         print("Sin incidentes: ninguna IP superó las reglas.")
@@ -80,7 +90,9 @@ def cmd_honeypot(args) -> int:
 
 
 def cmd_detectar(args) -> int:
-    _imprimir_incidentes(detector.detectar(_leer(args), _reglas(args)))
+    intentos = _leer(args)
+    _imprimir_incidentes(detector.detectar(intentos, _reglas(args)))
+    _imprimir_distribuidos(intentos)
     return 0
 
 
@@ -112,6 +124,7 @@ def cmd_todo(args) -> int:
     incidentes = detector.detectar(intentos, _reglas(args))
     print(f"Analizados {len(intentos)} intentos de login de {args.log}\n")
     _imprimir_incidentes(incidentes)
+    _imprimir_distribuidos(intentos)
     print()
     # SEGURIDAD: primero la lista negra y después el reporte. Si el reporte
     # fallara (por ejemplo, por un dato raro en un gráfico), el bloqueo ya
