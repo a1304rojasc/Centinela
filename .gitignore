@@ -1,1 +1,7 @@
 figuras/*/shots/
+__pycache__/
+.pytest_cache/
+# Salidas que genera Centinela al ejecutarse
+reportes/
+lista_negra.txt
+bloquear.sh

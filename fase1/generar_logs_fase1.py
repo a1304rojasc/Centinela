@@ -9,7 +9,7 @@ Mezcla tres tipos de actividad:
      desconexiones...). Están ahí para que el parser aprenda a ignorarlas.
 
 Uso:
-    python generar_logs.py
+    python fase1/generar_logs_fase1.py
 """
 
 import random
