@@ -13,6 +13,21 @@ Todo lo demás (CRON, sudo, "Invalid user ...", cierres de sesión) es ruido y
 se ignora. "Invalid user X" se ignora a propósito: va siempre seguido de
 "Failed password for invalid user X", y si contáramos las dos, cada intento
 contaría doble.
+
+SEGURIDAD — el nombre de usuario lo escribe el ATACANTE. Puede contener
+espacios, la palabra "from" o una IP falsa, por ejemplo:
+
+    ... Failed password for invalid user x from 8.8.8.8 port 1 from 203.0.113.5 port 5555 ssh2
+                                         └── texto del atacante ──┘ └── lo que añade sshd ──┘
+
+Por eso el patrón se ancla al FINAL de la línea: la IP buena es siempre la
+última "from IP port N", que la escribe sshd, nunca el atacante. Además:
+  * los caracteres invisibles del usuario (escapes de terminal) se muestran
+    como texto (\x1b) en lugar de llegar tal cual a la pantalla;
+  * las líneas absurdamente largas se descartan (sshd no las produce y
+    harían trabajar de más a la regex);
+  * una fecha imposible (31 de noviembre) descarta la línea en vez de
+    detener todo el análisis.
 """
 
 from __future__ import annotations
@@ -39,13 +54,23 @@ PATRON = re.compile(
     \s(?P<metodo>password|publickey|keyboard-interactive/pam)
     \sfor
     \s(?P<invalido>invalid\ user\ )?                  # aparece si el usuario no existe
-    (?P<usuario>\S+)
+    (?P<usuario>.+)                                   # ¡texto del atacante! puede tener espacios.
+                                                      # ".+" es "codicioso": se queda con todo lo
+                                                      # posible, así que la IP será la ÚLTIMA.
     \sfrom
     \s(?P<ip>\d{1,3}(?:\.\d{1,3}){3})                 # IPv4 (se valida después)
     \sport\s(?P<puerto>\d+)
+    (?:\sssh2)?                                       # cola que escribe sshd...
+    (?::\s.*)?                                        # ...y, con clave, su huella: ": ED25519 SHA256:..."
+    $                                                 # aquí TERMINA la línea
     """,
     re.VERBOSE,
 )
+
+# sshd recorta los nombres de usuario a 100 caracteres y syslog limita las
+# líneas a unos pocos KB. Una línea más larga es basura o un intento de
+# hacer trabajar de más a la regex: se descarta.
+LONGITUD_MAXIMA = 4096
 
 
 @dataclass(frozen=True)
@@ -90,20 +115,36 @@ def _fecha(coincidencia: re.Match, anio: int) -> datetime:
     return datetime.fromisoformat(iso).replace(tzinfo=None)
 
 
+def limpiar_texto(texto: str) -> str:
+    """Convierte los caracteres invisibles o de control en texto visible.
+
+    Un usuario como "\x1b[2J" borraría la pantalla de quien lee el informe
+    en la terminal. Con esto se muestra literalmente como "\\x1b[2J".
+    """
+    return "".join(c if c.isprintable() else c.encode("unicode_escape").decode("ascii") for c in texto)
+
+
 def analizar_linea(linea: str, anio: int | None = None) -> Intento | None:
     """Devuelve un Intento si la línea es un login (aceptado o fallido), o None."""
+    linea = linea.rstrip("\r\n")
+    if len(linea) > LONGITUD_MAXIMA:
+        return None
     coincidencia = PATRON.search(linea)
     if coincidencia is None or not _ip_valida(coincidencia.group("ip")):
         return None
+    try:
+        momento = _fecha(coincidencia, anio or datetime.now().year)
+    except ValueError:  # p. ej. "Nov 31" o "Feb 29" en un año no bisiesto
+        return None
     return Intento(
-        momento=_fecha(coincidencia, anio or datetime.now().year),
+        momento=momento,
         ip=coincidencia.group("ip"),
-        usuario=coincidencia.group("usuario"),
+        usuario=limpiar_texto(coincidencia.group("usuario")),
         exito=coincidencia.group("resultado") == "Accepted",
         metodo=coincidencia.group("metodo"),
         usuario_valido=coincidencia.group("invalido") is None,
         puerto=int(coincidencia.group("puerto")),
-        host=coincidencia.group("host"),
+        host=limpiar_texto(coincidencia.group("host")),
     )
 
 

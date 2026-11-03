@@ -10,6 +10,15 @@ A partir de los incidentes del detector:
      IPs anteriores ni se duplican.
   3. Escribe un script de shell con las órdenes de firewall (iptables).
 
+SEGURIDAD — este módulo escribe un script que alguien ejecutará como root,
+así que nada que venga de fuera se copia tal cual:
+  * Solo se aceptan IPv4 y se escribe su forma normalizada (str(IPv4Address)),
+    nunca el texto original. Ojo: ipaddress acepta IPv6 con "zona"
+    ("fe80::1%;reboot;") y ese texto llegaría intacto al script.
+  * lista_negra.txt y bloquear.sh se escriben de forma atómica (archivo
+    temporal + reemplazo) y con permisos 600: solo su dueño puede leerlos
+    o modificarlos antes de que root los ejecute.
+
 Importante: Centinela NO ejecuta el script. Bloquear tráfico en un servidor
 es una acción delicada; lo revisa y lo lanza una persona:
 
@@ -19,6 +28,8 @@ es una acción delicada; lo revisa y lo lanza una persona:
 from __future__ import annotations
 
 import ipaddress
+import os
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Iterable
@@ -32,6 +43,34 @@ LISTA_BLANCA_POR_DEFECTO = ("127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12", "192.1
 def _redes(texto_redes: Iterable[str]) -> list[ipaddress.IPv4Network]:
     """Convierte '10.0.0.0/8' o '1.2.3.4' en objetos de red (con validación)."""
     return [ipaddress.ip_network(r.strip(), strict=False) for r in texto_redes if r.strip()]
+
+
+def ipv4_normalizada(texto: str) -> str:
+    """Devuelve la IPv4 en forma canónica o lanza ValueError.
+
+    Es la única puerta por la que una IP llega a la lista y al script.
+    """
+    return str(ipaddress.IPv4Address(texto.strip()))
+
+
+def _escribir_privado(ruta: Path, texto: str) -> None:
+    """Escribe el archivo de golpe y con permisos 600 (solo su dueño).
+
+    Se escribe primero un temporal en la misma carpeta y luego se reemplaza
+    el original con os.replace, que es atómico: nunca queda un archivo a
+    medias si el programa se corta, ni hay un momento en que otro usuario
+    pueda colar su propio contenido.
+    """
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temporal = tempfile.mkstemp(dir=ruta.parent, prefix=f".{ruta.name}.")
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as archivo:
+            archivo.write(texto)
+        os.chmod(temporal, 0o600)
+        os.replace(temporal, ruta)
+    except BaseException:
+        os.unlink(temporal)
+        raise
 
 
 def esta_permitida(ip: str, lista_blanca: Iterable[str]) -> bool:
@@ -49,9 +88,13 @@ def ips_a_bloquear(incidentes: Iterable[Incidente],
     lista_blanca = list(lista_blanca)
     motivos: dict[str, list[str]] = {}
     for inc in sorted(incidentes, key=lambda i: (not i.comprometido, i.inicio)):
-        if esta_permitida(inc.ip, lista_blanca):
+        try:
+            ip = ipv4_normalizada(inc.ip)
+        except ValueError:
             continue
-        motivos.setdefault(inc.ip, []).append(inc.describir())
+        if esta_permitida(ip, lista_blanca):
+            continue
+        motivos.setdefault(ip, []).append(inc.describir())
     return {ip: " | ".join(textos) for ip, textos in motivos.items()}
 
 
@@ -59,8 +102,9 @@ def cargar(ruta: str | Path) -> dict[str, str]:
     """Lee una lista negra existente. Formato de cada línea:
 
         185.220.101.47  # motivo
-    Las líneas vacías o que empiezan por '#' se ignoran. Las IPs inválidas
-    también (un archivo editado a mano puede tener errores).
+    Las líneas vacías o que empiezan por '#' se ignoran. Lo que no sea una
+    IPv4 válida también (un archivo editado a mano puede tener errores, o
+    alguien puede haberlo manipulado).
     """
     ruta = Path(ruta)
     entradas: dict[str, str] = {}
@@ -71,9 +115,8 @@ def cargar(ruta: str | Path) -> dict[str, str]:
         if not linea or linea.startswith("#"):
             continue
         ip, _, motivo = linea.partition("#")
-        ip = ip.strip()
         try:
-            ipaddress.ip_address(ip)
+            ip = ipv4_normalizada(ip)
         except ValueError:
             continue
         entradas[ip] = motivo.strip()
@@ -81,20 +124,22 @@ def cargar(ruta: str | Path) -> dict[str, str]:
 
 
 def _orden_ip(ip: str):
-    return ipaddress.ip_address(ip)
+    return ipaddress.IPv4Address(ip)
 
 
 def guardar(ruta: str | Path, entradas: dict[str, str]) -> None:
     ruta = Path(ruta)
-    ruta.parent.mkdir(parents=True, exist_ok=True)
     lineas = [
         "# Lista negra de Centinela",
         f"# Actualizada: {datetime.now():%Y-%m-%d %H:%M:%S} · {len(entradas)} IPs",
         "# Formato: IP  # motivo",
     ]
     for ip in sorted(entradas, key=_orden_ip):
-        lineas.append(f"{ip:<16} # {entradas[ip]}" if entradas[ip] else ip)
-    ruta.write_text("\n".join(lineas) + "\n", encoding="utf-8")
+        # El motivo incluye nombres de usuario del atacante: lo dejamos en una
+        # sola línea para que no pueda "inventar" líneas nuevas en el archivo.
+        motivo = " ".join(entradas[ip].split())
+        lineas.append(f"{ipv4_normalizada(ip):<16} # {motivo}" if motivo else ipv4_normalizada(ip))
+    _escribir_privado(ruta, "\n".join(lineas) + "\n")
 
 
 def actualizar(ruta: str | Path, incidentes: Iterable[Incidente],
@@ -123,13 +168,13 @@ def script_firewall(entradas: Iterable[str]) -> str:
         "# Generado por Centinela. REVÍSALO antes de ejecutarlo:  sudo sh bloquear.sh",
         "set -e",
     ]
-    for ip in sorted(entradas, key=_orden_ip):
-        ipaddress.ip_address(ip)  # por seguridad: nunca escribir algo que no sea una IP
+    # ipv4_normalizada lanza ValueError con cualquier cosa que no sea una IPv4,
+    # y lo que se escribe es SU resultado, nunca el texto recibido.
+    ips = sorted({ipv4_normalizada(texto) for texto in entradas}, key=_orden_ip)
+    for ip in ips:
         lineas.append(f"iptables -C INPUT -s {ip} -j DROP 2>/dev/null || iptables -I INPUT -s {ip} -j DROP")
     return "\n".join(lineas) + "\n"
 
 
 def escribir_script(ruta: str | Path, entradas: Iterable[str]) -> None:
-    ruta = Path(ruta)
-    ruta.parent.mkdir(parents=True, exist_ok=True)
-    ruta.write_text(script_firewall(entradas), encoding="utf-8")
+    _escribir_privado(Path(ruta), script_firewall(entradas))

@@ -108,9 +108,17 @@ def cmd_todo(args) -> int:
     print(f"Analizados {len(intentos)} intentos de login de {args.log}\n")
     _imprimir_incidentes(incidentes)
     print()
-    reporte.generar_reporte(intentos, incidentes, args.carpeta)
-    print(f"Reporte con gráficos -> {args.carpeta}/reporte.md")
-    return cmd_bloquear(args, incidentes)
+    # SEGURIDAD: primero la lista negra y después el reporte. Si el reporte
+    # fallara (por ejemplo, por un dato raro en un gráfico), el bloqueo ya
+    # estaría hecho: un fallo en la parte "bonita" no debe frenar la defensa.
+    resultado = cmd_bloquear(args, incidentes)
+    try:
+        reporte.generar_reporte(intentos, incidentes, args.carpeta)
+        print(f"Reporte con gráficos -> {args.carpeta}/reporte.md")
+    except Exception as error:  # noqa: BLE001 - lo mostramos y seguimos
+        print(f"AVISO: no se pudo generar el reporte ({type(error).__name__}: {error})", file=sys.stderr)
+        return 1
+    return resultado
 
 
 # --- argumentos -----------------------------------------------------------------

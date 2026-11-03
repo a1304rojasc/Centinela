@@ -9,6 +9,11 @@ Uso:
     python fase1/centinela_fase1.py otro/archivo.log
 """
 
+# AVISO DE SEGURIDAD (auditoría): este script es la versión de aprendizaje
+# de la Fase 1 y su regex tiene dos fallos que ya están corregidos en
+# centinela/parser.py: un nombre de usuario con "from <IP> port N" dentro
+# engaña al patrón (se culpa a otra IP), y uno con espacios hace que la
+# línea se ignore. Los detalles están en SEGURIDAD.md.
 import re    # 're' = regular expressions (expresiones regulares)
 import sys   # 'sys' nos da acceso a los argumentos de la línea de comandos
 
