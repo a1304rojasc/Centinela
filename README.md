@@ -131,6 +131,20 @@ python -m pytest
 
 Hay 59 tests que cubren el parser (formatos, ruido, IPs imposibles, cambio de año), las reglas del detector (justo en el umbral, por debajo, ataques lentos, compromisos), la lista blanca, la fusión de la lista negra, que el script no admita texto que no sea una IP, el reporte completo y la línea de comandos de principio a fin.
 
+## Honeypot SSH
+
+`centinela/honeypot.py` es un SSH falso: habla SSH de verdad (con paramiko), registra cada intento y **nunca da acceso**.
+
+```bash
+python -m centinela honeypot                 # escucha en 127.0.0.1:2222
+python -m centinela todo logs/honeypot.log   # analiza los intentos registrados
+```
+
+- `logs/honeypot.log` guarda los intentos en formato auth.log, sin contraseñas.
+- `logs/credenciales.jsonl` guarda una línea JSON por intento, con la contraseña probada.
+
+Por defecto solo escucha en tu máquina. Ábrelo a la red (`--host 0.0.0.0`) solo en un entorno aislado.
+
 ## Seguridad
 
 Centinela pasó una auditoría de seguridad: 9 vulnerabilidades corregidas (2 altas, 4 medias, 3 bajas), cada una con su test en `tests/test_seguridad.py`. El informe completo, en español, está en [SEGURIDAD.md](SEGURIDAD.md). La lección principal: en un log, el nombre de usuario lo escribe el atacante.

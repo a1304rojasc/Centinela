@@ -74,6 +74,11 @@ def cmd_intentos(args) -> int:
     return 0
 
 
+def cmd_honeypot(args) -> int:
+    from centinela import honeypot  # import tardío: paramiko solo hace falta aquí
+    return honeypot.ejecutar(args.host, args.puerto, args.log, args.credenciales)
+
+
 def cmd_detectar(args) -> int:
     _imprimir_incidentes(detector.detectar(_leer(args), _reglas(args)))
     return 0
@@ -153,6 +158,13 @@ def construir_parser() -> argparse.ArgumentParser:
                          help="IP o red que nunca se bloquea, p. ej. 203.0.113.0/24 (repetible)")
     bloqueo.add_argument("--sin-redes-privadas", action="store_true",
                          help="permite bloquear también redes privadas (10.x, 192.168.x...)")
+
+    h = sub.add_parser("honeypot", help="SSH falso que registra intentos (nunca da acceso)")
+    h.add_argument("--host", default="127.0.0.1", help="interfaz (por defecto solo esta máquina)")
+    h.add_argument("--puerto", type=int, default=2222)
+    h.add_argument("--log", default="logs/honeypot.log")
+    h.add_argument("--credenciales", default="logs/credenciales.jsonl")
+    h.set_defaults(funcion=cmd_honeypot)
 
     i = sub.add_parser("intentos", parents=[comun], help="lista los intentos de login")
     i.add_argument("--ip", help="mostrar solo esta IP")
