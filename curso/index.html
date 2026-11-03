@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso Centinela</title>
+<meta name="description" content="Curso interactivo de ciberseguridad con Python a partir del proyecto Centinela: logs SSH, expresiones regulares, detección de fuerza bruta, análisis con pandas, respuesta a incidentes y fundamentos de redes y criptografía.">
+<style>
+:root{
+  --bg:#f6f5f1;--panel:#ffffff;--text:#2a2a2e;--strong:#111114;--muted:#6b6b72;--line:#e3e2dc;--soft:#efeee8;
+  --accent:#1f5fbf;--accent-soft:#e7effb;--ok:#1e7a46;--ok-soft:#e5f4ea;--bad:#b3261e;--bad-soft:#fbe9e7;--warn:#8a5a00;--warn-soft:#fdf3dc;
+  --code-bg:#f1f0ea;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#111113;--panel:#18181b;--text:#cfcfd4;--strong:#f2f2f4;--muted:#8d8d96;--line:#2a2a30;--soft:#1f1f24;
+    --accent:#7aa7ff;--accent-soft:#1b2640;--ok:#5fd394;--ok-soft:#15291e;--bad:#ff8a80;--bad-soft:#331a19;--warn:#f2c25b;--warn-soft:#2e2614;
+    --code-bg:#1f1f24;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111113;--panel:#18181b;--text:#cfcfd4;--strong:#f2f2f4;--muted:#8d8d96;--line:#2a2a30;--soft:#1f1f24;
+  --accent:#7aa7ff;--accent-soft:#1b2640;--ok:#5fd394;--ok-soft:#15291e;--bad:#ff8a80;--bad-soft:#331a19;--warn:#f2c25b;--warn-soft:#2e2614;
+  --code-bg:#1f1f24;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{color:var(--strong);line-height:1.25}
+h1{font-size:30px;margin:0 0 6px}
+h2{font-size:21px;margin:36px 0 10px}
+h3{font-size:17px;margin:26px 0 8px}
+p{margin:0 0 14px}
+code{font-family:var(--mono);font-size:.88em;background:var(--code-bg);padding:1px 5px;border-radius:4px}
+pre{font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;margin:0 0 16px;border:1px solid var(--line)}
+pre code{background:none;padding:0;font-size:inherit}
+table{border-collapse:collapse;width:100%;margin:0 0 16px;font-size:14.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--strong);font-weight:600}
+ul,ol{padding-left:22px;margin:0 0 14px}
+li{margin:4px 0}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--line);background:var(--panel);padding:22px 14px 30px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px 16px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.brand-mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:700}
+.brand b{display:block;color:var(--strong);font-size:15px}
+.brand span{font-size:12.5px;color:var(--muted)}
+.progress{margin:6px 8px 16px;font-size:13px;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--soft);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .4s}
+.nav-group{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 8px 6px}
+.nav a{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:7px;text-decoration:none;color:var(--text);font-size:14.5px}
+.nav a:hover{background:var(--soft)}
+.nav a[aria-current="page"]{background:var(--accent-soft);color:var(--strong);font-weight:600}
+.nav .num{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:600 11px/1 var(--mono);border:1px solid var(--line);color:var(--muted)}
+.nav a.hecho .num{background:var(--ok);border-color:var(--ok);color:#fff}
+.main{padding:28px 40px 80px;min-width:0}
+.top{display:flex;justify-content:flex-end;gap:8px;margin-bottom:8px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--panel);color:var(--strong);padding:7px 13px;border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:focus-visible,.nav a:focus-visible,.opcion:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.menu-btn{display:none}
+.content{max-width:780px;margin:0 auto}
+.modulo{display:none}
+.modulo.activo{display:block}
+.kicker{font:600 12.5px/1 var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.lead{font-size:18px;color:var(--muted);margin-bottom:22px}
+.objetivos{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:0 0 24px}
+.objetivos b{color:var(--strong)}
+.objetivos ul{margin:6px 0 0}
+.nota{border-left:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 8px 8px 0;margin:0 0 16px;font-size:15px}
+.nota.aviso{border-color:var(--warn);background:var(--warn-soft)}
+.nota.ok{border-color:var(--ok);background:var(--ok-soft)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 20px}
+.card h3{margin-top:0}
+.figura{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel);margin:0 0 20px}
+.figura iframe{display:block;width:100%;border:0;background:var(--panel)}
+.figura-pie{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.figura-cargar{display:grid;place-items:center;gap:10px;padding:40px 16px;text-align:center;color:var(--muted)}
+/* quiz */
+.quiz{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:30px 0 20px}
+.quiz h2{margin-top:0}
+.pregunta{padding:16px 0;border-top:1px solid var(--line)}
+.pregunta:first-of-type{border-top:0}
+.pregunta p{color:var(--strong);font-weight:600}
+.opcion{display:block;width:100%;text-align:left;font:inherit;font-size:15px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin:7px 0;cursor:pointer}
+.opcion:hover:not(:disabled){border-color:var(--accent)}
+.opcion:disabled{cursor:default}
+.opcion.correcta{background:var(--ok-soft);border-color:var(--ok);color:var(--strong)}
+.opcion.incorrecta{background:var(--bad-soft);border-color:var(--bad)}
+.explicacion{font-size:14.5px;padding:9px 12px;border-radius:8px;margin-top:6px}
+.explicacion.bien{background:var(--ok-soft)}
+.explicacion.mal{background:var(--bad-soft)}
+.marcador{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;margin-top:6px;font-weight:600;color:var(--strong)}
+.siguiente{display:flex;justify-content:space-between;gap:10px;margin-top:30px;flex-wrap:wrap}
+/* laboratorios */
+.lab label{display:block;font-size:14px;color:var(--strong);font-weight:600;margin:10px 0 4px}
+.lab textarea{width:100%;min-height:150px;font:12.5px/1.5 var(--mono);background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:10px}
+.lab .fila{display:flex;gap:16px;flex-wrap:wrap;align-items:end}
+.lab .fila>div{flex:1 1 180px}
+.lab select,.lab input[type=range]{width:100%}
+.lab select{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)}
+.lab output{font:600 13px var(--mono);color:var(--accent)}
+.resultado{font-size:14px;overflow-x:auto}
+.resultado table{font:12.5px/1.45 var(--mono)}
+.tag{display:inline-block;font:600 11.5px/1 var(--mono);padding:3px 7px;border-radius:5px}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.bad{background:var(--bad-soft);color:var(--bad)}
+.tag.gris{background:var(--soft);color:var(--muted)}
+.linea-tiempo{width:100%;height:auto;display:block;margin:10px 0}
+.veredicto{font-weight:600;color:var(--strong);margin-top:6px}
+/* glosario */
+.buscador{width:100%;font:inherit;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);margin:6px 0 20px}
+.glosario dt{font-weight:700;color:var(--strong);margin-top:16px}
+.glosario dd{margin:4px 0 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.glosario dd small{display:block;margin-top:4px;color:var(--muted)}
+.vacio{color:var(--muted);font-style:italic}
+img.captura{max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin:0 0 16px}
+.portada-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:0 0 20px}
+.portada-grid a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;text-decoration:none;color:var(--text)}
+.portada-grid a:hover{border-color:var(--accent)}
+.portada-grid b{display:block;color:var(--strong);margin-bottom:4px}
+.portada-grid span{font-size:13.5px;color:var(--muted)}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 auto 0 0;width:min(300px,86vw);z-index:20;transform:translateX(-102%);transition:transform .25s;box-shadow:0 0 40px rgba(0,0,0,.25)}
+  .side.abierto{transform:none}
+  .main{padding:16px 16px 70px}
+  .top{position:sticky;top:0;z-index:10;background:var(--bg);padding:8px 0;justify-content:space-between}
+  .menu-btn{display:inline-block}
+  h1{font-size:25px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="side" id="side" aria-label="Índice del curso">
+  <div class="brand"><div class="brand-mark" aria-hidden="true">C</div><div><b>Curso Centinela</b><span>Ciberseguridad con Python</span></div></div>
+  <div class="progress"><span id="progreso-texto">0 de 13 módulos completados</span><div class="bar"><i id="progreso-barra"></i></div></div>
+  <nav class="nav" id="nav"></nav>
+</aside>
+<main class="main">
+<div class="top">
+  <button class="btn menu-btn" id="menu-btn" aria-controls="side" aria-expanded="false">☰ Índice</button>
+  <button class="btn" id="tema-btn" title="Cambiar entre tema claro y oscuro">◐ Tema</button>
+</div>
+<div class="content" id="contenido">
+
+<!-- ======================================================== 0 · PORTADA -->
+<section class="modulo" id="inicio" data-titulo="Bienvenida" data-grupo="Empezar">
+  <div class="kicker">Curso interactivo</div>
+  <h1>Centinela: aprende ciberseguridad construyendo un detector</h1>
+  <p class="lead">Un curso práctico, en español, que recorre el repositorio Centinela de principio a fin: cómo se leen los logs de un servidor, cómo se detecta un ataque de fuerza bruta, cómo se analiza y se responde, y los conceptos de redes y criptografía que hay detrás.</p>
+
+  <div class="objetivos"><b>Cómo funciona este curso</b>
+    <ul>
+      <li>Cada módulo tiene una explicación, fragmentos del código real del proyecto y, a menudo, un laboratorio o una figura interactiva.</li>
+      <li>Al final de cada módulo hay un <b>quiz</b>. Cuando contestas todas sus preguntas, el módulo se marca como completado en el índice.</li>
+      <li>Tu progreso se guarda <b>solo en este navegador</b>. Si cambias de ordenador, empiezas de cero.</li>
+      <li>El <a href="#glosario">glosario</a> explica cada término técnico, y el <a href="#examen">examen final</a> mezcla preguntas de todo el curso.</li>
+    </ul>
+  </div>
+
+  <h2>Mapa del curso</h2>
+  <div class="portada-grid" id="mapa"></div>
+
+  <h2>Qué necesitas</h2>
+  <ul>
+    <li>Saber lo básico de Python: variables, listas, diccionarios, funciones y bucles <code>for</code>.</li>
+    <li>Para ejecutar el código: Python 3.10 o superior y las dependencias del proyecto.</li>
+  </ul>
+<pre><code>git clone https://github.com/a1304rojasc/Centinela.git
+cd Centinela
+python -m pip install -r requirements.txt
+python -m centinela generar
+python -m centinela todo</code></pre>
+  <div class="nota">Las figuras interactivas se cargan desde la carpeta <code>figuras/</code> del repositorio. Para verlas dentro del curso, abre este archivo desde tu copia del repositorio (no descargado suelto).</div>
+  <div class="nota aviso"><b>Uso responsable.</b> Todo lo que aprendas aquí es para defender sistemas propios o con permiso. Analizar o atacar sistemas ajenos sin autorización es ilegal en la mayoría de países.</div>
+  <div class="siguiente"><span></span><a class="btn primary" href="#logs">Empezar el módulo 1 →</a></div>
+</section>
+
+<!-- ======================================================== 1 · LOGS -->
+<section class="modulo" id="logs" data-titulo="SSH y los logs" data-grupo="Parte 1 · Detectar" data-num="1">
+  <div class="kicker">Módulo 1</div>
+  <h1>SSH y los logs de autenticación</h1>
+  <p class="lead">Antes de detectar un ataque hay que saber dónde queda registrado y qué aspecto tiene.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Qué es SSH y por qué es un objetivo tan atacado.</li>
+    <li>Dónde están los logs de autenticación en Linux y cómo es una línea.</li>
+    <li>Qué líneas importan para detectar ataques y cuáles son ruido.</li></ul></div>
+
+  <h2>SSH: la puerta de administración</h2>
+  <p><b>SSH</b> (<i>Secure Shell</i>) es el protocolo con el que se administra un servidor Linux a distancia. Escucha por defecto en el <b>puerto 22</b>. Quien entra por SSH con una cuenta con privilegios controla la máquina, así que cualquier servidor con el puerto 22 abierto a Internet recibe intentos de login automáticos a todas horas.</p>
+  <p>Hay dos formas habituales de autenticarse:</p>
+  <ul>
+    <li><b>Contraseña</b> (<code>password</code>): se puede intentar adivinar, que es justo la fuerza bruta.</li>
+    <li><b>Clave pública</b> (<code>publickey</code>): el usuario demuestra que tiene una clave privada. No se puede adivinar en la práctica, por eso es la opción recomendada.</li>
+  </ul>
+
+  <h2>Dónde se guardan los intentos</h2>
+  <table>
+    <tr><th>Sistema</th><th>Archivo</th></tr>
+    <tr><td>Debian, Ubuntu</td><td><code>/var/log/auth.log</code></td></tr>
+    <tr><td>Red Hat, Fedora, Rocky</td><td><code>/var/log/secure</code></td></tr>
+    <tr><td>Sistemas solo con journald</td><td><code>journalctl -u ssh</code> (o <code>-u sshd</code>)</td></tr>
+  </table>
+  <p>Leer estos archivos requiere permisos de administrador. Por eso Centinela trae un <b>generador</b> (<code>centinela/generador.py</code>) que fabrica un <code>logs/auth.log</code> realista para practicar sin tocar un servidor real.</p>
+
+  <h2>Anatomía de una línea</h2>
+<pre><code>Nov  2 03:12:05 srv-web01 sshd[4242]: Failed password for root from 185.220.101.47 port 51234 ssh2
+└──── fecha ───┘ └servidor┘ └proceso┘  └resultado┘ └método┘ └usuario┘  └──── IP ────┘  └puerto┘</code></pre>
+  <ul>
+    <li><b>Fecha</b>: el formato clásico de syslog <b>no incluye el año</b>, y el día se rellena con un espacio (<code>Nov  2</code>, con dos espacios). Por eso el parser necesita que le digas el año.</li>
+    <li><b>Proceso</b>: <code>sshd</code> con su número de proceso (PID) entre corchetes.</li>
+    <li><b>Resultado</b>: <code>Accepted</code> (entró) o <code>Failed</code> (falló).</li>
+    <li><b>Puerto</b>: es el puerto de <i>origen</i> del cliente, que cambia en cada conexión. No es el 22.</li>
+  </ul>
+  <p>Los sistemas modernos pueden usar fechas ISO 8601, que sí llevan año y zona horaria. Centinela entiende los dos formatos:</p>
+<pre><code>2026-11-02T03:12:05.123456+00:00 srv-web01 sshd[4242]: Accepted password for maria from 192.168.1.15 port 52000 ssh2</code></pre>
+
+  <h2>Señal y ruido</h2>
+  <p>La mayoría de las líneas no son intentos de login. Estas son las que importan y las que no:</p>
+  <table>
+    <tr><th>Línea</th><th>¿Cuenta?</th></tr>
+    <tr><td><code>Failed password for root from …</code></td><td><span class="tag bad">intento fallido</span></td></tr>
+    <tr><td><code>Failed password for invalid user oracle from …</code></td><td><span class="tag bad">intento fallido</span> contra un usuario que no existe</td></tr>
+    <tr><td><code>Accepted password for maria from …</code></td><td><span class="tag ok">login exitoso</span></td></tr>
+    <tr><td><code>Invalid user oracle from …</code></td><td><span class="tag gris">no</span> va siempre seguida de la línea <code>Failed … invalid user</code>; si se contara, cada intento valdría doble</td></tr>
+    <tr><td><code>CRON[…]: pam_unix(cron:session) …</code>, <code>sudo: …</code></td><td><span class="tag gris">no</span> tareas programadas y comandos con privilegios</td></tr>
+    <tr><td><code>Connection closed by authenticating user root … [preauth]</code></td><td><span class="tag gris">no</span> el cierre de una conexión ya contada</td></tr>
+  </table>
+
+  <h2>Los actores del log de ejemplo</h2>
+  <p>El generador crea un día de actividad del servidor <code>srv-web01</code> con personajes elegidos para poner a prueba al detector:</p>
+  <table>
+    <tr><th>Actor</th><th>IP</th><th>Qué hace</th></tr>
+    <tr><td>5 usuarios legítimos</td><td>192.168.x, 10.0.x</td><td>Entran en horario laboral; a veces se equivocan una o dos veces. Carlos falla 4 veces seguidas.</td></tr>
+    <tr><td>Ráfaga</td><td><code>185.220.101.47</code></td><td>110 contraseñas de diccionario en unos 4 minutos.</td></tr>
+    <tr><td>Enumeración</td><td><code>45.134.26.89</code></td><td>Prueba 55 usuarios inventados y <b>entra</b> con la cuenta <code>test</code>.</td></tr>
+    <tr><td>Lento</td><td><code>103.75.190.11</code></td><td>Un intento cada 90-150 s durante dos horas.</td></tr>
+    <tr><td>Botnet</td><td><code>5.188.62.10-21</code></td><td>12 IPs con 2-3 intentos cada una.</td></tr>
+  </table>
+  <p>El generador usa una <b>semilla</b> fija (<code>random.Random(42)</code>): la misma semilla produce siempre el mismo log, lo que permite que los tests den siempre el mismo resultado.</p>
+  <div class="quiz" data-quiz="logs"></div>
+</section>
+
+<!-- ======================================================== 2 · REGEX -->
+<section class="modulo" id="regex" data-titulo="Expresiones regulares" data-grupo="Parte 1 · Detectar" data-num="2">
+  <div class="kicker">Módulo 2</div>
+  <h1>Leer logs con expresiones regulares</h1>
+  <p class="lead">Una expresión regular (regex) es un molde que describe cómo es un texto. Con ella convertimos cada línea en datos con estructura.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Las piezas básicas de una regex: clases, cuantificadores, grupos y alternativas.</li>
+    <li>Usar grupos con nombre y el modo <code>re.VERBOSE</code> de Python.</li>
+    <li>Por qué una regex no basta para validar una IP.</li></ul></div>
+
+  <h2>Las piezas que usa Centinela</h2>
+  <table>
+    <tr><th>Pieza</th><th>Significa</th><th>Ejemplo</th></tr>
+    <tr><td><code>\d</code></td><td>un dígito</td><td><code>\d{2}</code> → <code>03</code></td></tr>
+    <tr><td><code>\s</code> / <code>\S</code></td><td>un espacio / cualquier cosa que no sea espacio</td><td><code>\S+</code> → <code>srv-web01</code></td></tr>
+    <tr><td><code>+</code>, <code>{1,3}</code>, <code>?</code></td><td>uno o más / entre 1 y 3 / opcional</td><td><code>\d{1,3}</code> → <code>185</code></td></tr>
+    <tr><td><code>A|B</code></td><td>A o B</td><td><code>Accepted|Failed</code></td></tr>
+    <tr><td><code>(?P&lt;nombre&gt;…)</code></td><td>grupo con nombre: guarda lo que encaja</td><td><code>(?P&lt;ip&gt;…)</code></td></tr>
+    <tr><td><code>(?:…)</code></td><td>agrupa <b>sin</b> guardar</td><td><code>(?:\.\d{1,3}){3}</code></td></tr>
+    <tr><td><code>\[</code></td><td>un corchete literal (la barra "escapa" el símbolo)</td><td><code>sshd\[\d+\]</code></td></tr>
+    <tr><td><code>^</code></td><td>inicio de la línea</td><td></td></tr>
+  </table>
+
+  <h2>El patrón de Centinela</h2>
+  <p>Así es (resumido) el patrón de <code>centinela/parser.py</code>. <code>re.VERBOSE</code> permite escribirlo en varias líneas con comentarios. En ese modo los espacios normales se ignoran, y para un espacio de verdad se escribe <code>\s</code> o <code>\ </code>.</p>
+<pre><code>PATRON = re.compile(r"""
+    ^(?P&lt;fecha_syslog&gt;[A-Z][a-z]{2}\s+\d{1,2}\s\d{2}:\d{2}:\d{2})
+    \s(?P&lt;host&gt;\S+)
+    \ssshd\[\d+\]:
+    \s(?P&lt;resultado&gt;Accepted|Failed)
+    \s(?P&lt;metodo&gt;password|publickey|keyboard-interactive/pam)
+    \sfor
+    \s(?P&lt;invalido&gt;invalid\ user\ )?     # aparece si el usuario no existe
+    (?P&lt;usuario&gt;\S+)
+    \sfrom
+    \s(?P&lt;ip&gt;\d{1,3}(?:\.\d{1,3}){3})
+    \sport\s(?P&lt;puerto&gt;\d+)
+""", re.VERBOSE)
+
+coincidencia = PATRON.search(linea)
+if coincidencia:
+    print(coincidencia.group("ip"), coincidencia.group("usuario"))</code></pre>
+  <div class="nota">Fíjate en <code>(?P&lt;invalido&gt;invalid\ user\ )?</code>. Sin ese grupo opcional, en la línea <code>Failed password for invalid user oracle</code> la regex tomaría <code>invalid</code> como nombre de usuario.</div>
+
+  <h2>Una regex no basta para validar una IP</h2>
+  <p><code>\d{1,3}(?:\.\d{1,3}){3}</code> acepta <code>999.1.1.1</code>, que no es una IP válida. Por eso el parser la comprueba después con el módulo <code>ipaddress</code> de Python:</p>
+<pre><code>import ipaddress
+ipaddress.IPv4Address("185.220.101.47")   # bien
+ipaddress.IPv4Address("999.1.1.1")        # ValueError</code></pre>
+  <p>Es una idea que se repite en seguridad: <b>valida los datos con la herramienta más estricta que tengas</b>, sobre todo si después los vas a usar para algo delicado, como escribir una regla de firewall (módulo 6).</p>
+
+  <h2>Laboratorio: prueba el parser</h2>
+  <div class="card lab">
+    <p>Esta es la misma regex traducida a JavaScript, que escribe los grupos con nombre como <code>(?&lt;nombre&gt;…)</code> en vez de <code>(?P&lt;nombre&gt;…)</code>. Edita las líneas, añade otras o rompe alguna y mira qué extrae.</p>
+    <label for="regex-entrada">Líneas de log</label>
+    <textarea id="regex-entrada" spellcheck="false">Nov  2 03:12:05 srv-web01 sshd[4242]: Failed password for root from 185.220.101.47 port 51234 ssh2
+Nov  2 14:41:10 srv-web01 sshd[4250]: Invalid user oracle from 45.134.26.89 port 40112
+Nov  2 14:41:10 srv-web01 sshd[4250]: Failed password for invalid user oracle from 45.134.26.89 port 40112 ssh2
+Nov  2 14:43:40 srv-web01 sshd[4301]: Accepted password for test from 45.134.26.89 port 40190 ssh2
+Nov  2 09:05:01 srv-web01 sshd[99]: Accepted publickey for deploy from 10.0.0.50 port 41000 ssh2: ED25519 SHA256:q3Xb8kR0
+Nov  2 00:32:14 srv-web01 CRON[61710]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2026-11-02T08:15:00.000000+00:00 srv-web01 sshd[777]: Failed password for maria from 192.168.1.15 port 52000 ssh2
+Nov  2 03:12:09 srv-web01 sshd[4243]: Failed password for root from 999.1.1.1 port 51239 ssh2</textarea>
+    <div class="resultado" id="regex-salida" aria-live="polite"></div>
+  </div>
+  <div class="quiz" data-quiz="regex"></div>
+</section>
+
+<!-- ======================================================== 3 · DETECCIÓN -->
+<section class="modulo" id="deteccion" data-titulo="Detección por ventana" data-grupo="Parte 1 · Detectar" data-num="3">
+  <div class="kicker">Módulo 3</div>
+  <h1>Detectar la fuerza bruta con una ventana de tiempo</h1>
+  <p class="lead">Una persona se equivoca de contraseña 1, 2, quizá 4 veces. Un programa falla decenas de veces en poco tiempo. Esa diferencia es la que buscamos.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Qué es un ataque de fuerza bruta y sus variantes.</li>
+    <li>Cómo funciona una ventana deslizante con umbral.</li>
+    <li>Qué son los falsos positivos y los falsos negativos, y cómo afectan el umbral y la ventana.</li></ul></div>
+
+  <h2>Fuerza bruta y sus variantes</h2>
+  <ul>
+    <li><b>Fuerza bruta / diccionario</b>: probar muchas contraseñas, normalmente de una lista de contraseñas comunes, contra cuentas conocidas como <code>root</code> o <code>admin</code>.</li>
+    <li><b>Enumeración de usuarios</b>: probar nombres de usuario para descubrir cuáles existen.</li>
+    <li><b>Ataque lento</b> (<i>low and slow</i>): pocos intentos por minuto, para no disparar alarmas.</li>
+    <li><b>Ataque distribuido</b>: muchas IPs (una botnet) con pocos intentos cada una.</li>
+    <li><b>Password spraying</b>: una sola contraseña muy común probada contra muchos usuarios.</li>
+  </ul>
+
+  <h2>La ventana deslizante</h2>
+  <p>Para cada IP, recorremos sus fallos en orden y mantenemos una "ventana" con los fallos de los últimos <i>N</i> segundos. Si dentro hay al menos <b>umbral</b> fallos, salta la alerta.</p>
+<pre><code>from collections import deque
+
+def rachas(momentos, umbral, ventana):
+    cola = deque()                 # fallos dentro de la ventana actual
+    tramos = []
+    for t in momentos:             # momentos ordenados de UNA IP
+        cola.append(t)
+        while t - cola[0] &gt; ventana:
+            cola.popleft()         # este fallo ya quedó fuera de la ventana
+        if len(cola) &gt;= umbral:
+            inicio = cola[0]
+            if tramos and inicio &lt;= tramos[-1][1]:
+                tramos[-1][1] = t  # alarga el incidente en curso
+            else:
+                tramos.append([inicio, t])
+    return tramos</code></pre>
+  <p>Una <code>deque</code> es una lista en la que es muy rápido añadir por la derecha y quitar por la izquierda, justo lo que necesita una ventana que avanza. Las alertas que se solapan se fusionan en un único <b>incidente</b>.</p>
+
+  <h2>Dos reglas mejor que una</h2>
+  <table>
+    <tr><th>Regla</th><th>Por defecto</th><th>Atrapa</th></tr>
+    <tr><td><code>rafaga</code></td><td>5 fallos en 60 s</td><td>ataques rápidos de diccionario y de enumeración</td></tr>
+    <tr><td><code>sostenido</code></td><td>20 fallos en 1 hora</td><td>ataques lentos que nunca llegan a 5 en un minuto</td></tr>
+  </table>
+  <p>Un ataque rápido cumple las dos reglas a la vez. Para no contarlo dos veces, si dos incidentes de la misma IP se solapan se informa solo el de la regla que va primero.</p>
+
+  <h2>Compromiso: lo más urgente</h2>
+  <p>Si una IP con un incidente consigue un login <b>exitoso</b> después de empezar el ataque, Centinela marca el incidente como <b>comprometido</b> (<code>!!</code>). Seguramente el atacante adivinó la contraseña. En el log de ejemplo le pasa a <code>45.134.26.89</code>, que entra como <code>test</code>.</p>
+
+  <h2>Laboratorio: ajusta la regla</h2>
+  <div class="card lab">
+    <p>Elige un comportamiento y mueve el umbral y la ventana. Cada punto es un intento fallido de una misma IP; la franja roja es el incidente detectado. Usa el mismo algoritmo que <code>detector.py</code>.</p>
+    <div class="fila">
+      <div><label for="sim-escenario">Comportamiento</label>
+        <select id="sim-escenario">
+          <option value="persona">Persona despistada (4 fallos)</option>
+          <option value="rafaga" selected>Ráfaga (60 fallos, 1 cada 2 s)</option>
+          <option value="lento">Ataque lento (30 fallos, 1 cada 2 min)</option>
+          <option value="botnet">Una IP de una botnet (3 fallos)</option>
+          <option value="mixto">Persona y luego ataque</option>
+        </select></div>
+      <div><label for="sim-umbral">Umbral: <output id="sim-umbral-v">5</output> fallos</label><input id="sim-umbral" type="range" min="2" max="30" value="5"></div>
+      <div><label for="sim-ventana">Ventana: <output id="sim-ventana-v">60 s</output></label><input id="sim-ventana" type="range" min="0" max="6" value="1"></div>
+    </div>
+    <svg class="linea-tiempo" id="sim-svg" viewBox="0 0 700 90" role="img" aria-label="Línea de tiempo de fallos"></svg>
+    <div class="veredicto" id="sim-veredicto" aria-live="polite"></div>
+  </div>
+
+  <h2>Falsos positivos y falsos negativos</h2>
+  <table>
+    <tr><th></th><th>Qué es</th><th>Ejemplo</th></tr>
+    <tr><td><b>Falso positivo</b></td><td>Alerta sobre algo inocente.</td><td>Con umbral 3, Carlos (4 fallos seguidos) acabaría en la lista negra.</td></tr>
+    <tr><td><b>Falso negativo</b></td><td>Un ataque que pasa sin alerta.</td><td>Cada IP de la botnet falla solo 2-3 veces y nunca llega al umbral.</td></tr>
+  </table>
+  <p>Bajar el umbral reduce los falsos negativos pero aumenta los positivos, y al revés. No existe un umbral perfecto: se elige según lo que cueste cada error.</p>
+  <div class="nota aviso"><b>Limitación conocida.</b> Centinela cuenta fallos <i>por IP</i>, así que no ve ataques distribuidos. En la gráfica de la línea de tiempo del README, la botnet aparece como un pico a las 09:00 sin ningún incidente asociado.</div>
+  <div class="quiz" data-quiz="deteccion"></div>
+</section>
+
+<!-- ======================================================== 4 · TOKEN BUCKET -->
+<section class="modulo" id="limite" data-titulo="Limitar el ritmo" data-grupo="Parte 1 · Detectar" data-num="4">
+  <div class="kicker">Módulo 4</div>
+  <h1>Prevenir: limitar el ritmo con un token bucket</h1>
+  <p class="lead">Detectar es reaccionar después. Un limitador de ritmo frena el ataque mientras ocurre.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Cómo funciona el algoritmo <i>token bucket</i> (cubo de fichas).</li>
+    <li>Qué controlan la capacidad y el ritmo de recarga.</li>
+    <li>Por qué frena la fuerza bruta aunque no la impida del todo.</li></ul></div>
+
+  <h2>La regla</h2>
+  <ol>
+    <li>Hay un cubo con <b>capacidad</b> para <i>C</i> fichas. Empieza lleno.</li>
+    <li>Se añaden fichas a un <b>ritmo de recarga</b> fijo de <i>r</i> fichas por segundo, sin pasar de la capacidad.</li>
+    <li>Cada petición (cada intento de login) gasta una ficha. Si no hay ficha, se rechaza; en una web, con <code>HTTP 429 Too Many Requests</code>.</li>
+  </ol>
+<pre><code>fichas = min(capacidad, fichas + recarga * dt)
+if fichas &gt;= 1:
+    fichas -= 1          # aceptado: el servidor comprueba la contraseña
+else:
+    rechazar()           # bloqueado: ni siquiera se mira la contraseña</code></pre>
+  <p>Consecuencia clave: a la larga, los intentos aceptados por segundo <b>no pueden superar el ritmo de recarga</b>, por rápido que ataque el atacante. La capacidad solo permite una ráfaga inicial.</p>
+
+  <h2>La figura</h2>
+  <p>Una máquina de banco: un depósito de fichas que se rellena con un reloj, un cilindro que empuja una llave contra una cerradura, y una compuerta que solo se levanta si entra una ficha. Pon el ataque muy por encima de la recarga y mira cómo el contador "aceptados por segundo" acaba igualando la recarga.</p>
+  <div class="figura" data-figura="token-bucket" data-alto="1060" data-alto-movil="1170"></div>
+
+  <h2>Dónde se usa</h2>
+  <ul>
+    <li>Pantallas de login y APIs web (por IP, por usuario o por clave de API).</li>
+    <li>En SSH, la opción <code>MaxStartups</code> limita las conexiones sin autenticar, y herramientas como <code>fail2ban</code> bloquean IPs a partir del log.</li>
+    <li>Redes: limitar el ancho de banda de un cliente.</li>
+  </ul>
+  <div class="nota">Un limitador por IP tiene el mismo punto débil que el detector del módulo 3: una botnet reparte el ataque entre muchas IPs. Por eso se combina con límites por usuario, bloqueo temporal de cuentas y, sobre todo, autenticación por clave o con un segundo factor (MFA).</div>
+  <div class="quiz" data-quiz="limite"></div>
+</section>
+
+<!-- ======================================================== 5 · PANDAS -->
+<section class="modulo" id="analisis" data-titulo="Analizar con pandas" data-grupo="Parte 2 · Analizar y responder" data-num="5">
+  <div class="kicker">Módulo 5</div>
+  <h1>Analizar los datos con pandas y matplotlib</h1>
+  <p class="lead">Con cientos o miles de intentos, una tabla y tres gráficos lo cuentan mejor que la terminal.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Qué es un DataFrame y cómo se crea a partir de objetos.</li>
+    <li>Agrupar con <code>groupby().agg()</code> y por tiempo con <code>resample()</code>.</li>
+    <li>Leer los tres gráficos del reporte de Centinela.</li></ul></div>
+
+  <h2>Del objeto a la tabla</h2>
+  <p>Un <b>DataFrame</b> es una tabla en memoria con columnas con nombre, parecida a una hoja de cálculo pero manejada desde código. <code>reporte.py</code> convierte cada <code>Intento</code> en una fila:</p>
+<pre><code>import pandas as pd
+filas = [{"momento": i.momento, "ip": i.ip, "usuario": i.usuario, "exito": i.exito} for i in intentos]
+df = pd.DataFrame(filas)</code></pre>
+
+  <h2>Agrupar por IP</h2>
+<pre><code>df = df.assign(fallo=~df["exito"])          # ~ invierte True/False
+tabla = df.groupby("ip").agg(
+    intentos=("exito", "size"),             # cuántas filas
+    fallos=("fallo", "sum"),                # True cuenta como 1
+    usuarios_distintos=("usuario", "nunique"),
+    primero=("momento", "min"),
+)
+tabla.sort_values("fallos", ascending=False).head(10)</code></pre>
+  <p>Es lo mismo que una tabla dinámica de Excel: se reparten las filas por IP y se calcula un resumen por grupo.</p>
+
+  <h2>Agrupar por tiempo</h2>
+<pre><code>serie = df.set_index("momento")
+fallos_cada_10_min = serie[~serie["exito"]].resample("10min").size()</code></pre>
+  <p><code>resample</code> reparte las filas en tramos de tiempo, aquí de 10 minutos, y cuenta cuántas caen en cada tramo.</p>
+
+  <h2>Los gráficos del reporte</h2>
+  <p><code>python -m centinela reporte</code> crea estos gráficos con matplotlib en la carpeta <code>reportes/</code>:</p>
+  <img class="captura" src="../docs/img/linea_tiempo.png" alt="Línea de tiempo con picos de fallos a las 03:12, 09:00, 14:40 y de 20:00 a 22:00; zonas sombreadas en los incidentes" loading="lazy">
+  <p>Los picos rojos son los ataques y las zonas sombreadas los incidentes detectados. La línea discontinua marca el login del atacante. El pico de las 09:00 no tiene sombra: es la botnet.</p>
+  <img class="captura" src="../docs/img/top_ips.png" alt="Barras con las 10 IPs con más fallos; las tres atacantes en rojo" loading="lazy">
+  <img class="captura" src="../docs/img/usuarios.png" alt="Barras con los usuarios más atacados; root el primero; en naranja los usuarios inventados" loading="lazy">
+  <p>En el último gráfico, el naranja marca usuarios que no existen en el servidor: es la huella de una enumeración.</p>
+  <div class="nota"><code>matplotlib.use("Agg")</code> hace que matplotlib dibuje directamente en archivos sin abrir ventanas. Así el reporte funciona también en un servidor sin pantalla.</div>
+  <div class="quiz" data-quiz="analisis"></div>
+</section>
+
+<!-- ======================================================== 6 · RESPUESTA -->
+<section class="modulo" id="respuesta" data-titulo="Responder: lista negra" data-grupo="Parte 2 · Analizar y responder" data-num="6">
+  <div class="kicker">Módulo 6</div>
+  <h1>Responder: lista negra y firewall</h1>
+  <p class="lead">Detectar sin responder solo sirve para mirar. Pero responder mal puede hacer más daño que el ataque.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Por qué una lista negra necesita una lista blanca.</li>
+    <li>Qué significa que un script sea idempotente.</li>
+    <li>Cómo evitar que unos datos externos se conviertan en comandos.</li></ul></div>
+
+  <h2>Lo que hace <code>lista_negra.py</code></h2>
+  <ol>
+    <li>Toma las IPs con incidentes y descarta las de la <b>lista blanca</b>. Por defecto son las redes privadas (<code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>, <code>127.0.0.0/8</code>), y se pueden añadir más con <code>--permitir</code>.</li>
+    <li>Las <b>fusiona</b> con <code>lista_negra.txt</code>: no pierde las anteriores ni duplica ninguna.</li>
+    <li>Escribe <code>bloquear.sh</code> con una regla <code>iptables</code> por IP.</li>
+  </ol>
+
+  <h2>Por qué hace falta una lista blanca</h2>
+  <p>Imagina que tu compañera se equivoca 6 veces con su contraseña desde la oficina. Sin lista blanca, Centinela bloquearía la IP de la oficina y nadie podría administrar el servidor. Un atacante astuto podría incluso <b>falsificar fallos</b> desde IPs ajenas para que bloquees a quien no debes. Toda respuesta automática debe tener límites claros.</p>
+
+  <h2>Notación CIDR</h2>
+  <p><code>192.168.0.0/16</code> significa "todas las IPs cuyos primeros 16 bits coinciden con 192.168", es decir, de <code>192.168.0.0</code> a <code>192.168.255.255</code> (65 536 direcciones). Python lo comprueba así:</p>
+<pre><code>import ipaddress
+ipaddress.ip_address("192.168.1.22") in ipaddress.ip_network("192.168.0.0/16")   # True</code></pre>
+
+  <h2>Un script idempotente</h2>
+<pre><code>iptables -C INPUT -s 45.134.26.89 -j DROP 2&gt;/dev/null || iptables -I INPUT -s 45.134.26.89 -j DROP</code></pre>
+  <p><code>-C</code> comprueba si la regla ya existe. Solo si no existe (<code>||</code>), <code>-I</code> la inserta. Así el script se puede ejecutar diez veces y el resultado es el mismo que ejecutarlo una: eso es ser <b>idempotente</b>.</p>
+
+  <h2>Datos que no deben convertirse en comandos</h2>
+  <p>Las IPs salen de un archivo de log que, en parte, escribe el atacante. Si alguien consiguiera que un "nombre de IP" fuese <code>1.2.3.4; rm -rf /</code> y lo copiáramos tal cual al script, ejecutaríamos su comando: es una <b>inyección de comandos</b>. Por eso, antes de escribir cada línea, <code>script_firewall()</code> valida la IP con <code>ipaddress</code>, y hay un test que lo comprueba.</p>
+  <div class="nota aviso">Centinela <b>no ejecuta</b> el script: lo revisa y lo lanza una persona (<code>sudo sh bloquear.sh</code>). En producción se usan herramientas probadas como <code>fail2ban</code>, que bloquean de forma temporal y desbloquean solas.</div>
+  <p>El módulo 9 explica cómo decide un firewall qué paquete pasa y cuál no.</p>
+  <div class="quiz" data-quiz="respuesta"></div>
+</section>
+
+<!-- ======================================================== 7 · TESTS -->
+<section class="modulo" id="tests" data-titulo="Tests con pytest" data-grupo="Parte 2 · Analizar y responder" data-num="7">
+  <div class="kicker">Módulo 7</div>
+  <h1>Probar el código con pytest</h1>
+  <p class="lead">Un detector que falla en silencio es peor que no tener detector. Los tests demuestran que funciona y avisan cuando un cambio lo rompe.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Escribir un test con <code>assert</code> y ejecutarlo con pytest.</li>
+    <li>Usar fixtures, <code>tmp_path</code> y <code>parametrize</code>.</li>
+    <li>Elegir buenos casos límite.</li></ul></div>
+
+  <h2>Un test es una función que empieza por <code>test_</code></h2>
+<pre><code>def test_justo_en_el_umbral_alerta():
+    # 5 fallos separados 15 s: del primero al quinto pasan 60 s -&gt; dentro de la ventana
+    (incidente,) = detectar(fallos("1.1.1.1", 5, 15), RAFAGA)
+    assert incidente.fallos == 5</code></pre>
+  <p>Si el <code>assert</code> es falso, el test falla y pytest muestra los valores. Para ejecutarlos todos:</p>
+<pre><code>python -m pytest          # o -v para ver cada test por nombre</code></pre>
+
+  <h2>Casos límite: donde viven los errores</h2>
+  <p>Los errores suelen esconderse en los bordes. Los tests del detector comprueban justo eso:</p>
+  <ul>
+    <li>Exactamente en el umbral (5 fallos en 60 s) → <b>sí</b> alerta.</li>
+    <li>Justo por debajo (5 fallos en 64 s) → <b>no</b> alerta.</li>
+    <li>Un login <i>antes</i> del ataque → no es un compromiso.</li>
+    <li>Fallos de dos IPs distintas → no se suman.</li>
+  </ul>
+
+  <h2>Herramientas de pytest</h2>
+  <table>
+    <tr><th>Herramienta</th><th>Para qué</th></tr>
+    <tr><td><b>Fixture</b></td><td>Prepara algo que necesitan varios tests. Por ejemplo, <code>log_ejemplo</code> genera un log en una carpeta temporal.</td></tr>
+    <tr><td><code>tmp_path</code></td><td>Una carpeta temporal nueva para cada test, así los tests no ensucian el proyecto ni se pisan entre ellos.</td></tr>
+    <tr><td><code>@pytest.mark.parametrize</code></td><td>Ejecuta el mismo test con varias entradas, como las seis líneas de ruido que el parser debe ignorar.</td></tr>
+    <tr><td><code>pytest.raises(ValueError)</code></td><td>Comprueba que algo <i>falla</i> como debe, como una regla con umbral 0 o una IP con un comando dentro.</td></tr>
+    <tr><td><code>capsys</code></td><td>Captura lo que se imprime en pantalla para comprobarlo.</td></tr>
+  </table>
+<pre><code>@pytest.mark.parametrize("linea", [
+    "Nov  2 03:12:05 srv-web01 sshd[4242]: Invalid user oracle from 45.134.26.89 port 40112",
+    "Nov  2 03:12:05 srv-web01 sshd[1]: Failed password for root from 999.1.1.1 port 5 ssh2",
+    "",
+])
+def test_ruido_se_ignora(linea):
+    assert analizar_linea(linea, anio=2026) is None</code></pre>
+  <div class="nota ok">En seguridad, los tests también son documentación: <code>test_script_firewall_es_idempotente_y_seguro</code> deja escrito para siempre que una IP con un comando dentro debe rechazarse.</div>
+  <div class="quiz" data-quiz="tests"></div>
+</section>
+
+<!-- ======================================================== 8 · HASH -->
+<section class="modulo" id="hash" data-titulo="Funciones hash" data-grupo="Parte 3 · Fundamentos" data-num="8">
+  <div class="kicker">Módulo 8</div>
+  <h1>Funciones hash</h1>
+  <p class="lead">Una huella digital para cualquier dato: siempre del mismo tamaño, siempre igual para la misma entrada, e imposible de deshacer.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Las propiedades de una función hash criptográfica.</li>
+    <li>Para qué se usan: integridad, contraseñas y firmas.</li>
+    <li>Por qué las contraseñas no se guardan con un SHA-256 a secas.</li></ul></div>
+
+  <h2>Propiedades</h2>
+  <table>
+    <tr><th>Propiedad</th><th>Qué significa</th></tr>
+    <tr><td>Tamaño fijo</td><td>SHA-256 siempre da 256 bits (64 caracteres hexadecimales), tanto para una letra como para un archivo de 4 GB.</td></tr>
+    <tr><td>Determinista</td><td>La misma entrada da siempre el mismo resumen.</td></tr>
+    <tr><td>Efecto avalancha</td><td>Cambiar un solo carácter cambia aproximadamente la mitad de los bits del resumen.</td></tr>
+    <tr><td>Unidireccional</td><td>Del resumen no se puede recuperar la entrada (resistencia a preimagen).</td></tr>
+    <tr><td>Resistente a colisiones</td><td>En la práctica es imposible encontrar dos entradas con el mismo resumen.</td></tr>
+  </table>
+<pre><code>import hashlib
+hashlib.sha256(b"hola").hexdigest()
+# 'b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79'</code></pre>
+
+  <h2>La figura</h2>
+  <p>Una máquina que perfora tu texto en una cinta, la pliega en bloques de 64 bytes, la mezcla en 64 rondas y estampa siempre una tarjeta de 256 bits. El cálculo es SHA-256 de verdad. Cambia un carácter y cuenta cuántos agujeros se voltean.</p>
+  <div class="figura" data-figura="hash" data-alto="1130" data-alto-movil="1290"></div>
+
+  <h2>Usos en seguridad</h2>
+  <ul>
+    <li><b>Integridad</b>: las descargas publican su SHA-256; si el archivo que bajaste da otro resumen, ha cambiado (<code>sha256sum archivo.iso</code>).</li>
+    <li><b>Contraseñas</b>: el servidor guarda un hash, no la contraseña.</li>
+    <li><b>Firmas digitales</b>: se firma el hash del documento (módulo 11).</li>
+  </ul>
+
+  <h2>Contraseñas: hash lento y con sal</h2>
+  <p>SHA-256 es <b>rápido</b>, y eso es malo para contraseñas: una tarjeta gráfica prueba miles de millones de candidatas por segundo. Además, dos usuarios con la misma contraseña tendrían el mismo hash, y existen tablas de hashes precalculados. Por eso para contraseñas se usan funciones:</p>
+  <ul>
+    <li><b>lentas a propósito</b> y configurables: <b>Argon2</b>, <b>bcrypt</b> o <b>scrypt</b>;</li>
+    <li>con <b>sal</b>: un valor aleatorio distinto por usuario que se mezcla con la contraseña.</li>
+  </ul>
+  <div class="nota aviso"><b>MD5 y SHA-1 están rotos</b>: se pueden fabricar colisiones. No los uses para seguridad.</div>
+  <div class="quiz" data-quiz="hash"></div>
+</section>
+
+<!-- ======================================================== 9 · TCP -->
+<section class="modulo" id="tcp" data-titulo="Handshake TCP" data-grupo="Parte 3 · Fundamentos" data-num="9">
+  <div class="kicker">Módulo 9</div>
+  <h1>El handshake TCP y el SYN flood</h1>
+  <p class="lead">Antes de que tu cliente SSH envíe una sola contraseña, cliente y servidor se dan la mano en tres pasos.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Los tres pasos SYN, SYN-ACK y ACK, y los estados de cada lado.</li>
+    <li>Para qué sirven los números de secuencia.</li>
+    <li>Qué es un SYN flood y cómo se defiende un servidor.</li></ul></div>
+
+  <h2>Tres pasos</h2>
+  <table>
+    <tr><th>Paso</th><th>Quién</th><th>Paquete</th><th>Estado después</th></tr>
+    <tr><td>1</td><td>Cliente → servidor</td><td><code>SYN</code>, seq = x (aleatorio)</td><td>cliente: <code>SYN_SENT</code></td></tr>
+    <tr><td>2</td><td>Servidor → cliente</td><td><code>SYN-ACK</code>, seq = y (aleatorio), ack = x + 1</td><td>servidor: <code>SYN_RECEIVED</code></td></tr>
+    <tr><td>3</td><td>Cliente → servidor</td><td><code>ACK</code>, seq = x + 1, ack = y + 1</td><td>los dos: <code>ESTABLISHED</code></td></tr>
+  </table>
+  <p>Antes de todo, el servidor está en <code>LISTEN</code>, esperando en su puerto (el 22 para SSH). Cada lado elige un <b>número de secuencia inicial (ISN) aleatorio</b> y confirma el del otro sumándole 1. Si un paquete se pierde, quien lo envió espera un tiempo (RTO) y lo reenvía, y ese tiempo se duplica en cada reintento.</p>
+  <div class="nota">¿Por qué aleatorio? Si el ISN fuese predecible, un atacante podría inyectar paquetes falsos en una conexión ajena adivinando los números que espera.</div>
+
+  <h2>La figura</h2>
+  <p>Dos estaciones de correo neumático con contadores de secuencia y palancas de estado. Prueba a perder una cápsula y a lanzar un SYN flood.</p>
+  <div class="figura" data-figura="handshake-tcp" data-alto="1310" data-alto-movil="1620"></div>
+
+  <h2>SYN flood</h2>
+  <p>El atacante envía muchísimos <code>SYN</code> con IPs de origen falsas y nunca completa el tercer paso. Cada conexión medio abierta ocupa un hueco en la cola del servidor hasta que caduca. Con la cola llena, los <code>SYN</code> legítimos se descartan: es una <b>denegación de servicio</b> (DoS).</p>
+  <p>Defensas: <b>SYN cookies</b> (el servidor no guarda nada hasta recibir el <code>ACK</code> y codifica el estado en su propio número de secuencia; en Linux, <code>net.ipv4.tcp_syncookies=1</code>), colas más grandes, menos reintentos del <code>SYN-ACK</code> y filtrado en el borde de la red.</p>
+  <div class="quiz" data-quiz="tcp"></div>
+</section>
+
+<!-- ======================================================== 10 · FIREWALL -->
+<section class="modulo" id="firewall" data-titulo="Firewalls" data-grupo="Parte 3 · Fundamentos" data-num="10">
+  <div class="kicker">Módulo 10</div>
+  <h1>Cómo filtra paquetes un firewall</h1>
+  <p class="lead">Un firewall de filtrado de paquetes recorre una lista de reglas en orden. La primera que coincide decide.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Cómo se evalúan las reglas: en orden y la primera que coincide gana.</li>
+    <li>Qué es la política por defecto y por qué conviene <code>DROP</code>.</li>
+    <li>La diferencia entre un firewall sin estado y uno con estado.</li></ul></div>
+
+  <h2>Reglas en orden</h2>
+  <p>Cada paquete lleva, entre otras cosas, una <b>IP de origen</b>, un <b>puerto de destino</b> y un <b>protocolo</b> (TCP, UDP…). Cada regla dice qué valores busca y qué hacer:</p>
+<pre><code>iptables -A INPUT -s 45.134.26.89 -j DROP                # lista negra
+iptables -A INPUT -p tcp --dport 22 -s 203.0.113.0/24 -j ACCEPT   # SSH solo desde la oficina
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT           # web para todo el mundo
+iptables -P INPUT DROP                                   # política por defecto: todo lo demás, fuera</code></pre>
+  <ul>
+    <li>Las reglas se miran de arriba abajo. La <b>primera</b> que coincide decide (<code>ACCEPT</code> o <code>DROP</code>) y las siguientes ya no ven ese paquete.</li>
+    <li>Si ninguna coincide, se aplica la <b>política por defecto</b> (<code>-P</code>).</li>
+    <li>Por eso <b>el orden importa</b>: si "aceptar todo el 443" va antes que la lista negra, el atacante entra por el 443.</li>
+  </ul>
+  <p>Fíjate en que <code>-A</code> añade la regla al final de la lista e <code>-I</code> la inserta al principio. El <code>bloquear.sh</code> de Centinela usa <code>-I</code> para que la lista negra se evalúe antes que las demás reglas.</p>
+
+  <h2>La figura</h2>
+  <p>Una clasificadora de fichas: cada ficha es un paquete, cada estación una regla con palpadores. Cambia el orden de dos reglas y mira cómo cambia el resultado.</p>
+  <div class="figura" data-figura="firewall" data-alto="1615" data-alto-movil="2040"></div>
+
+  <h2>Política por defecto: lista blanca de servicios</h2>
+  <p>Con <code>-P INPUT DROP</code> solo pasa lo que permites de forma explícita. Si olvidas una regla, el error es que algo no funciona, no que algo queda expuesto. Ese principio se llama <b>denegar por defecto</b>.</p>
+  <div class="nota aviso">Cuidado al aplicar <code>-P INPUT DROP</code> por SSH: si no hay antes una regla que acepte tu conexión, te quedas fuera del servidor.</div>
+
+  <h2>Con estado y sin estado</h2>
+  <p>Un filtro <b>sin estado</b> mira cada paquete por separado. Uno <b>con estado</b> (<i>stateful</i>, como iptables con <code>conntrack</code>) recuerda las conexiones y puede aceptar las respuestas de conexiones que ya existen:</p>
+<pre><code>iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT</code></pre>
+  <div class="quiz" data-quiz="firewall"></div>
+</section>
+
+<!-- ======================================================== 11 · ASIMÉTRICO -->
+<section class="modulo" id="asimetrico" data-titulo="Cifrado asimétrico" data-grupo="Parte 3 · Fundamentos" data-num="11">
+  <div class="kicker">Módulo 11</div>
+  <h1>Cifrado asimétrico: llave pública y llave privada</h1>
+  <p class="lead">Un candado que cualquiera puede cerrar pero solo una persona puede abrir.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>La diferencia entre cifrado simétrico y asimétrico.</li>
+    <li>Cifrar con la pública y descifrar con la privada; firmar con la privada y verificar con la pública.</li>
+    <li>Cómo funciona RSA con números pequeños.</li></ul></div>
+
+  <h2>Simétrico frente a asimétrico</h2>
+  <table>
+    <tr><th></th><th>Simétrico (AES)</th><th>Asimétrico (RSA, curvas elípticas)</th></tr>
+    <tr><td>Llaves</td><td>Una llave secreta compartida</td><td>Un par: pública (se reparte) y privada (no sale nunca de su dueña)</td></tr>
+    <tr><td>Velocidad</td><td>Muy rápido</td><td>Mucho más lento</td></tr>
+    <tr><td>Problema</td><td>¿Cómo compartes la llave sin que la intercepten?</td><td>Resuelve ese problema</td></tr>
+  </table>
+  <p>En la práctica se combinan (<b>cifrado híbrido</b>): la criptografía asimétrica sirve para acordar una llave y autenticar al otro lado, y la simétrica cifra los datos. Así funcionan HTTPS (TLS) y SSH.</p>
+
+  <h2>Dos usos del mismo par de llaves</h2>
+  <table>
+    <tr><th>Uso</th><th>Se hace con</th><th>Se comprueba con</th><th>Garantiza</th></tr>
+    <tr><td>Cifrar</td><td>la <b>pública</b> del destinatario</td><td>(descifra la <b>privada</b>)</td><td>confidencialidad: solo el destinatario lo lee</td></tr>
+    <tr><td>Firmar</td><td>la <b>privada</b> de quien firma</td><td>la <b>pública</b> de quien firma</td><td>autenticidad e integridad: lo firmó quien dice, y no ha cambiado</td></tr>
+  </table>
+
+  <h2>RSA de juguete</h2>
+  <p>Con dos primos pequeños, <i>p</i> = 61 y <i>q</i> = 53:</p>
+  <ul>
+    <li><i>n</i> = <i>p</i> · <i>q</i> = 3233, y φ(<i>n</i>) = (<i>p</i> − 1)(<i>q</i> − 1) = 3120.</li>
+    <li>La llave pública es (<i>n</i> = 3233, <i>e</i> = 17).</li>
+    <li>La llave privada es <i>d</i> = 2753, porque 17 · 2753 = 46 801 = 15 · 3120 + 1.</li>
+    <li>Cifrar: <i>c</i> = <i>m</i><sup><i>e</i></sup> mod <i>n</i>. Descifrar: <i>m</i> = <i>c</i><sup><i>d</i></sup> mod <i>n</i>.</li>
+  </ul>
+  <div class="card lab">
+    <h3>Laboratorio: cifra un número</h3>
+    <div class="fila">
+      <div><label for="rsa-m">Mensaje m (0-3232)</label><input id="rsa-m" type="range" min="0" max="3232" value="65"></div>
+      <div><output id="rsa-m-v">65</output></div>
+    </div>
+    <div class="resultado" id="rsa-salida" aria-live="polite"></div>
+  </div>
+  <p>Romper RSA consiste en encontrar <i>d</i>, y para eso hay que factorizar <i>n</i>. Con 3233 es trivial, pero el RSA real usa un <i>n</i> de 2048 bits o más, con más de 600 cifras, y nadie sabe factorizarlo en un tiempo razonable.</p>
+
+  <h2>La figura</h2>
+  <p>Un buzón de banco con candado de golpe: cualquiera lo cierra con la llave pública y solo la privada lo abre. Prueba a abrirlo con la llave equivocada.</p>
+  <div class="figura" data-figura="cifrado-asimetrico" data-alto="1275" data-alto-movil="1590"></div>
+  <div class="nota">Esto conecta con SSH: con <code>ssh-keygen</code> creas un par de llaves, y la pública se copia al servidor (<code>~/.ssh/authorized_keys</code>). Al entrar, tu cliente <b>firma</b> un desafío con la privada y el servidor lo verifica con la pública. Ninguna contraseña viaja ni puede adivinarse, y por eso la autenticación por clave anula la fuerza bruta.</div>
+  <div class="quiz" data-quiz="asimetrico"></div>
+</section>
+
+<!-- ======================================================== 12 · MITM -->
+<section class="modulo" id="mitm" data-titulo="Man-in-the-middle" data-grupo="Parte 3 · Fundamentos" data-num="12">
+  <div class="kicker">Módulo 12</div>
+  <h1>El ataque man-in-the-middle</h1>
+  <p class="lead">Si el atacante se pone en medio del camino, puede leer y cambiar todo lo que no vaya cifrado y autenticado.</p>
+  <div class="objetivos"><b>Al terminar sabrás:</b><ul>
+    <li>Cómo se coloca un atacante en medio (ARP spoofing, Wi-Fi falsa).</li>
+    <li>Qué ve con HTTP y qué ve con HTTPS.</li>
+    <li>Por qué el certificado es lo que de verdad te protege.</li></ul></div>
+
+  <h2>Cómo se pone en medio</h2>
+  <ul>
+    <li><b>ARP spoofing</b>: en una red local, los equipos preguntan "¿quién tiene la IP del router?" mediante el protocolo ARP, que no tiene autenticación. El atacante responde "yo" a la víctima y al router, y todo el tráfico pasa por su equipo.</li>
+    <li><b>Punto Wi-Fi falso</b> (<i>evil twin</i>): una red con el nombre de la cafetería, controlada por el atacante.</li>
+    <li><b>DNS falso</b>: responde con su propia IP cuando preguntas por la de tu banco.</li>
+  </ul>
+
+  <h2>Qué ve el atacante</h2>
+  <table>
+    <tr><th>Caso</th><th>El atacante ve</th><th>Puede cambiar el mensaje</th></tr>
+    <tr><td>HTTP</td><td>Todo en texto claro, también las contraseñas</td><td><span class="tag bad">sí</span>, y el servidor no lo nota</td></tr>
+    <tr><td>HTTPS con certificado válido</td><td>Bytes cifrados, más a qué servidor vas y cuántos datos envías</td><td><span class="tag ok">no</span>: el cambio rompe la verificación de integridad y el mensaje se descarta</td></tr>
+    <tr><td>HTTPS con un certificado falso del atacante</td><td>Nada, si la víctima hace caso del aviso</td><td><span class="tag ok">no</span>: la verificación del certificado falla y el navegador avisa</td></tr>
+  </table>
+
+  <h2>La figura</h2>
+  <p>Un tubo neumático entre la víctima y el servidor, con una válvula que el atacante gira para desviar las cápsulas a su banco de lectura. Cambia entre HTTP y HTTPS y prueba a modificar el mensaje.</p>
+  <div class="figura" data-figura="mitm" data-alto="1185" data-alto-movil="1490"></div>
+
+  <h2>Por qué importa el certificado</h2>
+  <p>Cifrar no basta: si cifras <i>con el atacante</i>, él descifra, lee y vuelve a cifrar hacia el servidor. El <b>certificado</b> demuestra que la llave pública es de verdad del servidor: lo firma una <b>autoridad de certificación</b> (CA) en la que confía tu navegador o tu sistema. Si el atacante presenta su propio certificado, la firma no cuadra y aparece el aviso.</p>
+  <div class="nota aviso"><b>Nunca ignores un aviso de certificado</b> en una red que no controlas. Es exactamente lo que el atacante necesita que hagas. SSH tiene su equivalente: el aviso <code>REMOTE HOST IDENTIFICATION HAS CHANGED</code> cuando la huella del servidor no coincide con la que guardaste.</div>
+  <p>Defensas adicionales: <b>HSTS</b> (el sitio le dice al navegador que use siempre HTTPS), VPN en redes públicas, y en redes locales la inspección dinámica de ARP en los switches.</p>
+  <div class="quiz" data-quiz="mitm"></div>
+</section>
+
+<!-- ======================================================== 13 · ÉTICA Y CIERRE -->
+<section class="modulo" id="cierre" data-titulo="Ética y siguientes pasos" data-grupo="Parte 3 · Fundamentos" data-num="13">
+  <div class="kicker">Módulo 13</div>
+  <h1>Ética, defensa en profundidad y siguientes pasos</h1>
+  <p class="lead">Ninguna medida sola basta. La seguridad se construye en capas, y siempre dentro de la ley.</p>
+  <h2>Defensa en profundidad aplicada a SSH</h2>
+  <p>Juntando todo el curso, así se protege un servidor SSH capa a capa:</p>
+  <ol>
+    <li><b>Firewall</b>: el puerto 22 solo abierto a las redes que lo necesitan (módulo 10).</li>
+    <li><b>Autenticación por clave</b> y <code>PasswordAuthentication no</code> en <code>/etc/ssh/sshd_config</code>: la fuerza bruta deja de tener sentido (módulo 11).</li>
+    <li><b>Sin login directo de root</b>: <code>PermitRootLogin no</code>.</li>
+    <li><b>Limitar el ritmo</b> y bloquear temporalmente a quien abusa: <code>fail2ban</code> o similares (módulos 4 y 6).</li>
+    <li><b>Vigilar los logs</b> y alertar de compromisos: lo que hace Centinela (módulos 1-3).</li>
+    <li><b>Analizar</b> y aprender de cada incidente (módulo 5).</li>
+    <li><b>Probar</b> las propias herramientas (módulo 7).</li>
+  </ol>
+  <h2>Ética</h2>
+  <ul>
+    <li>Analiza y prueba solo sistemas que sean tuyos o para los que tengas <b>permiso por escrito</b>.</li>
+    <li>Las IPs de un log no prueban quién está detrás: pueden ser equipos infectados, VPN o nodos Tor. Trata los datos como indicios, no como acusaciones.</li>
+    <li>Los logs contienen datos personales (usuarios, IPs). Guárdalos lo justo y protégelos.</li>
+  </ul>
+  <h2>Para seguir aprendiendo</h2>
+  <ul>
+    <li>Los ejercicios del README de Centinela: una regla por usuario, ajustar el umbral, cazar la botnet y un modo vigilancia.</li>
+    <li>Plataformas legales de práctica: TryHackMe, Hack The Box, OverTheWire (empieza por <i>Bandit</i>) y los CTF para principiantes.</li>
+    <li>Leer la documentación de <code>fail2ban</code> y de <code>sshd_config</code>, y el OWASP Top 10 para seguridad web.</li>
+  </ul>
+  <div class="quiz" data-quiz="cierre"></div>
+</section>
+
+<!-- ======================================================== GLOSARIO -->
+<section class="modulo" id="glosario" data-titulo="Glosario" data-grupo="Repaso">
+  <div class="kicker">Referencia</div>
+  <h1>Glosario de seguridad</h1>
+  <p class="lead">Los términos del curso, en orden alfabético. Escribe para filtrar.</p>
+  <label for="buscar" class="kicker" style="display:block">Buscar término</label>
+  <input id="buscar" class="buscador" type="search" placeholder="Por ejemplo: hash, firewall, CIDR…" autocomplete="off">
+  <dl class="glosario" id="lista-glosario"></dl>
+</section>
+
+<!-- ======================================================== EXAMEN -->
+<section class="modulo" id="examen" data-titulo="Examen final" data-grupo="Repaso">
+  <div class="kicker">Repaso</div>
+  <h1>Examen final</h1>
+  <p class="lead">Doce preguntas al azar de todo el curso. Cada vez que lo empiezas, salen otras.</p>
+  <div class="quiz" id="quiz-examen"></div>
+  <p><button class="btn primary" id="examen-nuevo">Nuevo examen</button></p>
+</section>
+
+</div>
+</main>
+</div>
+
+<script>
+"use strict";
+// ---------------------------------------------------------------- almacenamiento (solo comodidad local)
+const guardado = {
+  leer(clave, defecto) { try { const v = localStorage.getItem("centinela-curso:" + clave); return v === null ? defecto : JSON.parse(v); } catch { return defecto; } },
+  escribir(clave, valor) { try { localStorage.setItem("centinela-curso:" + clave, JSON.stringify(valor)); } catch { /* sin almacenamiento: no pasa nada */ } },
+};
+
+// ---------------------------------------------------------------- tema
+const raiz = document.documentElement;
+const temaGuardado = guardado.leer("tema", null);
+if (temaGuardado) raiz.dataset.theme = temaGuardado;
+const temaActual = () => raiz.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+document.getElementById("tema-btn").addEventListener("click", () => {
+  raiz.dataset.theme = temaActual() === "dark" ? "light" : "dark";
+  guardado.escribir("tema", raiz.dataset.theme);
+  document.querySelectorAll(".figura[data-cargada]").forEach(cargarFigura);
+});
+
+// ---------------------------------------------------------------- preguntas
+const QUIZZES = {
+  logs: [
+    { q: "¿En qué archivo guarda Ubuntu los intentos de login por SSH?", o: ["/var/log/syslog.conf", "/var/log/auth.log", "/etc/ssh/sshd_config", "/var/log/secure.d"], c: 1, e: "En Debian y Ubuntu es /var/log/auth.log. En la familia Red Hat es /var/log/secure; sshd_config es la configuración, no un log." },
+    { q: "¿Por qué el parser necesita que le indiquen el año?", o: ["Porque Python no sabe calcular fechas", "Porque el formato clásico de syslog no incluye el año", "Porque SSH cambia el año cada día", "No lo necesita"], c: 1, e: "Una línea como «Nov  2 03:12:05» no dice de qué año es. El formato ISO sí lo incluye." },
+    { q: "En «… from 185.220.101.47 port 51234», ¿qué es 51234?", o: ["El puerto de SSH del servidor", "El número de intento", "El puerto de origen del cliente", "El PID de sshd"], c: 2, e: "Es el puerto de origen que eligió el cliente para esa conexión. El servidor escucha en el 22, y el PID va entre corchetes tras sshd." },
+    { q: "¿Por qué Centinela ignora la línea «Invalid user oracle from …»?", o: ["Porque oracle es un usuario de confianza", "Porque va seguida de «Failed password for invalid user oracle» y el intento contaría doble", "Porque no tiene IP", "Porque es un error del log"], c: 1, e: "sshd escribe las dos líneas para el mismo intento. Contando solo la de «Failed» cada intento vale uno." },
+    { q: "¿Para qué sirve usar una semilla fija en el generador de logs?", o: ["Para cifrar el log", "Para que la misma semilla produzca siempre el mismo log y los tests sean repetibles", "Para que el log sea más grande", "Para elegir el año"], c: 1, e: "random.Random(42) da siempre la misma secuencia de números, así que el log generado es siempre idéntico." },
+  ],
+  regex: [
+    { q: "¿Qué encaja con \\d{1,3}?", o: ["Exactamente 3 letras", "Entre 1 y 3 dígitos", "Un dígito seguido de 1 o 3", "Cualquier número de cualquier tamaño"], c: 1, e: "\\d es un dígito y {1,3} significa entre 1 y 3 repeticiones." },
+    { q: "¿Qué hace (?P<ip>…) en una regex de Python?", o: ["Comprueba que la IP es válida", "Guarda lo que encaja para recuperarlo con .group(\"ip\")", "Ignora esa parte", "Hace la parte opcional"], c: 1, e: "Es un grupo con nombre. Para agrupar sin guardar se usa (?:…), y para hacer algo opcional, ?." },
+    { q: "La regex de IP acepta «999.1.1.1». ¿Cómo lo resuelve Centinela?", o: ["No lo resuelve", "Comprueba la IP después con el módulo ipaddress", "Borra las IPs con 999", "Usa una regex más larga"], c: 1, e: "ipaddress.IPv4Address(\"999.1.1.1\") lanza ValueError, así que esa línea se descarta. Valida con la herramienta más estricta que tengas." },
+    { q: "En modo re.VERBOSE, ¿cómo se escribe un espacio que debe aparecer en el texto?", o: ["Con un espacio normal", "Con \\s o con «\\ » (barra y espacio)", "Con #", "No se puede"], c: 1, e: "En modo VERBOSE los espacios normales se ignoran para poder formatear el patrón, y # inicia un comentario." },
+    { q: "¿Para qué sirve el grupo opcional (?P<invalido>invalid\\ user\\ )?", o: ["Para bloquear usuarios inválidos", "Para que en «for invalid user oracle» el usuario capturado sea oracle y no invalid", "Para contar dos veces el intento", "Para detectar root"], c: 1, e: "Sin él, el grupo usuario (\\S+) se quedaría con la palabra invalid." },
+  ],
+  deteccion: [
+    { q: "Con la regla de 5 fallos en 60 s, ¿alerta una IP que falla 5 veces separadas 15 s exactos?", o: ["Sí: del primero al quinto pasan 60 s, dentro de la ventana", "No: 5 × 15 son 75 s", "Solo si alguno es contra root", "Depende del puerto"], c: 0, e: "Hay 4 huecos de 15 s entre 5 fallos: 60 s en total, justo dentro de la ventana. Es uno de los tests de límite." },
+    { q: "¿Para qué sirve la segunda regla, «sostenido» (20 fallos en 1 hora)?", o: ["Para detectar logins correctos", "Para atrapar ataques lentos que nunca llegan a 5 fallos en un minuto", "Para bloquear redes privadas", "Para ir más rápido"], c: 1, e: "Un intento cada 2 minutos nunca dispara la regla de ráfaga, pero acumula 30 fallos en una hora." },
+    { q: "¿Cuándo marca Centinela un incidente como «comprometido»?", o: ["Cuando hay más de 100 fallos", "Cuando la IP atacante consigue un login exitoso después de empezar el ataque", "Cuando ataca a root", "Cuando la IP es extranjera"], c: 1, e: "Un login exitoso tras el inicio del ataque indica que probablemente adivinó la contraseña. Es lo más urgente de revisar." },
+    { q: "Bajar el umbral de 5 a 3 fallos…", o: ["reduce falsos negativos pero aumenta falsos positivos", "elimina todos los errores", "reduce falsos positivos", "no cambia nada"], c: 0, e: "Con un umbral más bajo se escapan menos ataques, pero personas despistadas como Carlos (4 fallos) empiezan a saltar." },
+    { q: "¿Por qué la botnet del log de ejemplo no genera ningún incidente?", o: ["Porque usa contraseñas correctas", "Porque Centinela cuenta por IP y cada IP de la botnet solo falla 2-3 veces", "Porque ataca de madrugada", "Porque usa IPv6"], c: 1, e: "Es un falso negativo: el ataque está repartido. Hace falta otra regla, por ejemplo muchas IPs distintas contra el mismo usuario en poco tiempo." },
+  ],
+  limite: [
+    { q: "En un token bucket con recarga de 1 ficha/s y capacidad 5, un atacante lanza 8 intentos/s durante 10 minutos. A la larga, ¿cuántos intentos por segundo llegan a comprobar la contraseña?", o: ["8", "5", "1", "0"], c: 2, e: "A la larga los aceptados no pueden superar el ritmo de recarga. La capacidad solo permite una ráfaga inicial de hasta 5." },
+    { q: "¿Qué controla la capacidad del cubo?", o: ["El tamaño máximo de la ráfaga que se permite de golpe", "La velocidad del atacante", "Cuántas IPs hay", "La longitud de la contraseña"], c: 0, e: "Un cubo lleno permite gastar de golpe todas sus fichas. Después manda la recarga." },
+    { q: "En una API web, ¿qué código HTTP se suele devolver cuando el limitador rechaza una petición?", o: ["200 OK", "404 Not Found", "429 Too Many Requests", "500 Internal Server Error"], c: 2, e: "429 significa «demasiadas peticiones»; a menudo va con la cabecera Retry-After." },
+    { q: "¿Por qué un limitador por IP no basta contra una botnet?", o: ["Porque la botnet reparte el ataque entre muchas IPs con pocos intentos cada una", "Porque las botnets no usan TCP", "Porque los limitadores solo funcionan de día", "Sí basta"], c: 0, e: "Por eso se combina con límites por usuario, MFA y, sobre todo, autenticación por clave." },
+  ],
+  analisis: [
+    { q: "¿Qué es un DataFrame de pandas?", o: ["Un tipo de gráfico", "Una tabla en memoria con columnas con nombre", "Un archivo de log", "Un servidor web"], c: 1, e: "Es como una hoja de cálculo manejada desde código." },
+    { q: "df.groupby(\"ip\").agg(fallos=(\"fallo\", \"sum\")) calcula…", o: ["el número de IPs", "los fallos de cada IP", "la IP con más fallos", "la media de puertos"], c: 1, e: "Reparte las filas por IP y suma la columna fallo (True cuenta como 1) en cada grupo." },
+    { q: "¿Para qué sirve resample(\"10min\")?", o: ["Para borrar filas", "Para repartir las filas en tramos de 10 minutos y contarlas o resumirlas", "Para esperar 10 minutos", "Para ordenar las IPs"], c: 1, e: "Con el tiempo como índice, resample agrupa por intervalos. Así se hace la línea de tiempo." },
+    { q: "¿Por qué reporte.py llama a matplotlib.use(\"Agg\")?", o: ["Para que los gráficos salgan en color", "Para dibujar en archivos sin abrir ventanas, también en servidores sin pantalla", "Para que vaya más rápido", "Es obligatorio en Windows"], c: 1, e: "Agg es un motor de dibujo que solo produce imágenes, sin interfaz gráfica." },
+  ],
+  respuesta: [
+    { q: "¿Por qué la lista negra necesita una lista blanca?", o: ["Para que el archivo ocupe menos", "Para no bloquear nunca redes propias, como la oficina, ni dejar que un atacante te haga bloquear a quien no debes", "Porque iptables lo exige", "No la necesita"], c: 1, e: "Una respuesta automática sin límites puede dejarte fuera de tu propio servidor." },
+    { q: "¿Qué rango de IPs cubre 192.168.0.0/16?", o: ["Solo 192.168.0.0", "De 192.168.0.0 a 192.168.0.255", "De 192.168.0.0 a 192.168.255.255", "Todas las IPs que empiezan por 192"], c: 2, e: "/16 fija los primeros 16 bits (192.168) y deja libres los otros 16: 65 536 direcciones." },
+    { q: "Un script es idempotente si…", o: ["se ejecuta muy rápido", "ejecutarlo varias veces da el mismo resultado que ejecutarlo una", "no tiene errores", "solo puede ejecutarlo root"], c: 1, e: "«iptables -C … || iptables -I …» solo inserta la regla si no existe, así que no se duplica." },
+    { q: "¿Por qué script_firewall() valida cada IP antes de escribirla en el script?", o: ["Para ordenar la lista", "Para evitar una inyección de comandos si un dato contiene algo como «1.2.3.4; rm -rf /»", "Para que iptables vaya más rápido", "Por estética"], c: 1, e: "Los datos del log vienen en parte del atacante. Nunca se deben convertir en comandos sin validarlos." },
+  ],
+  tests: [
+    { q: "¿Qué hace pytest con una función llamada test_algo en tests/test_x.py?", o: ["Nada", "La descubre y la ejecuta como test", "La borra", "Solo la ejecuta si la llamas desde main"], c: 1, e: "pytest busca archivos test_*.py y funciones test_* y las ejecuta." },
+    { q: "¿Para qué sirve la fixture tmp_path?", o: ["Para medir el tiempo", "Para dar a cada test una carpeta temporal propia", "Para guardar el progreso", "Para leer /tmp del servidor"], c: 1, e: "Así los tests no ensucian el proyecto ni se pisan entre ellos." },
+    { q: "¿Qué caso es un buen «caso límite» para el detector con umbral 5 y ventana de 60 s?", o: ["1000 fallos en 1 s", "5 fallos que caben justo en 60 s, y otros 5 que ocupan 64 s", "Un log vacío de otro servidor", "Un fallo de root"], c: 1, e: "Los errores de «menor que» frente a «menor o igual que» se esconden justo en el borde." },
+  ],
+  hash: [
+    { q: "¿Cuánto mide siempre el resumen SHA-256?", o: ["Lo mismo que la entrada", "256 bits (64 caracteres hexadecimales)", "256 caracteres", "Depende del idioma"], c: 1, e: "Tamaño fijo: da igual que la entrada sea una letra o un archivo enorme." },
+    { q: "¿Qué es el efecto avalancha?", o: ["Que el hash es muy lento", "Que cambiar un solo carácter cambia aproximadamente la mitad de los bits del resumen", "Que dos entradas dan el mismo hash", "Que el hash crece con la entrada"], c: 1, e: "Por eso dos textos casi iguales tienen resúmenes que no se parecen en nada." },
+    { q: "¿Por qué no basta un SHA-256 simple para guardar contraseñas?", o: ["Porque es reversible", "Porque es rápido (se prueban miles de millones por segundo) y, sin sal, contraseñas iguales dan hashes iguales", "Porque ocupa demasiado", "Sí basta"], c: 1, e: "Se usan funciones lentas con sal: Argon2, bcrypt o scrypt." },
+    { q: "Descargas una ISO y su SHA-256 no coincide con el publicado. ¿Qué concluyes?", o: ["Que es normal", "Que el archivo es distinto del publicado (corrupto o manipulado)", "Que tu ordenador está mal", "Que hay que ejecutarla para saberlo"], c: 1, e: "Es el uso de integridad: si el resumen cambia, el archivo cambió. No lo uses." },
+  ],
+  tcp: [
+    { q: "¿Cuál es el orden del handshake TCP?", o: ["ACK, SYN, SYN-ACK", "SYN, SYN-ACK, ACK", "SYN, ACK, FIN", "HELLO, OK, GO"], c: 1, e: "El cliente pide (SYN), el servidor acepta y pide (SYN-ACK), y el cliente confirma (ACK)." },
+    { q: "Si el cliente envía SYN con seq = 1000, ¿qué ack lleva el SYN-ACK del servidor?", o: ["1000", "1001", "0", "Un número aleatorio"], c: 1, e: "Cada lado confirma el número del otro + 1." },
+    { q: "¿Por qué el número de secuencia inicial es aleatorio?", o: ["Por estética", "Para que un atacante no pueda adivinarlo e inyectar paquetes falsos en una conexión ajena", "Para ahorrar memoria", "Porque lo exige el puerto 22"], c: 1, e: "Un ISN predecible facilitaría secuestrar o falsificar conexiones." },
+    { q: "En un SYN flood, ¿qué se agota en el servidor?", o: ["El disco", "La cola de conexiones medio abiertas", "La batería", "Las contraseñas"], c: 1, e: "Cada SYN falso ocupa un hueco hasta que caduca. Las SYN cookies evitan guardar estado hasta recibir el ACK." },
+  ],
+  firewall: [
+    { q: "En iptables, ¿qué pasa cuando un paquete coincide con una regla ACCEPT o DROP?", o: ["Se siguen mirando todas las reglas", "Esa regla decide y las siguientes ya no ven el paquete", "Se aplica la última regla que coincida", "Se descarta siempre"], c: 1, e: "La primera regla que coincide gana. Por eso el orden importa." },
+    { q: "¿Cuándo se aplica la política por defecto (-P)?", o: ["Siempre, antes de las reglas", "Cuando ninguna regla coincide", "Solo los domingos", "Cuando hay más de 100 reglas"], c: 1, e: "Es lo que pasa con todo lo que no menciona ninguna regla." },
+    { q: "La lista negra está en la regla 3 y «aceptar todo el puerto 443» en la regla 2. Un atacante de la lista negra entra por el 443. ¿Qué ocurre?", o: ["Se bloquea en la regla 3", "Entra: la regla 2 lo acepta antes de llegar a la 3", "Depende de la política por defecto", "El firewall se reinicia"], c: 1, e: "Por eso bloquear.sh inserta sus reglas al principio con -I." },
+    { q: "¿Por qué conviene «denegar por defecto» (-P INPUT DROP)?", o: ["Porque es más rápido", "Porque si olvidas una regla, algo deja de funcionar en vez de quedar expuesto", "Porque así no hacen falta reglas", "No conviene nunca"], c: 1, e: "Solo pasa lo que permites de forma explícita. Antes de aplicarlo por SSH, acepta tu propia conexión." },
+  ],
+  asimetrico: [
+    { q: "Ana quiere mandarte un mensaje que solo tú puedas leer. ¿Con qué llave lo cifra?", o: ["Con su llave privada", "Con tu llave pública", "Con tu llave privada", "Con su llave pública"], c: 1, e: "Cualquiera puede cifrar con tu pública; solo tu privada lo descifra." },
+    { q: "Para firmar un documento, ¿qué llave usa quien firma?", o: ["Su llave privada", "Su llave pública", "La pública del destinatario", "Ninguna"], c: 0, e: "Se firma con la privada y cualquiera verifica con la pública." },
+    { q: "Con el RSA de juguete (n = 3233, e = 17), ¿por qué es fácil encontrar d?", o: ["Porque 3233 es fácil de factorizar (61 × 53)", "Porque e es impar", "Porque d siempre es 1", "No es fácil"], c: 0, e: "Sabiendo p y q se calcula φ(n) y luego d. Con n de 2048 bits, factorizar es inviable." },
+    { q: "¿Por qué HTTPS y SSH combinan cifrado asimétrico y simétrico?", o: ["Por compatibilidad con Windows", "El asimétrico acuerda la llave y autentica; el simétrico, mucho más rápido, cifra los datos", "Porque el simétrico es más seguro", "No los combinan"], c: 1, e: "Es el cifrado híbrido: lo mejor de cada uno." },
+    { q: "¿Por qué la autenticación SSH por clave anula la fuerza bruta?", o: ["Porque oculta el puerto 22", "Porque no hay contraseña que adivinar: el cliente firma un desafío con su llave privada", "Porque cifra el log", "Porque bloquea IPs"], c: 1, e: "La llave privada no viaja ni se puede adivinar en la práctica. Activa PasswordAuthentication no." },
+  ],
+  mitm: [
+    { q: "¿En qué consiste el ARP spoofing?", o: ["En adivinar contraseñas", "En responder a las preguntas ARP de la red local haciéndose pasar por otro equipo (como el router) para que el tráfico pase por el atacante", "En llenar la cola de SYN", "En romper SHA-256"], c: 1, e: "ARP no tiene autenticación, así que cualquiera de la red local puede mentir." },
+    { q: "Con HTTPS y un certificado válido, ¿qué puede ver un atacante en medio?", o: ["Todo el contenido", "Bytes cifrados, a qué servidor vas y el tamaño de lo que envías", "Solo las contraseñas", "Nada en absoluto, ni siquiera que hay tráfico"], c: 1, e: "El contenido va cifrado, pero los metadatos (destino, tamaño, momento) se siguen viendo." },
+    { q: "Si el atacante presenta su propio certificado para poder descifrar, ¿qué ocurre?", o: ["Funciona sin que nadie lo note", "La verificación falla porque no lo firma una CA de confianza para ese dominio, y aparece un aviso", "El servidor se apaga", "Se cambia a HTTP"], c: 1, e: "Por eso nunca hay que ignorar un aviso de certificado." },
+    { q: "¿Por qué cifrar no basta sin verificar el certificado?", o: ["Sí basta", "Porque podrías estar cifrando con el atacante, que descifra, lee y vuelve a cifrar hacia el servidor", "Porque el cifrado es lento", "Porque los certificados caducan"], c: 1, e: "La autenticación del otro extremo es la mitad de la protección." },
+  ],
+  cierre: [
+    { q: "¿Qué cambio en sshd_config hace inútil la fuerza bruta de contraseñas?", o: ["Port 2222", "PasswordAuthentication no (y usar autenticación por clave)", "LogLevel DEBUG", "Banner /etc/issue"], c: 1, e: "Cambiar el puerto reduce el ruido, pero no protege. Sin contraseñas no hay nada que adivinar." },
+    { q: "¿Qué significa «defensa en profundidad»?", o: ["Usar una sola herramienta muy buena", "Combinar varias capas (firewall, claves, límites, vigilancia…) para que el fallo de una no deje todo expuesto", "Esconder el servidor", "Cifrar el disco"], c: 1, e: "Ninguna medida es perfecta; las capas se cubren entre sí." },
+    { q: "Una IP aparece atacando tu servidor. ¿Qué puedes concluir?", o: ["Quién es la persona atacante", "Solo que el tráfico vino de esa IP, que puede ser un equipo infectado, una VPN o un nodo Tor", "Que es de un país enemigo", "Que hay que atacarla de vuelta"], c: 1, e: "Una IP es un indicio, no una identidad. Y nunca se «contraataca»: es ilegal." },
+  ],
+};
+
+// ---------------------------------------------------------------- glosario
+const GLOSARIO = [
+  ["ACK", "Bandera TCP que confirma la recepción; el campo ack indica el siguiente número de secuencia esperado.", "tcp"],
+  ["Argon2", "Función de hash de contraseñas moderna, lenta a propósito y resistente a ataques con tarjetas gráficas. Ganó la Password Hashing Competition en 2015.", "hash"],
+  ["ARP spoofing", "Ataque en red local que envía respuestas ARP falsas para que el tráfico de otros equipos pase por el atacante.", "mitm"],
+  ["auth.log", "Archivo de Debian y Ubuntu (/var/log/auth.log) donde se registran autenticaciones: SSH, sudo, sesiones…", "logs"],
+  ["Autoridad de certificación (CA)", "Entidad que firma certificados y en la que confían navegadores y sistemas operativos.", "mitm"],
+  ["bcrypt", "Función de hash de contraseñas lenta y con sal integrada, muy usada en aplicaciones web.", "hash"],
+  ["Botnet", "Red de equipos infectados controlados por un atacante; permite repartir un ataque entre muchas IPs.", "deteccion"],
+  ["Certificado", "Documento digital que asocia una llave pública a un nombre (por ejemplo, un dominio) y está firmado por una CA.", "mitm"],
+  ["CIDR", "Notación para rangos de IPs: 192.168.0.0/16 indica que los primeros 16 bits son fijos.", "respuesta"],
+  ["Cifrado asimétrico", "Cifrado con un par de llaves: lo que cierra la pública solo lo abre la privada. Ejemplos: RSA y curvas elípticas.", "asimetrico"],
+  ["Cifrado híbrido", "Combinación de cifrado asimétrico (para acordar la llave y autenticar) y simétrico (para los datos). Lo usan TLS y SSH.", "asimetrico"],
+  ["Cifrado simétrico", "Cifrado con una sola llave secreta compartida para cifrar y descifrar. Ejemplo: AES.", "asimetrico"],
+  ["Colisión", "Dos entradas distintas con el mismo hash. En un buen hash criptográfico es inviable encontrarlas.", "hash"],
+  ["Compromiso", "Situación en la que un atacante consigue acceso. En Centinela, un login exitoso de una IP después de su ataque.", "deteccion"],
+  ["conntrack", "Módulo de seguimiento de conexiones de Linux que permite reglas con estado (ESTABLISHED, RELATED).", "firewall"],
+  ["DataFrame", "Tabla en memoria de pandas, con columnas con nombre.", "analisis"],
+  ["Defensa en profundidad", "Proteger con varias capas independientes para que el fallo de una no deje todo expuesto.", "cierre"],
+  ["Denegar por defecto", "Bloquear todo lo que no esté permitido de forma explícita (por ejemplo, -P INPUT DROP).", "firewall"],
+  ["DoS / DDoS", "Denegación de servicio: dejar un servicio inaccesible saturándolo. DDoS es la versión distribuida, desde muchas fuentes.", "tcp"],
+  ["Efecto avalancha", "Propiedad de un hash: un cambio mínimo en la entrada cambia alrededor de la mitad de los bits de la salida.", "hash"],
+  ["Enumeración de usuarios", "Probar nombres de usuario para averiguar cuáles existen en un sistema.", "deteccion"],
+  ["Expresión regular (regex)", "Patrón que describe la forma de un texto; sirve para buscar y extraer datos.", "regex"],
+  ["fail2ban", "Herramienta que lee logs y bloquea temporalmente con el firewall a las IPs que abusan.", "respuesta"],
+  ["Falso negativo", "Un ataque real que no genera alerta.", "deteccion"],
+  ["Falso positivo", "Una alerta sobre algo inocente.", "deteccion"],
+  ["Firewall", "Filtro que decide qué paquetes pasan según reglas evaluadas en orden.", "firewall"],
+  ["Firma digital", "Valor calculado con la llave privada sobre un mensaje (normalmente sobre su hash) que cualquiera puede verificar con la pública.", "asimetrico"],
+  ["Fixture", "En pytest, función que prepara algo que necesitan los tests y se entrega como parámetro.", "tests"],
+  ["Fuerza bruta", "Ataque que prueba muchas contraseñas hasta acertar.", "deteccion"],
+  ["Handshake TCP", "Establecimiento de una conexión TCP en tres pasos: SYN, SYN-ACK y ACK.", "tcp"],
+  ["Hash", "Función que convierte cualquier dato en un resumen de tamaño fijo, determinista y no reversible.", "hash"],
+  ["HSTS", "Cabecera con la que un sitio indica al navegador que use siempre HTTPS con él.", "mitm"],
+  ["HTTPS / TLS", "HTTP sobre TLS: cifra y autentica la comunicación web mediante certificados.", "mitm"],
+  ["Idempotente", "Que ejecutarlo varias veces produce el mismo resultado que hacerlo una vez.", "respuesta"],
+  ["Incidente", "Un evento de seguridad que requiere atención. En Centinela, un tramo de tiempo en el que una IP cumple una regla.", "deteccion"],
+  ["Inyección de comandos", "Vulnerabilidad en la que datos externos acaban ejecutándose como comandos.", "respuesta"],
+  ["iptables", "Herramienta clásica del firewall de Linux; organiza reglas en cadenas como INPUT.", "firewall"],
+  ["ISN", "Número de secuencia inicial de una conexión TCP; debe ser aleatorio.", "tcp"],
+  ["Lista blanca", "Lista de elementos que siempre se permiten; en Centinela, redes que nunca se bloquean.", "respuesta"],
+  ["Lista negra", "Lista de elementos que se bloquean; en Centinela, IPs con incidentes.", "respuesta"],
+  ["Llave privada", "Mitad secreta de un par de llaves asimétricas. Descifra y firma; nunca se comparte.", "asimetrico"],
+  ["Llave pública", "Mitad compartible de un par de llaves asimétricas. Cifra y verifica firmas.", "asimetrico"],
+  ["Log", "Registro cronológico de eventos que escribe un programa o el sistema.", "logs"],
+  ["Low and slow", "Ataque que va despacio a propósito para pasar por debajo de los umbrales de detección.", "deteccion"],
+  ["Man-in-the-middle (MITM)", "Ataque en el que alguien se coloca entre dos partes para leer o alterar su comunicación.", "mitm"],
+  ["MFA", "Autenticación multifactor: exige algo más que la contraseña, como un código del móvil o una llave física.", "limite"],
+  ["Política por defecto", "Acción de un firewall cuando ninguna regla coincide (-P).", "firewall"],
+  ["Puerto", "Número que identifica un servicio o una conexión en una máquina; SSH escucha en el 22.", "logs"],
+  ["Rate limiting", "Limitar cuántas peticiones se aceptan por unidad de tiempo.", "limite"],
+  ["RSA", "Algoritmo asimétrico cuya seguridad se basa en la dificultad de factorizar números enormes.", "asimetrico"],
+  ["Sal (salt)", "Valor aleatorio único por usuario que se mezcla con la contraseña antes del hash.", "hash"],
+  ["SHA-256", "Función hash criptográfica de la familia SHA-2 con salida de 256 bits.", "hash"],
+  ["SSH", "Secure Shell: protocolo cifrado para administrar máquinas a distancia (puerto 22).", "logs"],
+  ["SYN cookies", "Defensa contra SYN flood: el servidor no guarda estado hasta el ACK y codifica lo necesario en su número de secuencia.", "tcp"],
+  ["SYN flood", "Ataque de denegación de servicio que llena la cola de conexiones medio abiertas con SYN falsos.", "tcp"],
+  ["syslog", "Estándar y servicio de registro de eventos en sistemas tipo Unix.", "logs"],
+  ["Token bucket", "Algoritmo de limitación: un cubo de fichas que se rellena a ritmo fijo y del que cada petición gasta una.", "limite"],
+  ["Umbral", "Valor a partir del cual salta una alerta, como 5 fallos.", "deteccion"],
+  ["Ventana deslizante", "Intervalo de tiempo que avanza sobre los eventos para contar cuántos caen dentro.", "deteccion"],
+].sort((a, b) => a[0].localeCompare(b[0], "es"));
+
+// ---------------------------------------------------------------- navegación
+const secciones = [...document.querySelectorAll(".modulo")];
+const modulos = secciones.filter((s) => s.dataset.num);
+const nav = document.getElementById("nav");
+let grupoActual = null;
+for (const s of secciones) {
+  if (s.dataset.grupo !== grupoActual) {
+    grupoActual = s.dataset.grupo;
+    nav.insertAdjacentHTML("beforeend", `<div class="nav-group">${grupoActual}</div>`);
+  }
+  const num = s.dataset.num || (s.id === "inicio" ? "★" : s.id === "glosario" ? "A" : "✓");
+  nav.insertAdjacentHTML("beforeend", `<a href="#${s.id}" data-id="${s.id}"><span class="num">${num}</span>${s.dataset.titulo}</a>`);
+}
+document.getElementById("mapa").innerHTML = modulos
+  .map((s) => `<a href="#${s.id}"><b>${s.dataset.num}. ${s.dataset.titulo}</b><span>${s.querySelector(".lead").textContent}</span></a>`)
+  .join("");
+
+// Botones «anterior / siguiente» al final de cada módulo
+modulos.forEach((s, i) => {
+  const ant = modulos[i - 1], sig = modulos[i + 1];
+  s.insertAdjacentHTML("beforeend", `<div class="siguiente">${ant ? `<a class="btn" href="#${ant.id}">← ${ant.dataset.titulo}</a>` : "<span></span>"}${sig ? `<a class="btn primary" href="#${sig.id}">${sig.dataset.titulo} →</a>` : `<a class="btn primary" href="#examen">Examen final →</a>`}</div>`);
+});
+
+const side = document.getElementById("side");
+const menuBtn = document.getElementById("menu-btn");
+menuBtn.addEventListener("click", () => {
+  const abierto = side.classList.toggle("abierto");
+  menuBtn.setAttribute("aria-expanded", String(abierto));
+});
+
+function mostrar() {
+  const id = location.hash.slice(1) || "inicio";
+  const actual = secciones.find((s) => s.id === id) || secciones[0];
+  secciones.forEach((s) => s.classList.toggle("activo", s === actual));
+  nav.querySelectorAll("a").forEach((a) => (a.dataset.id === actual.id ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
+  document.title = (actual.id === "inicio" ? "" : actual.dataset.titulo + " · ") + "Curso Centinela";
+  side.classList.remove("abierto");
+  menuBtn.setAttribute("aria-expanded", "false");
+  actual.querySelectorAll(".figura:not([data-cargada])").forEach(prepararFigura);
+  window.scrollTo(0, 0);
+}
+addEventListener("hashchange", mostrar);
+
+// ---------------------------------------------------------------- progreso
+let progreso = guardado.leer("progreso", {});
+function pintarProgreso() {
+  const hechos = modulos.filter((s) => progreso[s.id]?.completo).length;
+  document.getElementById("progreso-texto").textContent = `${hechos} de ${modulos.length} módulos completados`;
+  document.getElementById("progreso-barra").style.width = (100 * hechos / modulos.length) + "%";
+  nav.querySelectorAll("a").forEach((a) => a.classList.toggle("hecho", !!progreso[a.dataset.id]?.completo));
+}
+
+// ---------------------------------------------------------------- quizzes
+function montarQuiz(contenedor, preguntas, { id = null, titulo = "Comprueba lo aprendido" } = {}) {
+  let respondidas = 0, aciertos = 0;
+  contenedor.innerHTML = `<h2>${titulo}</h2>` + preguntas.map((p, i) => `
+    <div class="pregunta" data-i="${i}">
+      <p>${i + 1}. ${escapar(p.q)}</p>
+      ${p.o.map((op, j) => `<button class="opcion" data-j="${j}">${escapar(op)}</button>`).join("")}
+      <div class="explicacion" hidden></div>
+    </div>`).join("") + `<div class="marcador" aria-live="polite"><span class="puntos">0 de ${preguntas.length} respondidas</span><button class="btn reiniciar">Repetir</button></div>`;
+  contenedor.addEventListener("click", (ev) => {
+    const boton = ev.target.closest(".opcion");
+    if (boton) {
+      const bloque = boton.closest(".pregunta");
+      const p = preguntas[+bloque.dataset.i];
+      const elegida = +boton.dataset.j;
+      bloque.querySelectorAll(".opcion").forEach((b) => {
+        b.disabled = true;
+        if (+b.dataset.j === p.c) b.classList.add("correcta");
+      });
+      const bien = elegida === p.c;
+      if (!bien) boton.classList.add("incorrecta");
+      const exp = bloque.querySelector(".explicacion");
+      exp.hidden = false;
+      exp.className = "explicacion " + (bien ? "bien" : "mal");
+      exp.textContent = (bien ? "¡Correcto! " : "No exactamente. ") + p.e;
+      respondidas++; if (bien) aciertos++;
+      contenedor.querySelector(".puntos").textContent = respondidas < preguntas.length
+        ? `${respondidas} de ${preguntas.length} respondidas · ${aciertos} aciertos`
+        : `Resultado: ${aciertos} de ${preguntas.length} ${aciertos === preguntas.length ? "· ¡perfecto!" : aciertos >= preguntas.length * 0.7 ? "· ¡muy bien!" : "· repasa el módulo y vuelve a intentarlo"}`;
+      if (id && respondidas === preguntas.length) {
+        const antes = progreso[id]?.mejor ?? 0;
+        progreso[id] = { completo: true, mejor: Math.max(antes, aciertos), total: preguntas.length };
+        guardado.escribir("progreso", progreso);
+        pintarProgreso();
+      }
+    }
+    if (ev.target.closest(".reiniciar")) {
+      // Un contenedor nuevo, para no acumular escuchadores de clic.
+      const nuevo = contenedor.cloneNode(false);
+      contenedor.replaceWith(nuevo);
+      montarQuiz(nuevo, preguntas, { id, titulo });
+    }
+  });
+}
+function escapar(t) { return String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+document.querySelectorAll(".quiz[data-quiz]").forEach((q) => {
+  const seccion = q.closest(".modulo");
+  montarQuiz(q, QUIZZES[q.dataset.quiz], { id: seccion.id });
+});
+
+function nuevoExamen() {
+  const todas = Object.values(QUIZZES).flat();
+  for (let i = todas.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [todas[i], todas[j]] = [todas[j], todas[i]]; }
+  const viejo = document.getElementById("quiz-examen");
+  const nuevo = viejo.cloneNode(false);
+  viejo.replaceWith(nuevo);
+  montarQuiz(nuevo, todas.slice(0, 12), { titulo: "12 preguntas" });
+}
+document.getElementById("examen-nuevo").addEventListener("click", nuevoExamen);
+nuevoExamen();
+
+// ---------------------------------------------------------------- glosario
+const lista = document.getElementById("lista-glosario");
+const titulos = Object.fromEntries(modulos.map((s) => [s.id, `${s.dataset.num}. ${s.dataset.titulo}`]));
+function pintarGlosario(filtro = "") {
+  const norm = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const f = norm(filtro.trim());
+  const visibles = GLOSARIO.filter(([t, d]) => !f || norm(t).includes(f) || norm(d).includes(f));
+  lista.innerHTML = visibles.length
+    ? visibles.map(([t, d, m]) => `<dt>${escapar(t)}</dt><dd>${escapar(d)}<small>Módulo: <a href="#${m}">${escapar(titulos[m])}</a></small></dd>`).join("")
+    : `<p class="vacio">Ningún término coincide con «${escapar(filtro)}».</p>`;
+}
+document.getElementById("buscar").addEventListener("input", (e) => pintarGlosario(e.target.value));
+pintarGlosario();
+
+// ---------------------------------------------------------------- figuras (se cargan al abrir su módulo)
+function prepararFigura(caja) {
+  caja.dataset.cargada = "";
+  cargarFigura(caja);
+}
+function cargarFigura(caja) {
+  const nombre = caja.dataset.figura;
+  const archivo = `../figuras/${nombre}/${nombre}${temaActual() === "dark" ? "" : "-light"}.html`;
+  caja.innerHTML = `<iframe src="${archivo}" title="Figura interactiva: ${nombre}" style="height:${innerWidth < 700 ? caja.dataset.altoMovil : caja.dataset.alto}px"></iframe>
+    <div class="figura-pie"><span>Figura interactiva de <code>figuras/${nombre}/</code></span><a href="${archivo}" target="_blank" rel="noopener">Abrir en una pestaña nueva ↗</a></div>`;
+}
+
+// ---------------------------------------------------------------- laboratorio: regex
+const PATRON = /^(?:(?<fecha_syslog>[A-Z][a-z]{2}\s+\d{1,2}\s\d{2}:\d{2}:\d{2})|(?<fecha_iso>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?))\s(?<host>\S+)\ssshd\[\d+\]:\s(?<resultado>Accepted|Failed)\s(?<metodo>password|publickey|keyboard-interactive\/pam)\sfor\s(?<invalido>invalid user )?(?<usuario>\S+)\sfrom\s(?<ip>\d{1,3}(?:\.\d{1,3}){3})\sport\s(?<puerto>\d+)/;
+const ipValida = (ip) => ip.split(".").every((n) => +n <= 255 && String(+n) === n);
+function probarRegex() {
+  const filas = document.getElementById("regex-entrada").value.split("\n").filter((l) => l.trim()).map((linea, i) => {
+    const m = PATRON.exec(linea);
+    if (!m) return `<tr><td>${i + 1}</td><td colspan="5"><span class="tag gris">ignorada</span> no es un intento de login</td></tr>`;
+    const g = m.groups;
+    if (!ipValida(g.ip)) return `<tr><td>${i + 1}</td><td colspan="5"><span class="tag gris">descartada</span> la regex encaja, pero ${escapar(g.ip)} no es una IP válida</td></tr>`;
+    return `<tr><td>${i + 1}</td><td>${escapar(g.fecha_syslog || g.fecha_iso)}</td><td>${escapar(g.ip)}</td><td>${escapar(g.usuario)}${g.invalido ? ' <span class="tag gris">no existe</span>' : ""}</td><td>${escapar(g.metodo)}</td><td>${g.resultado === "Accepted" ? '<span class="tag ok">EXITOSO</span>' : '<span class="tag bad">FALLIDO</span>'}</td></tr>`;
+  });
+  document.getElementById("regex-salida").innerHTML = `<table><tr><th>#</th><th>fecha</th><th>ip</th><th>usuario</th><th>método</th><th>resultado</th></tr>${filas.join("")}</table>`;
+}
+document.getElementById("regex-entrada").addEventListener("input", probarRegex);
+probarRegex();
+
+// ---------------------------------------------------------------- laboratorio: ventana deslizante
+const VENTANAS = [30, 60, 120, 300, 900, 1800, 3600];
+const ESCENARIOS = {
+  persona: () => [0, 8, 17, 27],
+  rafaga: () => Array.from({ length: 60 }, (_, i) => 60 + i * 2),
+  lento: () => Array.from({ length: 30 }, (_, i) => i * 120),
+  botnet: () => [40, 400, 700],
+  mixto: () => [0, 9, 20, ...Array.from({ length: 25 }, (_, i) => 300 + i * 3)],
+};
+const fmtVentana = (s) => (s < 60 ? `${s} s` : s < 3600 ? `${s / 60} min` : "1 h");
+function rachas(momentos, umbral, ventana) {
+  const cola = [], tramos = [];
+  for (const t of momentos) {
+    cola.push(t);
+    while (t - cola[0] > ventana) cola.shift();
+    if (cola.length >= umbral) {
+      const inicio = cola[0];
+      if (tramos.length && inicio <= tramos.at(-1)[1]) tramos.at(-1)[1] = t;
+      else tramos.push([inicio, t]);
+    }
+  }
+  return tramos;
+}
+function simular() {
+  const umbral = +document.getElementById("sim-umbral").value;
+  const ventana = VENTANAS[+document.getElementById("sim-ventana").value];
+  document.getElementById("sim-umbral-v").textContent = umbral;
+  document.getElementById("sim-ventana-v").textContent = fmtVentana(ventana);
+  const momentos = ESCENARIOS[document.getElementById("sim-escenario").value]();
+  const fin = Math.max(...momentos) * 1.05 + 10;
+  const x = (t) => 20 + (t / fin) * 660;
+  const tramos = rachas(momentos, umbral, ventana);
+  const color = getComputedStyle(raiz);
+  const svg = document.getElementById("sim-svg");
+  svg.innerHTML =
+    tramos.map(([a, b]) => `<rect x="${x(a) - 4}" y="18" width="${Math.max(8, x(b) - x(a) + 8)}" height="44" rx="4" fill="${color.getPropertyValue("--bad-soft")}" stroke="${color.getPropertyValue("--bad")}" stroke-width="1"/>`).join("") +
+    `<line x1="20" y1="40" x2="680" y2="40" stroke="${color.getPropertyValue("--line")}" stroke-width="2"/>` +
+    momentos.map((t) => `<circle cx="${x(t)}" cy="40" r="3.5" fill="${color.getPropertyValue("--strong")}"/>`).join("") +
+    `<text x="20" y="84" font-size="12" fill="${color.getPropertyValue("--muted")}">0 s</text><text x="680" y="84" font-size="12" text-anchor="end" fill="${color.getPropertyValue("--muted")}">${Math.round(fin)} s</text>`;
+  const fallosEnTramos = tramos.reduce((n, [a, b]) => n + momentos.filter((t) => t >= a && t <= b).length, 0);
+  document.getElementById("sim-veredicto").innerHTML = tramos.length
+    ? `<span class="tag bad">ALERTA</span> ${tramos.length} incidente${tramos.length > 1 ? "s" : ""} con ${fallosEnTramos} de ${momentos.length} fallos (regla: ${umbral} fallos en ${fmtVentana(ventana)}).`
+    : `<span class="tag ok">SIN ALERTA</span> nunca hay ${umbral} fallos dentro de ${fmtVentana(ventana)} (${momentos.length} fallos en total).`;
+}
+["sim-escenario", "sim-umbral", "sim-ventana"].forEach((id) => document.getElementById(id).addEventListener("input", simular));
+document.getElementById("tema-btn").addEventListener("click", simular);
+simular();
+
+// ---------------------------------------------------------------- laboratorio: RSA de juguete
+const N = 3233n, E = 17n, D = 2753n;
+function potenciaModular(base, exp, mod) {
+  // Exponenciación rápida: elevar y reducir por pasos para no manejar números gigantes.
+  let r = 1n; base %= mod;
+  while (exp > 0n) { if (exp & 1n) r = (r * base) % mod; base = (base * base) % mod; exp >>= 1n; }
+  return r;
+}
+function rsa() {
+  const m = BigInt(document.getElementById("rsa-m").value);
+  document.getElementById("rsa-m-v").textContent = String(m);
+  const c = potenciaModular(m, E, N);
+  const vuelta = potenciaModular(c, D, N);
+  const malaLlave = potenciaModular(c, E, N);
+  const firma = potenciaModular(m, D, N);
+  document.getElementById("rsa-salida").innerHTML = `<table>
+    <tr><td>Cifrar con la pública</td><td><code>c = ${m}<sup>17</sup> mod 3233 = <b>${c}</b></code></td></tr>
+    <tr><td>Descifrar con la privada</td><td><code>${c}<sup>2753</sup> mod 3233 = <b>${vuelta}</b></code> ${vuelta === m ? '<span class="tag ok">recupera m</span>' : ""}</td></tr>
+    <tr><td>«Descifrar» con la pública</td><td><code>${c}<sup>17</sup> mod 3233 = <b>${malaLlave}</b></code> ${malaLlave === m ? "" : '<span class="tag bad">no es m</span>'}</td></tr>
+    <tr><td>Firmar con la privada</td><td><code>s = ${m}<sup>2753</sup> mod 3233 = <b>${firma}</b></code></td></tr>
+    <tr><td>Verificar con la pública</td><td><code>${firma}<sup>17</sup> mod 3233 = <b>${potenciaModular(firma, E, N)}</b></code> ${potenciaModular(firma, E, N) === m ? '<span class="tag ok">firma válida</span>' : ""}</td></tr></table>`;
+}
+document.getElementById("rsa-m").addEventListener("input", rsa);
+rsa();
+
+// ---------------------------------------------------------------- arranque
+pintarProgreso();
+mostrar();
+</script>
+</body>
+</html>

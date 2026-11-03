@@ -6,6 +6,12 @@ Centinela lee el archivo de autenticación de un servidor Linux (`/var/log/auth.
 
 ![Salida de python -m centinela todo](docs/img/terminal.png)
 
+## Curso interactivo
+
+En [`curso/index.html`](curso/index.html) tienes un curso en español basado en este repositorio. Son 13 módulos (logs, expresiones regulares, detección, token bucket, pandas, lista negra, pytest, hash, TCP, firewall, cifrado asimétrico, man-in-the-middle y ética), con quizzes, laboratorios interactivos, las figuras de `figuras/` incrustadas, un glosario con buscador y un examen final.
+
+Para verlo, abre `curso/index.html` en el navegador desde tu copia del repositorio: las figuras se cargan desde las carpetas vecinas. El progreso se guarda solo en tu navegador.
+
 ## Instalación
 
 Necesitas Python 3.10 o superior.
