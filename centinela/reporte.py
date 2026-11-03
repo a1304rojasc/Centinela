@@ -25,6 +25,38 @@ import pandas as pd  # noqa: E402
 from centinela.detector import Incidente  # noqa: E402
 from centinela.parser import Intento  # noqa: E402
 
+# SEGURIDAD — los nombres de usuario los elige el atacante. Dos trampas:
+#  * Inyección de fórmulas en CSV: una celda que empieza por = + - @ se
+#    interpreta como fórmula al abrir el CSV en Excel o LibreOffice
+#    (=HYPERLINK(...), =cmd|...). Se neutraliza poniendo un apóstrofo delante.
+#  * matplotlib interpreta "$...$" como fórmula matemática (mathtext): un
+#    usuario como "$\mathcal{$" hace fallar el gráfico y, con él, el reporte.
+#    Se escapan los "$" de las etiquetas.
+PELIGROSOS_CSV = ("=", "+", "-", "@", "\t", "\r")
+
+
+def celda_segura(valor):
+    """Neutraliza una celda de texto que una hoja de cálculo tomaría por fórmula."""
+    if isinstance(valor, str) and valor.startswith(PELIGROSOS_CSV):
+        return "'" + valor
+    return valor
+
+
+def csv_seguro(df: pd.DataFrame) -> pd.DataFrame:
+    """Copia del DataFrame con todas las columnas de texto neutralizadas."""
+    copia = df.copy()
+    for columna in copia.columns:
+        # pandas 3 usa un tipo "str" propio para el texto; pandas 2, "object".
+        if copia[columna].dtype == object or pd.api.types.is_string_dtype(copia[columna]):
+            copia[columna] = copia[columna].map(celda_segura)
+    return copia
+
+
+def etiqueta_segura(texto: str) -> str:
+    """Escapa los '$' para que matplotlib no los lea como fórmula."""
+    return str(texto).replace("$", r"\$")
+
+
 COLUMNAS = ["momento", "ip", "usuario", "exito", "metodo", "usuario_valido", "puerto"]
 COLOR_FALLO = "#c0392b"
 COLOR_EXITO = "#2e86c1"
@@ -129,8 +161,9 @@ def grafico_usuarios(df: pd.DataFrame, ruta: Path, n: int = 12) -> Path:
     tabla = tabla.reindex(columns=[True, False], fill_value=0)
     tabla = tabla.loc[tabla.sum(axis=1).sort_values(ascending=False).index].head(n).iloc[::-1]
     fig, ax = plt.subplots(figsize=(8, 4.5))
-    ax.barh(tabla.index, tabla[True], color="#7f8c8d", label="usuario existe")
-    ax.barh(tabla.index, tabla[False], left=tabla[True], color="#e67e22", label="usuario inventado")
+    etiquetas = [etiqueta_segura(u) for u in tabla.index]
+    ax.barh(etiquetas, tabla[True], color="#7f8c8d", label="usuario existe")
+    ax.barh(etiquetas, tabla[False], left=tabla[True], color="#e67e22", label="usuario inventado")
     for y, total in enumerate(tabla.sum(axis=1)):
         ax.text(total, y, f" {int(total)}", va="center", fontsize=9)
     ax.margins(x=0.08)
@@ -180,9 +213,9 @@ def generar_reporte(intentos: list[Intento], incidentes: list[Incidente], carpet
         "usuarios": grafico_usuarios(df, carpeta / "usuarios.png"),
         "markdown": carpeta / "reporte.md",
     }
-    df.to_csv(rutas["intentos_csv"], index=False)
-    resumen.to_csv(rutas["resumen_csv"])
-    incs.to_csv(rutas["incidentes_csv"], index=False)
+    csv_seguro(df).to_csv(rutas["intentos_csv"], index=False)
+    csv_seguro(resumen).to_csv(rutas["resumen_csv"])
+    csv_seguro(incs).to_csv(rutas["incidentes_csv"], index=False)
 
     total, fallos = len(df), int((~df["exito"]).sum())
     comprometidos = sorted({i.ip for i in incidentes if i.comprometido})

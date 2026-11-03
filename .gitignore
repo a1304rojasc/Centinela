@@ -5,3 +5,5 @@ __pycache__/
 reportes/
 lista_negra.txt
 bloquear.sh
+logs/honeypot.log
+logs/credenciales.jsonl

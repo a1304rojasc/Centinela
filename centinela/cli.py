@@ -74,6 +74,11 @@ def cmd_intentos(args) -> int:
     return 0
 
 
+def cmd_honeypot(args) -> int:
+    from centinela import honeypot  # import tardío: paramiko solo hace falta aquí
+    return honeypot.ejecutar(args.host, args.puerto, args.log, args.credenciales)
+
+
 def cmd_detectar(args) -> int:
     _imprimir_incidentes(detector.detectar(_leer(args), _reglas(args)))
     return 0
@@ -108,9 +113,17 @@ def cmd_todo(args) -> int:
     print(f"Analizados {len(intentos)} intentos de login de {args.log}\n")
     _imprimir_incidentes(incidentes)
     print()
-    reporte.generar_reporte(intentos, incidentes, args.carpeta)
-    print(f"Reporte con gráficos -> {args.carpeta}/reporte.md")
-    return cmd_bloquear(args, incidentes)
+    # SEGURIDAD: primero la lista negra y después el reporte. Si el reporte
+    # fallara (por ejemplo, por un dato raro en un gráfico), el bloqueo ya
+    # estaría hecho: un fallo en la parte "bonita" no debe frenar la defensa.
+    resultado = cmd_bloquear(args, incidentes)
+    try:
+        reporte.generar_reporte(intentos, incidentes, args.carpeta)
+        print(f"Reporte con gráficos -> {args.carpeta}/reporte.md")
+    except Exception as error:  # noqa: BLE001 - lo mostramos y seguimos
+        print(f"AVISO: no se pudo generar el reporte ({type(error).__name__}: {error})", file=sys.stderr)
+        return 1
+    return resultado
 
 
 # --- argumentos -----------------------------------------------------------------
@@ -145,6 +158,13 @@ def construir_parser() -> argparse.ArgumentParser:
                          help="IP o red que nunca se bloquea, p. ej. 203.0.113.0/24 (repetible)")
     bloqueo.add_argument("--sin-redes-privadas", action="store_true",
                          help="permite bloquear también redes privadas (10.x, 192.168.x...)")
+
+    h = sub.add_parser("honeypot", help="SSH falso que registra intentos (nunca da acceso)")
+    h.add_argument("--host", default="127.0.0.1", help="interfaz (por defecto solo esta máquina)")
+    h.add_argument("--puerto", type=int, default=2222)
+    h.add_argument("--log", default="logs/honeypot.log")
+    h.add_argument("--credenciales", default="logs/credenciales.jsonl")
+    h.set_defaults(funcion=cmd_honeypot)
 
     i = sub.add_parser("intentos", parents=[comun], help="lista los intentos de login")
     i.add_argument("--ip", help="mostrar solo esta IP")
