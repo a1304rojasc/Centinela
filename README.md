@@ -58,7 +58,7 @@ centinela/
 ├── lista_negra.py  Fase 4 · lista negra, lista blanca y script iptables
 ├── cli.py          línea de comandos (python -m centinela ...)
 └── __main__.py
-tests/              59 tests con pytest (19 de seguridad)
+tests/              63 tests con pytest (19 de seguridad, 4 del honeypot)
 fase1/              los scripts originales de la Fase 1, para comparar
 logs/auth.log       log de ejemplo (semilla 42)
 docs/img/           capturas de este README
@@ -131,7 +131,7 @@ En naranja aparecen los usuarios que no existen en el servidor, la huella típic
 python -m pytest
 ```
 
-Hay 59 tests que cubren el parser (formatos, ruido, IPs imposibles, cambio de año), las reglas del detector (justo en el umbral, por debajo, ataques lentos, compromisos), la lista blanca, la fusión de la lista negra, que el script no admita texto que no sea una IP, el reporte completo y la línea de comandos de principio a fin.
+Hay 63 tests que cubren el parser (formatos, ruido, IPs imposibles, cambio de año), las reglas del detector (justo en el umbral, por debajo, ataques lentos, compromisos), la lista blanca, la fusión de la lista negra, que el script no admita texto que no sea una IP, el reporte completo y la línea de comandos de principio a fin, y que el honeypot registra cada intento sin dar nunca acceso.
 
 ## Honeypot SSH
 
