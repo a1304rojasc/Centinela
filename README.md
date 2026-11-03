@@ -1,5 +1,7 @@
 # Centinela
 
+[![tests](https://github.com/a1304rojasc/centinela/actions/workflows/tests.yml/badge.svg)](https://github.com/a1304rojasc/centinela/actions/workflows/tests.yml)
+
 Detector de ataques de fuerza bruta en logs de SSH, escrito en Python como proyecto de aprendizaje de ciberseguridad.
 
 Centinela lee el archivo de autenticación de un servidor Linux (`/var/log/auth.log`), encuentra las IPs que intentan adivinar contraseñas, avisa si alguna llegó a entrar, genera un reporte con gráficos y mantiene una lista negra con su script de firewall.
